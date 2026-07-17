@@ -1,0 +1,43 @@
+# Menu Decoder -- Dish Tagger Benchmark
+
+Full held-out test set: 303 rows, held out by **dish family** (all 3 variants of a dish -- name-only, name+description, original-script+translation -- share one side of the split; see `eval/dataset_card.json`). base/LoRA evaluated on the full 303-row set; Claude teacher on a separate 100-row subsample of that same set (disclosed, not hidden -- mlx_lm.generate reloads the model from disk on every call, and `claude -p` runs at Max-subscription latency, so a full 3-way run at full size would take hours).
+
+**Human slice not yet available** -- Jeremy hasn't spot-checked the stratified 60-dish sample yet (MENU_DECODER_SPEC.md §5). The numbers below compare the synthetic teacher labels against base/LoRA/Claude; they are not validated against a human ground truth, and the spec names this circularity risk explicitly (Claude both labeled the training data and is a benchmark column).
+
+## Why Claude appears twice
+
+`claude_teacher` gets the **identical bare prompt** LoRA and base see (`"Dish: X."`, no schema described anywhere) -- same "all systems see the identical blind prompt" rule this project family's benchmarks use throughout. But with no schema given, Claude reasonably answers a different question ("tell me about this dish") and returns valid JSON with its own field names (`dish_name_arabic`, `region`, `main_ingredients`, `flavor_profile`, etc.) instead of `cuisine`/`allergen_calls`/`spice`/`vegetarian`/`vegan` -- it parses (high Parse OK) but scores ~0% on every derived metric BY CONSTRUCTION, because none of its keys match what's being scored. This is not a parsing bug (verified by reading the raw generations directly); it's the real, measured cost of a prompt with no schema in it. `claude_teacher_schema_primed` gets the same dish prompt plus the exact output contract appended (`src/decoder.py`'s own `TAGGING_SYSTEM` rubric + a single-dish JSON format description -- no answer key, no training examples) so Claude gets a fair shot at showing what it actually knows about cuisines and allergens. Reading both rows together is the point: **the LoRA model needs zero schema in its prompt because the schema is baked into its weights; a zero-shot system needs the full 14-allergen contract spelled out in every call just to attempt the task** -- a measured context-engineering/token-optimization result, not just an accuracy comparison.
+
+## Headline metrics
+
+| System | N | Parse OK | Cuisine acc | Spice ±1 | Veg agree | Vegan agree | Allergen recall (contains, macro) | False-safe rate (macro) | Latency (s/item) | Cost/1k |
+|---|---|---|---|---|---|---|---|---|---|---|
+| base | 303 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 100.0% | 5.408 | 0 |
+| lora | 303 | 100.0% | 99.3% | 99.0% | 94.1% | 96.7% | 69.3% | 7.3% | 6.655 | 0 |
+| claude_teacher | 100 | 94.0% | 43.0% | 0.0% | 0.0% | 0.0% | 0.0% | 100.0% | 16.502 | Max subscription (no per-call API cost) |
+| claude_teacher_schema_primed | 100 | 99.0% | 81.0% | 99.0% | 97.0% | 96.0% | 79.2% | 1.7% | 13.436 | Max subscription (no per-call API cost) |
+
+## Per-allergen recall-on-`contains` and false-safe rate
+
+The safety-critical table -- **false-safe rate** is the fraction of true "contains" cases where the system said "not_indicated" (the dangerous miss; a "may" call is imprecise but still warns, so it does not count as false-safe). Blank cells mean the test set had zero true-`contains` examples for that allergen in that sample. `claude_teacher` (bare prompt) is omitted from this table -- its allergen field is essentially never populated with the right keys (see "Why Claude appears twice" above), so a per-allergen recall number for it would be noise, not signal; `claude_teacher_schema_primed` (labeled `claude` below) is the fair comparison. Full numbers for all 4 systems are in `eval/benchmark.json` regardless.
+
+| Allergen | True contains (N) | base recall | base false-safe | lora recall | lora false-safe | claude (schema-primed) recall | claude (schema-primed) false-safe |
+|---|---|---|---|---|---|---|---|
+| gluten | 130 | 0.0% | 100.0% | 91.5% | 0.0% | 84.4% | 0.0% |
+| crustaceans | 45 | 0.0% | 100.0% | 86.7% | 6.7% | 91.7% | 0.0% |
+| eggs | 71 | 0.0% | 100.0% | 81.7% | 2.8% | 76.7% | 3.3% |
+| fish | 71 | 0.0% | 100.0% | 94.4% | 2.8% | 96.0% | 4.0% |
+| peanuts | 22 | 0.0% | 100.0% | 72.7% | 18.2% | 85.7% | 14.3% |
+| soy | 63 | 0.0% | 100.0% | 88.9% | 0.0% | 80.8% | 0.0% |
+| milk | 103 | 0.0% | 100.0% | 90.3% | 1.9% | 95.2% | 0.0% |
+| nuts | 68 | 0.0% | 100.0% | 92.7% | 5.9% | 94.1% | 0.0% |
+| celery | 2 | 0.0% | 100.0% | 0.0% | 0.0% | 0.0% | 0.0% |
+| mustard | 11 | 0.0% | 100.0% | 63.6% | 9.1% | 100.0% | 0.0% |
+| sesame | 38 | 0.0% | 100.0% | 81.6% | 7.9% | 92.3% | 0.0% |
+| sulphites | 11 | 0.0% | 100.0% | 0.0% | 0.0% | 66.7% | 0.0% |
+| lupin | 0 | - | - | - | - | - | - |
+| molluscs | 23 | 0.0% | 100.0% | 56.5% | 39.1% | 66.7% | 0.0% |
+
+## Known limitation: no human-validated ground truth yet
+
+All four rows are compared against Claude-teacher-generated synthetic labels (`scripts/gen_dishes.py`, `tier="smart"`), not human judgment. The spec (MENU_DECODER_SPEC.md §5) calls for a mandatory ~60-dish human-spot-check slice specifically because Claude is both the label source and a benchmark column -- a same-source comparison can look better than it should. That slice requires Jeremy personally and has not been run yet; until it lands, treat `claude_teacher_schema_primed`'s numbers here as an internal-consistency check (does Claude agree with itself under a blind prompt), not independent validation.

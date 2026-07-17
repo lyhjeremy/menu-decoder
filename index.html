@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Menu Decoder — photograph any menu, get allergen-safe picks</title>
+<meta name="description" content="Photograph a foreign-language menu and speak your dietary constraints — get every dish translated, allergen-flagged with a deliberately fail-safe design (no green checkmark, ever), and pronounced. Plus a locally fine-tuned dish tagger benchmarked on allergen recall, not just accuracy." />
+<style>
+  :root{--ink:#2b1608;--paper:#FBF3E7;--rule:#EAD9C4;--soft:#6b5a45;--accent:#B5451B;--terracotta:#B5451B;--olive:#6B7A3A}
+  *{box-sizing:border-box} html,body{margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.7;font-size:18px}
+  .hero{width:100%;background:#2b1608;overflow:hidden}
+  .hero img{width:100%;display:block}
+  .container{max-width:820px;margin:0 auto;padding:38px 24px 80px}
+  .kicker{text-transform:uppercase;letter-spacing:.16em;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--soft);font-weight:700;text-align:center;margin-bottom:12px}
+  h1{font-size:40px;line-height:1.16;text-align:center;margin:0 0 14px}
+  .lede{font-size:20px;color:#3d2c1c;text-align:center;margin:0 auto 6px;max-width:680px}
+  .byline{color:var(--soft);font-style:italic;text-align:center;margin:18px 0 30px}
+  h2{font-size:26px;margin:50px 0 14px;border-bottom:1px solid var(--rule);padding-bottom:8px}
+  p{margin:0 0 16px} a{color:var(--terracotta)}
+  .features{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:26px 0}
+  .card{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:20px;font-family:'Helvetica Neue',Arial,sans-serif}
+  .card .ico{font-size:24px}.card h3{margin:8px 0 6px;font-size:18px}.card p{font-size:15px;color:#444;margin:0;line-height:1.6}
+  .steps{counter-reset:step;list-style:none;padding:0;margin:24px 0}
+  .steps li{position:relative;padding:12px 0 12px 54px;border-bottom:1px dashed var(--rule);font-family:'Helvetica Neue',Arial,sans-serif;font-size:16px}
+  .steps li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:10px;width:34px;height:34px;border-radius:50%;background:var(--terracotta);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .note{background:#fff;border:1px solid var(--rule);border-left:4px solid var(--terracotta);border-radius:8px;padding:14px 20px;font-size:14.5px;color:#444;font-family:'Helvetica Neue',Arial,sans-serif;margin:24px 0}
+  .badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;margin:18px 0}
+  .badge{padding:6px 14px;border-radius:20px;font-weight:700}
+  .b-contains{background:#F4D6D0;color:#8a2b12}
+  .b-may{background:#F7E7C4;color:#7a5a10}
+  .b-none{background:#E4E9DC;color:#43502a}
+  table{width:100%;border-collapse:collapse;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14.5px;margin:20px 0}
+  th,td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:left}
+  th{color:var(--soft);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+  .btnrow{text-align:center;margin:40px 0 8px}
+  .btn{display:inline-block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:600;text-decoration:none;padding:13px 24px;border-radius:8px;margin:6px}
+  .btn-solid{background:var(--terracotta);color:#fff}.btn-ghost{border:1px solid var(--terracotta);color:var(--terracotta)}
+  .footer{text-align:center;color:var(--soft);font-size:14px;margin-top:54px;font-family:'Helvetica Neue',Arial,sans-serif}
+  @media(max-width:600px){h1{font-size:30px}.features{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="hero"><img src="assets/banner.png" alt="Menu Decoder"/></div>
+<div class="container">
+  <p class="kicker">No green checkmark for allergens, ever</p>
+  <h1>Menu Decoder</h1>
+  <p class="lede">Photograph any foreign-language menu, say your dietary constraints out loud — get every dish <strong>translated</strong>, <strong>allergen-flagged with a deliberately fail-safe design</strong>, and pronounced, plus an honest "what I'd order for you."</p>
+  <p class="byline">By Jeremy Lee</p>
+
+  <div class="badges">
+    <span class="badge b-contains">✗ contains</span>
+    <span class="badge b-may">⚠ may — ask the staff</span>
+    <span class="badge b-none">○ not indicated</span>
+  </div>
+
+  <h2>Why</h2>
+  <p>Ask a chatbot to read a menu you can't decipher and tell you what's safe, and you're trusting it to translate correctly <em>and</em> never quietly clear an allergen it wasn't sure about. Menu Decoder is built around one asymmetric rule: a missed allergen is dangerous, a false warning is just a shrug — so the system is biased toward warning everywhere it can be. There is no code path anywhere in this app that renders a green checkmark for an allergen.</p>
+
+  <div class="features">
+    <div class="card"><div class="ico">📷</div><h3>One photo, whole menu</h3><p>Vision extraction reads every dish in one call — unreadable lines are flagged, never silently dropped, with a completeness % shown.</p></div>
+    <div class="card"><div class="ico">🧠</div><h3>Locally fine-tuned tagger</h3><p>A LoRA-tuned Qwen2.5-1.5B model tags cuisine + all 14 EU allergens + spice + vegetarian/vegan per dish — runs on a laptop, $0 marginal cost.</p></div>
+    <div class="card"><div class="ico">🛡️</div><h3>3-layer allergen fail-safe</h3><p>Cautious prompt rubric · unoverridable badge rendering · deterministic safe-list filter before the LLM ever picks.</p></div>
+    <div class="card"><div class="ico">🔊</div><h3>Dish-name pronunciation</h3><p>Tap a dish to hear its name spoken in the menu's own language — unsupported locales hide the button rather than faking it.</p></div>
+  </div>
+
+  <h2>The tagger, honestly benchmarked</h2>
+  <p>Given a dish name (+ optional description), the model emits the full allergen/dietary JSON tagging — a generative structured-output task, not a single-label guess. Trained on 6,750 synthetic dish rows across 15 cuisines, split <strong>by dish family</strong> so a dish's 3 prompt variants never straddle train/test. The metric that matters is allergen <strong>recall on "contains"</strong> and the <strong>false-safe rate</strong> — reported per allergen, not averaged away.</p>
+
+  <table>
+    <tr><th>System</th><th>Allergen recall</th><th>False-safe rate</th><th>Cost</th></tr>
+    <tr><td>Base Qwen2.5-1.5B (bare prompt)</td><td>0.0%</td><td>100.0%</td><td>$0</td></tr>
+    <tr><td><strong>+ LoRA fine-tune</strong></td><td><strong>69.3%</strong></td><td><strong>7.3%</strong></td><td>$0</td></tr>
+    <tr><td>Claude teacher (bare prompt, same as LoRA sees)</td><td>0.0%</td><td>100.0%</td><td>Max subscription</td></tr>
+    <tr><td>Claude teacher (schema-primed)</td><td>79.2%</td><td>1.7%</td><td>Max subscription</td></tr>
+  </table>
+
+  <div class="note">🔎 Claude appears twice on purpose. Given the identical bare prompt the LoRA model trained on (no schema described anywhere), Claude answers a different, reasonable question and its own JSON shape — hence the ~0% row, which is a real measured result, not a bug. Told the exact output contract (no answer key), it jumps to 79.2% recall. That gap <em>is</em> the finding: the LoRA model needs zero schema in its prompt because the schema is baked into its weights — a real token-optimization result, detailed in <a href="writeup.md">writeup.md</a> alongside two real CLI bugs found while building this benchmark.</div>
+
+  <div class="note">📋 <strong>Human slice not yet available.</strong> The spec's mandatory ~60-dish stratified spot-check (Jeremy hand-verifying the labels) hasn't run yet — it requires him personally. Reported as an open gap, not hidden or faked.</div>
+
+  <p style="text-align:center;font-family:'Helvetica Neue',Arial,sans-serif;font-size:14px;"><a href="eval/benchmark.md">Full per-allergen benchmark →</a></p>
+
+  <h2>How it works</h2>
+  <ol class="steps">
+    <li>Photograph the menu — one vision call extracts every dish, its translation, price, and an explicit unreadable-line flag where needed.</li>
+    <li>Speak or type your diets and allergens — parsed into a structured preference brief.</li>
+    <li>Each dish gets tagged locally (LoRA) or via a batched Gemini call on the hosted Space — badges render with no green checkmark ever possible for an allergen.</li>
+    <li>The safe-list filter runs in code first; the model only picks 2–3 recommendations from what already passed.</li>
+    <li>Tap any dish to hear it pronounced in the menu's own language.</li>
+  </ol>
+
+  <div class="note">🔒 Everything runs locally except one <code>claude -p</code> call per menu for extraction — no metered API, no vision API key required. See the <a href="writeup.md">full writeup</a> for the honest engineering story, including the real bugs found and fixed along the way.</div>
+
+  <div class="btnrow">
+    <a class="btn btn-solid" href="https://github.com/lyhjeremy/menu-decoder">View on GitHub</a>
+    <a class="btn btn-ghost" href="writeup.md">Read the writeup</a>
+  </div>
+
+  <p class="footer">Built by Jeremy Lee · MIT licensed</p>
+</div>
+</body>
+</html>

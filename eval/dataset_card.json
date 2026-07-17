@@ -1,0 +1,105 @@
+{
+  "counts": {
+    "train": 6096,
+    "valid": 351,
+    "test": 303
+  },
+  "n_entities": {
+    "train": 2032,
+    "valid": 117,
+    "test": 101
+  },
+  "leakage_check": "passed",
+  "label_balance": {
+    "train": {
+      "Italian": 405,
+      "Japanese": 405,
+      "Thai": 402,
+      "Mexican": 393,
+      "Indian": 408,
+      "French": 408,
+      "Chinese-Sichuan": 408,
+      "Chinese-Cantonese": 417,
+      "Korean": 408,
+      "Vietnamese": 414,
+      "Spanish": 414,
+      "Greek": 399,
+      "Middle-Eastern": 393,
+      "American-diner": 408,
+      "Ethiopian": 414
+    },
+    "valid": {
+      "Italian": 30,
+      "Japanese": 33,
+      "Thai": 24,
+      "Mexican": 30,
+      "Indian": 21,
+      "French": 30,
+      "Chinese-Sichuan": 24,
+      "Chinese-Cantonese": 12,
+      "Korean": 24,
+      "Vietnamese": 21,
+      "Spanish": 21,
+      "Greek": 36,
+      "Middle-Eastern": 15,
+      "American-diner": 15,
+      "Ethiopian": 15
+    },
+    "test": {
+      "Italian": 15,
+      "Japanese": 12,
+      "Thai": 24,
+      "Mexican": 27,
+      "Indian": 21,
+      "French": 12,
+      "Chinese-Sichuan": 18,
+      "Chinese-Cantonese": 21,
+      "Korean": 18,
+      "Vietnamese": 15,
+      "Spanish": 15,
+      "Greek": 15,
+      "Middle-Eastern": 42,
+      "American-diner": 27,
+      "Ethiopian": 21
+    }
+  },
+  "n_dish_families": 2250,
+  "cuisines": [
+    "Italian",
+    "Japanese",
+    "Thai",
+    "Mexican",
+    "Indian",
+    "French",
+    "Chinese-Sichuan",
+    "Chinese-Cantonese",
+    "Korean",
+    "Vietnamese",
+    "Spanish",
+    "Greek",
+    "Middle-Eastern",
+    "American-diner",
+    "Ethiopian"
+  ],
+  "allergens": [
+    "gluten",
+    "crustaceans",
+    "eggs",
+    "fish",
+    "peanuts",
+    "soy",
+    "milk",
+    "nuts",
+    "celery",
+    "mustard",
+    "sesame",
+    "sulphites",
+    "lupin",
+    "molluscs"
+  ],
+  "variants": [
+    "name_only",
+    "name_with_description",
+    "original_script_with_translation"
+  ]
+}

@@ -6,6 +6,7 @@ I'd order" pick, with dish-name TTS. See MENU_DECODER_SPEC.md §4.
 """
 from __future__ import annotations
 
+import json
 import subprocess
 import sys
 from pathlib import Path
@@ -62,6 +63,23 @@ def extract_menu(image) -> tuple[Menu | None, str]:
     return result, f"✓ {len(dishes)} dishes found, {completeness:.0%} translation completeness{note}"
 
 
+def _extract_lora_json(raw_stdout: str) -> dict:
+    """mlx_lm.generate's CLI wraps its answer as
+    '==========\\n<json>\\n==========\\nPrompt: ...' -- BUG FOUND & FIXED:
+    the previous version called DishTags.model_validate_json(proc.stdout.strip())
+    directly on that whole banner-wrapped blob, which can never parse as JSON,
+    AND DishTags requires a `dish_id` field that training/prep_tagger.py's
+    target schema never includes (dish_id is assigned per-menu at extraction
+    time, not something the tagger predicts) -- so every real call silently
+    fell into the `except Exception` fail-safe-default branch, meaning the
+    trained LoRA adapter was never actually used even once it existed. Fixed
+    by extracting the generated JSON body and adding dish_id back in from the
+    Dish being tagged (see tag_dishes below)."""
+    body = raw_stdout.split("==========")[1].strip() if "==========" in raw_stdout else raw_stdout.strip()
+    start, end = body.find("{"), body.rfind("}")
+    return json.loads(body[start:end + 1])
+
+
 def tag_dishes(menu: Menu) -> list[DishTags]:
     dishes = menu.all_dishes()
     if ADAPTER_PATH.exists():
@@ -74,7 +92,8 @@ def tag_dishes(menu: Menu) -> list[DishTags]:
                      "--prompt", prompt, "--max-tokens", "300"],
                     capture_output=True, text=True, timeout=30,
                 )
-                tags.append(DishTags.model_validate_json(proc.stdout.strip()))
+                raw = _extract_lora_json(proc.stdout)
+                tags.append(DishTags(dish_id=d.id, **raw))
             except Exception:
                 tags.append(_default_unsure_tags(d.id))
         return tags
