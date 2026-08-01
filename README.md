@@ -4,6 +4,8 @@
 
 # Menu Decoder
 
+> 📖 **Product overview:** https://lyhjeremy.github.io/menu-decoder/overview/
+
 Photograph any foreign-language menu, say your dietary constraints out
 loud → every dish translated, allergen-flagged with a **deliberately
 fail-safe design**, and pronounced — plus an honest "what I'd order for

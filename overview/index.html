@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Menu Decoder — there is no green checkmark for allergens anywhere in this app</title>
+<meta name="description" content="Photograph a foreign menu, say your dietary constraints, get every dish translated and allergen-flagged under a deliberately asymmetric fail-safe. Uncertainty always warns, never clears." />
+<meta name="theme-color" content="#FBF8F1" />
+<meta property="og:title" content="Menu Decoder" />
+<meta property="og:description" content="An allergen tool built around one rule: when the model is uncertain, the badge warns and never clears." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lyhjeremy.github.io/menu-decoder/overview/" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #FBF8F1;
+    --card: #FFFFFF;
+    --plate: #FFFFFF;
+    --ink: #1a1a2e;
+    --ink2: #3d3d55;
+    --muted: #6B7280;
+    --rule: #E5DCC7;
+    --accent: #B45309;
+    --accent2: #BE123C;
+    --link: #0E7490;
+    --serif: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+    --sans: 'Source Sans 3', -apple-system, system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', monospace;
+    --shadow: 0 1px 2px rgba(26,26,46,.05), 0 10px 34px rgba(26,26,46,.07);
+    --spine:  92px;
+    --col:    min(100% - 2.6rem, 62rem);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #14141f;
+      --card: #1c1c2a;
+      --plate: #f7f4ec;
+      --ink: #F2EFE6;
+      --ink2: #C9C4B6;
+      --muted: #918B7D;
+      --rule: #33313f;
+      --accent: #E3BC5E;
+      --accent2: #FB7185;
+      --link: #22D3EE;
+      --shadow: 0 1px 2px rgba(0,0,0,.32), 0 10px 34px rgba(0,0,0,.4);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--serif); font-size: clamp(17px, 0.55rem + 0.6vw, 19.5px);
+    line-height: 1.68; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--link); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+  strong { font-weight: 700; color: var(--ink); }
+  code { font-family: var(--mono); font-size: .86em;
+         background: color-mix(in srgb, var(--ink) 7%, transparent);
+         padding: .12em .38em; border-radius: 4px; }
+  .wrap { width: var(--col); margin: 0 auto; }
+
+  .eyebrow { font-family: var(--mono); font-weight: 600; font-size: 11.5px;
+             letter-spacing: .17em; text-transform: uppercase; color: var(--muted);
+             margin: 0 0 14px; }
+
+  .masthead { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; padding: 30px 0 0; }
+  .logo { font-family: var(--sans); font-weight: 800; font-size: 21px;
+          letter-spacing: -.02em; display: flex; align-items: center; gap: 9px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex: none; }
+  .tagline { font-size: 15px; color: var(--ink2); font-family: var(--sans); }
+
+  .hero { padding: 44px 0 54px; }
+  .kicker { font-family: var(--sans); font-size: clamp(18px, 2.1vw, 23px); font-weight: 600;
+            color: var(--muted); margin: 0 0 8px; letter-spacing: -.01em; }
+  .hero h1 { font-family: var(--sans); font-size: clamp(37px, 6vw, 72px); font-weight: 800;
+             letter-spacing: -.035em; line-height: 1.04; margin: 0; max-width: 17ch; }
+  .hero-sub { margin: 24px 0 0; font-size: 1.06em; color: var(--ink2); max-width: 60ch; }
+
+  .cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; align-items: center; }
+  .btn { display: inline-block; padding: 13px 26px; border-radius: 8px;
+         font-family: var(--sans); font-weight: 700; font-size: 16px;
+         text-decoration: none; border: 1px solid var(--ink); transition: transform .15s ease; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .textlink { font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--ink2);
+              text-decoration: underline; text-underline-offset: 4px;
+              text-decoration-thickness: 1px; }
+  .textlink:hover { color: var(--ink); }
+
+  .claims { display: grid; grid-template-columns: 1fr; gap: 0 52px; margin: 50px 0 0; }
+  @media (min-width: 760px) { .claims { grid-template-columns: 1fr 1fr; } }
+  .claim { padding: 18px 0 20px; border-top: 1px solid var(--rule); }
+  .claim:first-child, .claim:nth-child(2) { border-top: 2px solid var(--ink); }
+  @media (max-width: 759px) { .claim:nth-child(2) { border-top: 1px solid var(--rule); } }
+  .claim .n { font-family: var(--sans); font-weight: 800; font-size: 40px; line-height: 1.05;
+              color: var(--accent); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .claim h3 { margin: 0 0 6px; }
+  .claim p { margin: 9px 0 0; font-size: 15.5px; color: var(--ink2); line-height: 1.5;
+             font-family: var(--sans); }
+
+  .route { position: relative; padding-bottom: 30px; }
+  .route::before { content: ""; position: absolute; left: calc(var(--spine) / 2); top: 8px;
+                   bottom: 80px; width: 2px; background: var(--rule); }
+  .stop { position: relative; padding: 0 0 76px var(--spine); }
+  .stop::before { content: ""; position: absolute; left: calc(var(--spine) / 2 - 7px); top: 7px;
+                  width: 16px; height: 16px; border-radius: 50%;
+                  background: var(--paper); border: 2px solid var(--ink); box-sizing: border-box; }
+  .stop--key::before { background: var(--accent); border-color: var(--accent); }
+  .stop--warn::before { background: var(--accent2); border-color: var(--accent2); }
+  .stop--end::before { background: var(--ink); }
+
+  h2 { font-family: var(--sans); font-size: clamp(27px, 3.7vw, 38px); font-weight: 800;
+       letter-spacing: -.027em; line-height: 1.13; margin: 12px 0 16px; max-width: 19ch; }
+  h3 { font-family: var(--sans); font-size: 17px; font-weight: 700; margin: 0 0 7px;
+       letter-spacing: -.012em; }
+  .stop p { margin: 0 0 17px; max-width: 60ch; color: var(--ink2); }
+
+  .bignum { font-family: var(--sans); font-weight: 800; font-size: clamp(74px, 10vw, 128px);
+            line-height: .86; letter-spacing: -.05em; margin: 6px 0 4px; color: var(--accent);
+            font-variant-numeric: tabular-nums; }
+  .bignum-note { font-family: var(--sans); font-size: 16px; color: var(--muted); margin: 0 0 20px; }
+
+  /* A white-background chart would glow in dark mode; the plate makes it read
+     as a deliberately printed page instead. */
+  figure { margin: 28px 0 0; }
+  .plate { background: var(--plate); border: 1px solid var(--rule); border-radius: 10px;
+           padding: 14px; box-shadow: var(--shadow); overflow: hidden; }
+  .plate img { border-radius: 4px; }
+  .plate--flush { padding: 0; }
+  .shot { border-radius: 10px; border: 1px solid var(--rule); box-shadow: var(--shadow);
+          overflow: hidden; background: var(--card); }
+  /* min() so the cap never exceeds the column on a phone */
+  .shot--narrow { max-width: min(430px, 100%); }
+  figcaption { margin-top: 11px; font-family: var(--sans); font-size: 14.5px;
+               color: var(--muted); line-height: 1.5; }
+  .panels { display: grid; grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+            gap: 22px; margin-top: 28px; }
+  .panels figure { margin: 0; }
+
+  .pull { margin: 30px 0 0; padding: 20px 25px; border-left: 3px solid var(--accent);
+          background: color-mix(in srgb, var(--accent) 7%, transparent);
+          border-radius: 0 8px 8px 0; }
+  .pull p { margin: 0 0 9px; color: var(--ink); max-width: none; }
+  .pull p:last-of-type { margin: 0; }
+  .pull .who { font-family: var(--mono); font-size: 11px; letter-spacing: .12em;
+               text-transform: uppercase; color: var(--muted); display: block; margin-top: 9px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr));
+          gap: 1px; margin-top: 28px; background: var(--rule);
+          border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
+  .cell { background: var(--paper); padding: 22px 20px; }
+  .cell p { font-size: 15px; margin: 0; color: var(--ink2); max-width: none;
+            line-height: 1.55; font-family: var(--sans); }
+
+  /* results tables: scroll inside their own box, never the page */
+  .tablewrap { margin-top: 26px; overflow-x: auto; border: 1px solid var(--rule);
+               border-radius: 10px; background: var(--card); }
+  table { border-collapse: collapse; width: 100%; min-width: 480px;
+          font-family: var(--sans); font-size: 15.5px; }
+  th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--rule); }
+  th { font-family: var(--mono); font-size: 11px; letter-spacing: .1em;
+       text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  td { color: var(--ink2); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: 0; }
+  .win td { color: var(--ink); font-weight: 700;
+            background: color-mix(in srgb, var(--accent) 8%, transparent); }
+
+  /* real terminal output, quoted verbatim */
+  .term { margin-top: 26px; background: #14141f; color: #e6e3da; border-radius: 10px;
+          padding: 18px 20px; overflow-x: auto; box-shadow: var(--shadow);
+          border: 1px solid #2a2a3a; }
+  .term pre { margin: 0; font-family: var(--mono); font-size: 13px; line-height: 1.62;
+              white-space: pre; }
+  .term .c { color: #9aa08f; }
+  .term .g { color: #7fd18f; }
+  .term .y { color: #E3BC5E; }
+
+  .specs { margin-top: 26px; border-top: 1px solid var(--rule); }
+  .spec { display: grid; grid-template-columns: 1fr; gap: 2px;
+          padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  @media (min-width: 700px) { .spec { grid-template-columns: 178px 1fr; gap: 24px; } }
+  .spec dt { font-family: var(--mono); font-size: 11.5px; letter-spacing: .1em;
+             text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .spec dd { margin: 0; font-size: 16px; color: var(--ink2); font-family: var(--sans); }
+
+  .close { padding: 6px 0 80px var(--spine); position: relative; }
+  .close h2 { max-width: 20ch; }
+  footer { border-top: 1px solid var(--rule); padding: 28px 0 60px;
+           font-family: var(--sans); font-size: 14.5px; color: var(--muted); }
+  footer a { color: var(--ink2); }
+  footer p { margin: 0 0 8px; }
+
+  @media (max-width: 640px) {
+    :root { --spine: 38px; }
+    .hero { padding: 36px 0 46px; }
+    .stop { padding-bottom: 58px; }
+    .plate { padding: 9px; }
+    .term { padding: 14px 14px; }
+    .term pre { font-size: 11.5px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+  }
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="logo"><span class="dot" aria-hidden="true"></span>Menu Decoder</div>
+    <div class="tagline">menu photo in, safe options out</div>
+  </header>
+
+  <section class="hero">
+    <p class="kicker">Handing a chatbot a menu and a peanut allergy is a trust exercise.</p>
+    <h1>The fix is to make "safe" unsayable.</h1>
+
+    <p class="hero-sub">
+      Photograph a menu in any language, say your constraints out loud, and get
+      every dish translated, pronounced, and allergen-flagged. The whole thing is
+      built around one rule: <strong>when the model is uncertain, the badge warns
+      and never clears</strong>. There is no green checkmark for allergens
+      anywhere in this app. An uncertain dish always reads
+      <strong>⚠ ask the staff</strong>, and recommendations are filtered to the
+      safe list <em>in code</em> before the model ever gets to choose.
+    </p>
+
+    <div class="cta-row">
+      <a class="btn btn-primary" href="../writeup.md">Read the writeup</a>
+      <a class="textlink" href="https://github.com/lyhjeremy/menu-decoder">or the code</a>
+    </div>
+
+    <figure style="margin-top:38px">
+      <img width="1800" height="450" class="shot" src="../assets/banner.png"
+        alt="Menu Decoder banner artwork." />
+    </figure>
+
+    <div class="claims">
+      <div class="claim">
+        <div class="n">7.3%</div>
+        <p>false-safe rate from the fine-tuned tagger, down from
+           <strong>100%</strong> for the base model, which never produced usable
+           tags at all.</p>
+      </div>
+      <div class="claim">
+        <div class="n">69.3%</div>
+        <p>macro allergen recall on <code>contains</code> — the metric that
+           matters, reported per allergen rather than averaged away.</p>
+      </div>
+      <div class="claim">
+        <div class="n">3</div>
+        <p>enforced layers of fail-safe: the rubric, the renderer, and a
+           deterministic code filter the model cannot talk its way around.</p>
+      </div>
+      <div class="claim">
+        <div class="n">0</div>
+        <p>schema tokens needed in the prompt. The 14-allergen contract lives in
+           the weights, not in every call.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+<div class="route">
+
+  <section class="stop stop--key">
+    <p class="eyebrow">↓ the guardrail</p>
+    <h2>Asymmetric on purpose</h2>
+    <p>
+      A false alarm costs you a question to the waiter. A false all-clear can put
+      someone in hospital. Those two errors are not worth trading off evenly, so
+      the app does not trade them off evenly.
+    </p>
+    <div class="grid">
+      <div class="cell">
+        <h3>1 · The rubric leans to "may"</h3>
+        <p>The tagging instructions tell the model that if an allergen is
+           <em>plausibly</em> present in a typical preparation, the answer is
+           <code>may</code>, not <code>not_indicated</code>.</p>
+      </div>
+      <div class="cell">
+        <h3>2 · The renderer cannot be overridden</h3>
+        <p><code>contains → ✗</code> · <code>may → ⚠ ask the staff</code> ·
+           <code>not_indicated → ○ not indicated</code>. No green check exists in
+           the code, so no output can produce one.</p>
+      </div>
+      <div class="cell">
+        <h3>3 · The candidate list is pre-filtered</h3>
+        <p>Dishes with <code>contains</code> or <code>may</code> on any stated
+           allergen are removed <strong>in code</strong> before the LLM sees the
+           list. It picks from what already passed.</p>
+      </div>
+      <div class="cell">
+        <h3>Unreadable stays unreadable</h3>
+        <p>A line the vision model genuinely cannot read is marked
+           <code>unreadable</code> rather than dropped, and translation
+           completeness is surfaced as a percentage rather than hidden.</p>
+      </div>
+    </div>
+    <figure>
+      <div class="plate">
+        <img width="1620" height="870" src="../assets/architecture.png" loading="lazy"
+          alt="Menu Decoder pipeline diagram: menu photo into one vision extraction call, then per-dish tagging by a fine-tuned model, then a deterministic allergen and diet filter, then recommendation from the already-filtered candidate set." />
+      </div>
+      <figcaption>The filter sits before the model, not after it. That ordering is the design.</figcaption>
+    </figure>
+  </section>
+
+  <section class="stop">
+    <p class="eyebrow">↓ the benchmark</p>
+    <h2>Claude appears twice, on purpose</h2>
+    <p>
+      The interesting result here is not an accuracy win, it is a
+      <strong>token-optimization</strong> one, and reading the table requires
+      knowing why the frontier model has two rows.
+    </p>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>System</th><th>N</th><th>Parse OK</th><th>Cuisine</th><th>Allergen recall</th><th>False-safe</th><th>Latency</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Base Qwen2.5-1.5B (bare prompt)</td><td>303</td><td>0.0%</td><td>0.0%</td><td>0.0%</td><td>100.0%</td><td>5.4s</td></tr>
+          <tr class="win"><td>+ LoRA (this project)</td><td>303</td><td>100.0%</td><td>99.3%</td><td>69.3%</td><td>7.3%</td><td>6.7s</td></tr>
+          <tr><td>Claude (bare prompt, same as LoRA sees)</td><td>100</td><td>94.0%</td><td>43.0%</td><td>0.0%</td><td>100.0%</td><td>16.5s</td></tr>
+          <tr><td>Claude (schema-primed)</td><td>100</td><td>99.0%</td><td>81.0%</td><td>79.2%</td><td>1.7%</td><td>13.4s</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:22px">
+      Given the <em>exact same bare prompt</em> the LoRA model trained on, with no
+      schema described anywhere, Claude reasonably answers a different question —
+      "tell me about this dish" — and returns valid JSON using its own field names.
+      Its bare-prompt row reads near-zero <strong>by construction</strong>, not
+      because Claude cannot identify cuisines or allergens.
+    </p>
+    <p>
+      Hand it the full output contract and it jumps to <strong>79.2% recall at a
+      1.7% false-safe rate</strong>, which is better than the fine-tune on both.
+      That is the honest comparison, and the fine-tune loses it.
+    </p>
+    <div class="pull">
+      <p>The LoRA model needs zero schema in its prompt because the schema is baked
+         into its weights. A zero-shot system needs the entire 14-allergen contract
+         spelled out in every single call just to attempt the task.</p>
+      <span class="who">What the four rows are actually measuring</span>
+    </div>
+    <figure>
+      <div class="plate">
+        <img width="1950" height="1350" src="../eval/allergen_recall_chart.png" loading="lazy"
+          alt="Per-allergen recall chart across all fourteen EU allergens, comparing the fine-tuned model against the base model and both Claude configurations." />
+      </div>
+      <figcaption>Per allergen, not averaged. Some allergens are much harder than others.</figcaption>
+    </figure>
+  </section>
+
+  <section class="stop">
+    <p class="eyebrow">↓ training</p>
+    <h2>Split by dish family, so the variants cannot leak</h2>
+    <p>
+      Training used <strong>6,750 synthetic dish rows</strong>: 15 cuisines × 150
+      dishes × 3 prompt variants (name only, name plus description, original script
+      plus translation). The split is <strong>by dish family</strong>, so a dish's
+      three variants never straddle train and test —
+      <strong>2,250 distinct families, zero leakage</strong>, recorded in
+      <code>eval/dataset_card.json</code>.
+    </p>
+    <p>
+      Without that, the three variants of one dish would land on both sides and the
+      benchmark would be measuring memorisation. It is the sort of detail that
+      quietly inflates a headline number when nobody checks for it.
+    </p>
+    <figure>
+      <div class="plate">
+        <img width="1050" height="600" src="../eval/loss_curve.png" loading="lazy"
+          alt="Training loss curve for the dish tagger LoRA fine-tune, descending and flattening." />
+      </div>
+      <figcaption>A generative structured-output fine-tune: it emits the whole multi-field JSON, not one label.</figcaption>
+    </figure>
+  </section>
+
+  <section class="stop stop--warn">
+    <p class="eyebrow">↓ the gap, reported not hidden</p>
+    <h2>The human slice has not run</h2>
+    <p>
+      The specification requires a human check: roughly 60 dishes stratified across
+      cuisines, with the labels personally spot-checked. That slice
+      <strong>has not run</strong>, because it needs a person rather than a script.
+    </p>
+    <p>
+      Everything else on this page is measured. That one is genuinely still open —
+      not fabricated, not approximated from something else, and not quietly
+      skipped. Until it runs, 69.3% recall is a number about synthetic labels.
+    </p>
+    <p>
+      Building the benchmark also surfaced two real bugs in the Claude CLI
+      harness, which are documented in the writeup rather than silently worked
+      around.
+    </p>
+  </section>
+
+  <section class="stop stop--end">
+    <p class="eyebrow">Finish · what it is built on</p>
+    <h2>Where the numbers come from</h2>
+    <dl class="specs">
+      <div class="spec"><dt>Base model</dt><dd>Qwen2.5-1.5B, LoRA fine-tuned locally; <code>tag_dishes</code> calls the adapter directly via <code>mlx_lm.generate</code></dd></div>
+      <div class="spec"><dt>Hosted fallback</dt><dd>Gemini batched ten dishes per call on a hosted Space, labelled honestly as the fallback path</dd></div>
+      <div class="spec"><dt>Vision</dt><dd>One call per menu into a structured <code>Menu</code> object with language, sections, dishes and prices</dd></div>
+      <div class="spec"><dt>Allergens</dt><dd>All 14 EU allergens, called individually per dish</dd></div>
+      <div class="spec"><dt>Token opt</dt><dd>Translation and tag cache keyed on <code>(original_text, language)</code>, catching repeats within a menu and across menus worldwide</dd></div>
+      <div class="spec"><dt>TTS</dt><dd>Dish names spoken in the original language; an unsupported locale hides the button rather than faking a pronunciation</dd></div>
+      <div class="spec"><dt>Full results</dt><dd><code>eval/benchmark.md</code> — all 14 allergens across all 4 systems</dd></div>
+    </dl>
+  </section>
+
+</div>
+</div>
+
+<div class="wrap">
+  <section class="close">
+    <h2>No green checkmark, by design</h2>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="../writeup.md">Read the writeup</a>
+      <a class="textlink" href="https://github.com/lyhjeremy/menu-decoder">or the code</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      Menu Decoder ·
+      <a href="../">Showcase</a> ·
+      <a href="../writeup.md">Writeup</a> ·
+      <a href="https://github.com/lyhjeremy/menu-decoder">Source</a> ·
+      MIT © 2026 Jeremy Lee
+    </p>
+    <p>Not a medical device. Always confirm allergens with restaurant staff.</p>
+  </footer>
+</div>
+</body>
+</html>
