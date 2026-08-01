@@ -232,12 +232,12 @@
     </p>
 
     <div class="cta-row">
-      <a class="btn btn-primary" href="../writeup.md">Read the writeup</a>
+      <a class="btn btn-primary" href="https://github.com/lyhjeremy/menu-decoder/blob/main/writeup.md">Read the writeup</a>
       <a class="textlink" href="https://github.com/lyhjeremy/menu-decoder">or the code</a>
     </div>
 
     <figure style="margin-top:38px">
-      <img width="1800" height="450" class="shot" src="../assets/banner.png"
+      <img class="shot" src="../assets/banner.png"
         alt="Menu Decoder banner artwork." />
     </figure>
 
@@ -306,7 +306,7 @@
     </div>
     <figure>
       <div class="plate">
-        <img width="1620" height="870" src="../assets/architecture.png" loading="lazy"
+        <img src="../assets/architecture.png" loading="lazy"
           alt="Menu Decoder pipeline diagram: menu photo into one vision extraction call, then per-dish tagging by a fine-tuned model, then a deterministic allergen and diet filter, then recommendation from the already-filtered candidate set." />
       </div>
       <figcaption>The filter sits before the model, not after it. That ordering is the design.</figcaption>
@@ -354,7 +354,7 @@
     </div>
     <figure>
       <div class="plate">
-        <img width="1950" height="1350" src="../eval/allergen_recall_chart.png" loading="lazy"
+        <img src="../eval/allergen_recall_chart.png" loading="lazy"
           alt="Per-allergen recall chart across all fourteen EU allergens, comparing the fine-tuned model against the base model and both Claude configurations." />
       </div>
       <figcaption>Per allergen, not averaged. Some allergens are much harder than others.</figcaption>
@@ -379,7 +379,7 @@
     </p>
     <figure>
       <div class="plate">
-        <img width="1050" height="600" src="../eval/loss_curve.png" loading="lazy"
+        <img src="../eval/loss_curve.png" loading="lazy"
           alt="Training loss curve for the dish tagger LoRA fine-tune, descending and flattening." />
       </div>
       <figcaption>A generative structured-output fine-tune: it emits the whole multi-field JSON, not one label.</figcaption>
@@ -427,7 +427,7 @@
   <section class="close">
     <h2>No green checkmark, by design</h2>
     <div class="cta-row">
-      <a class="btn btn-primary" href="../writeup.md">Read the writeup</a>
+      <a class="btn btn-primary" href="https://github.com/lyhjeremy/menu-decoder/blob/main/writeup.md">Read the writeup</a>
       <a class="textlink" href="https://github.com/lyhjeremy/menu-decoder">or the code</a>
     </div>
   </section>
@@ -436,7 +436,7 @@
     <p>
       Menu Decoder ·
       <a href="../">Showcase</a> ·
-      <a href="../writeup.md">Writeup</a> ·
+      <a href="https://github.com/lyhjeremy/menu-decoder/blob/main/writeup.md">Writeup</a> ·
       <a href="https://github.com/lyhjeremy/menu-decoder">Source</a> ·
       MIT © 2026 Jeremy Lee
     </p>
