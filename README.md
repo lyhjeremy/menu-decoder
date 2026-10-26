@@ -1,157 +1,79 @@
-<p align="center">
-  <img src="assets/banner.png" alt="Menu Decoder" width="100%">
-</p>
-
 # Menu Decoder
+
+Photograph a foreign-language menu and get each dish translated and tagged for cuisine, 14 EU allergens, spice and diet by a Qwen2.5-1.5B LoRA fine-tune, with an allergen display that can warn but never clear.
+
+[Project page](https://lyhjeremy.github.io/menu-decoder/) · [Write-up](https://lyhjeremy.github.io/menu-decoder/overview/) · [Engineering notes](writeup.md) · [Full benchmark](eval/benchmark.md)
 
 Design and copy follow [these standards](https://github.com/lyhjeremy/lyhjeremy/blob/main/DESIGN_STANDARDS.md).
 
-> **Product overview:** https://lyhjeremy.github.io/menu-decoder/overview/
+One of four apps that fine-tune a small local model and benchmark it against Claude, with [Cellar Scanner](https://github.com/lyhjeremy/cellar-scanner), [Race Day Copilot](https://github.com/lyhjeremy/race-day-copilot) and [Receipt Auditor](https://github.com/lyhjeremy/receipt-auditor).
 
-Photograph any foreign-language menu, say your dietary constraints out
-loud → every dish translated, allergen-flagged with a **deliberately
-fail-safe design**, and pronounced, plus an honest "what I'd order for
-you," picked only from a deterministically safe-listed candidate set.
+## Results
 
-## Why
+The tagger takes a one-line prompt (`Dish: Pad Thai.`) and emits JSON with cuisine, a `contains` / `may` / `not_indicated` call for each of 14 allergens, spice, vegetarian and vegan. Held-out test set of 303 synthetic dishes, split by dish family:
 
-Handing a chatbot a menu photo and a "no peanuts, vegetarian" request
-means trusting it to both read every dish correctly *and* never quietly
-clear an allergen it wasn't sure about. Menu Decoder is built around one
-rule: **when the model is uncertain, the badge warns, never clears.**
-There is no green checkmark for allergens anywhere in this app. An
-uncertain dish always reads as `ask the staff`, never ``. Recommendations
-are filtered to the safe list *in code*, before the model ever picks,
-the LLM chooses among options that already passed the allergen/diet
-filter, it cannot un-filter a dish by talking its way around it.
-
-## How it works
-
-<p align="center">
-  <img src="assets/architecture.png" alt="Menu Decoder pipeline" width="780">
-</p>
-
-- **Vision extraction, one call per menu.** `vision.extract` reads the
-  whole photographed menu into a structured `Menu` (language, sections,
-  dishes with original text + translation + price), flagging any line it
-  genuinely can't read as `unreadable=True` rather than silently dropping
-  it. Translation-completeness % is surfaced, not hidden.
-- **Tagging: a locally fine-tuned dish tagger.** Each dish gets a
-  `DishTags` call (cuisine, all 14 EU-allergen calls, spice, vegetarian/
-  vegan) from a **Qwen2.5-1.5B model, LoRA fine-tuned on this laptop**
-  (`app.py`'s `tag_dishes` calls the adapter directly via
-  `mlx_lm.generate`; Gemini batched 10-per-call is the fallback path on a
-  hosted Space, labeled honestly as such). This is a **generative
-  structured-output fine-tune**, not a single-label classifier. The model
-  learns to emit the full multi-field JSON tagging, not one token.
-- **The allergen fail-safe, asymmetric by design, 3 enforced layers.**
-  (1) The tagging rubric tells the model: if an allergen is *plausibly*
-  present in a typical preparation, say `may`, not `not_indicated`. (2)
-  Code-level rendering the model cannot override: `contains -> avoid` ·
-  `may → ask the staff` · `not_indicated → ○ not indicated`, no green
-  check, ever. (3) The recommendation candidate list is filtered
-  **deterministically in code** before the LLM ever sees it, dishes with
-  `contains`/`may` on any of the user's allergens (or `vegan/vegetarian =
-  no` against a stated diet) are removed first; the model only picks
-  among what's already safe.
-- **Dish-name TTS.** Tap a dish, hear its *original*-language name via the
-  toolkit's voice registry, unsupported locale hides the button instead
-  of faking a pronunciation.
-- **Token opt: translation/tag cache keyed `(original_text, language)`.**
-  Menus repeat dishes heavily within themselves and popular dishes repeat
-  *across* menus worldwide. The semantic cache is built to catch both.
-
-## The fine-tune, honestly benchmarked
-
-A dish name (+ optional description) goes in; the full `DishTags` JSON
-comes out: cuisine, 14 allergen calls, spice, vegetarian/vegan. Trained
-on **6,750 synthetic dish rows** (15 cuisines × 150 dishes × 3 prompt
-variants. Name-only, name+description, original-script+translation),
-split **by dish family** so a dish's 3 variants never straddle
-train/test (2,250 distinct dish families, zero leakage, see
-[`eval/dataset_card.json`](eval/dataset_card.json)).
-
-The metric that matters isn't top-1 accuracy. It's **allergen recall on
-`contains`** (a missed allergen is dangerous) and the **false-safe rate**
-(model says `not_indicated` when the true label is `contains`), reported
-**per allergen**, not just averaged:
-
-| System | N | Parse OK | Cuisine acc | Allergen recall (macro) | False-safe rate (macro) | Latency |
+| System | N | Valid JSON | Cuisine | Allergen recall | False-safe | Latency |
 |---|---|---|---|---|---|---|
-| Base Qwen2.5-1.5B (bare prompt) | 303 | 0.0% | 0.0% | 0.0% | 100.0% | 5.4s |
-| **+ LoRA (this project)** | 303 | **100.0%** | **99.3%** | **69.3%** | **7.3%** | 6.7s |
-| Claude teacher (bare prompt, same as LoRA sees) | 100 | 94.0% | 43.0% | 0.0% | 100.0% | 16.5s |
-| Claude teacher (schema-primed) | 100 | 99.0% | 81.0% | 79.2% | 1.7% | 13.4s |
+| Base Qwen2.5-1.5B, bare prompt | 303 | 0.0% | 0.0% | 0.0% | 100.0% | 5.4 s |
+| Qwen2.5-1.5B + LoRA, bare prompt | 303 | **100.0%** | **99.3%** | 69.3% | 7.3% | 6.7 s |
+| Claude, bare prompt | 100 | 94.0% | 43.0% | 0.0% | 100.0% | 16.5 s |
+| Claude, schema in prompt | 100 | 99.0% | 81.0% | **79.2%** | **1.7%** | 13.4 s |
 
-Claude appears **twice** on purpose. Given the exact same bare prompt the
-LoRA model trained on (no schema described anywhere), Claude reasonably
-answers a different question, "tell me about this dish", and returns
-valid JSON with its own field names instead of the tagging schema, which
-is why its bare-prompt row reads near-zero *by construction*, not because
-Claude doesn't know cuisines or allergens. Give it the exact output
-contract (`src/decoder.py`'s own tagging rubric, no answer key) and it
-jumps to 79.2% allergen recall / 1.7% false-safe. Read together, this is
-the actual point of the fine-tune: **the LoRA model needs zero schema in
-its prompt because the schema is baked into its weights; a zero-shot
-system needs the full 14-allergen contract spelled out in every call just
-to attempt the task at all**: a measured token-optimization result, not
-just an accuracy number. Full per-allergen table (all 14 allergens, all 4
-rows) in [`eval/benchmark.md`](eval/benchmark.md); visualization in
-[`eval/allergen_recall_chart.png`](eval/allergen_recall_chart.png).
-Methodology, the two real CLI bugs found while building this benchmark,
-and the sanity checks run before trusting any of these numbers are in
-[`writeup.md`](writeup.md).
+Allergen recall is macro recall on dishes labeled `contains`. False-safe is the share of `contains` dishes tagged `not_indicated`, the dangerous miss.
 
-**Known gap, reported not hidden:** the spec's mandatory **human slice**
-(§5: ~60 dishes stratified across cuisines, Jeremy spot-checks the
-labels) has not run yet. It requires Jeremy personally. Everything else
-below is honest; this one slice is genuinely still open, not fabricated,
-approximated, or quietly skipped.
+Given the bare prompt, Claude describes the dish in its own JSON keys and scores zero by construction. Given the tagging rubric and output format, it beats the fine-tune on allergens. The fine-tune's advantage is that the schema lives in its weights: the prompt is one line, it runs locally, and it costs nothing per call. Its weakest allergens are molluscs (39.1% false-safe) and peanuts (18.2%).
 
-## Guardrails
+![Per-allergen recall and false-safe rate for base, LoRA and schema-primed Claude across 14 allergens; LoRA's false-safe rate is highest on molluscs](eval/allergen_recall_chart.png)
 
-- **Domain gate.** A non-menu photo gets a refusal, not a hallucinated
-  menu.
-- **Allergen fail-safe.** Asymmetric by design, 3 layers (rubric,
-  rendering, deterministic filter), described above.
-- **Translation completeness.** Every detected dish line ends as either
-  a translation or an explicit `couldn't read this line` flag, never
-  silently dropped; completeness % shown in the dev panel.
-- **Recommendation grounding.** Picks are checked against real dish ids
-  in code, not embedding similarity; the model can't invent a dish.
-- **Confidence, not hidden.** Per-dish extraction confidence rendered as
-  opacity + tooltip.
+## Method
 
-## Files
+- **Data.** `scripts/gen_dishes.py` generated 6,750 rows with `claude -p`: 15 cuisines, 150 dishes each, three prompt variants per dish (name only, name with description, original script with translation).
+- **Split.** By dish family, so a dish's three variants share a side. Row IDs are hashes, so `training/prep_tagger.py` rebuilds the generator's item list to recover families: 2,250 families, 6,096 train / 351 validation / 303 test rows, leakage check passed.
+- **Fine-tune.** LoRA on `mlx-community/Qwen2.5-1.5B-Instruct-4bit` with MLX on Apple Silicon: batch 4, 12 layers, 800 iterations, learning rate 1.5e-4, sequence length 768 (median target about 204 tokens). This is a generative structured-output fine-tune, not a single-label classifier.
+- **Benchmark.** `training/bench_tagger.py` scores parse rate, cuisine, spice within 1, vegetarian and vegan agreement, and per-allergen recall and false-safe rate. Claude runs from a scratch directory outside the repo so it can't read the training code.
+- **Fail-safe.** Three layers: the tagging rubric asks for `may` whenever an allergen is plausible; `src/safelist.py` renders `contains` as a cross, `may` as "ask the staff" and `not_indicated` as "not indicated", with no green check; and `filter_safe_dishes` removes every `contains` or `may` dish for the user's allergens, and any dish failing a stated diet, before the LLM recommends anything.
+- **Other guardrails.** A domain gate refuses non-menu photos, unreadable lines are flagged rather than dropped, recommendations are checked against real dish IDs, and translations and tags are cached on `(original_text, language)`.
 
-| File | Purpose |
-|---|---|
-| `app.py` | Gradio app (photo → badged menu → safe picks → dish TTS) |
-| `scripts/gen_dishes.py` | Overnight synthetic dish-tagging corpus generator |
-| `training/prep_tagger.py` | Dish-family-split, leakage-checked tagger dataset |
-| `training/bench_tagger.py` | 3-way honest benchmark (base/LoRA/Claude), per-allergen |
-| `training/make_tagger_chart.py` | Per-allergen recall/false-safe bar chart |
-| `src/decoder.py` | Tagging + recommendation prompt assembly |
-| `src/safelist.py` | The allergen fail-safe: badge rendering + deterministic filter |
-| `src/` | Vendored toolkit (llm, vision, guardrails, context, cache, audio) |
-| `eval/` | Benchmark results, per-allergen chart, loss curve, dataset card |
+## Stack
 
-## Running it
+Python, Gradio, MLX (`mlx_lm`), Qwen2.5-1.5B-Instruct, Pydantic, tesseract, Claude via `claude -p`, Gemini as the batched tagging fallback when no adapter is present, text-to-speech for dish names.
+
+## How to run
 
 ```bash
 pip install -r requirements.txt
-./setup_ocr.sh                          # tesseract + language packs (one-time)
-python scripts/gen_dishes.py            # synthetic corpus (overnight, resumable)
-python training/prep_tagger.py          # dish-family-split train/valid/test
+./setup_ocr.sh                          # tesseract and language packs, one time
+python scripts/gen_dishes.py            # synthetic corpus (long-running, resumable)
+python training/prep_tagger.py          # dish-family split train/valid/test
 bash training/lora_harness/train.sh mlx-community/Qwen2.5-1.5B-Instruct-4bit \
     data/lora training/adapters 4 12 800 1.5e-4 768
-python training/bench_tagger.py         # 3-way benchmark -> eval/
+python training/bench_tagger.py         # benchmark, writes to eval/
 python app.py
 ```
 
-No API key required, everything runs locally except a `claude -p` call
-for menu extraction (uses your Claude subscription, not a metered API).
+Menu extraction uses `claude -p` on a Claude subscription. Tests: `pytest tests/` (10 tests).
+
+## Repo layout
+
+| Path | Contents |
+|---|---|
+| `app.py` | Gradio app: photo, badged menu, safe picks, dish-name speech |
+| `scripts/gen_dishes.py` | Synthetic dish-tagging corpus generator |
+| `training/prep_tagger.py` | Dish-family split with leakage check |
+| `training/bench_tagger.py` | Four-row benchmark, per allergen |
+| `training/make_tagger_chart.py` | Per-allergen chart |
+| `src/decoder.py` | Tagging and recommendation prompts |
+| `src/safelist.py` | Badge rendering and the deterministic filter |
+| `src/` | Shared toolkit: llm, vision, guardrails, context, cache, audio |
+| `eval/` | Benchmark, raw outputs, chart, loss curve, dataset card |
+
+## Limitations
+
+- Every label was generated by Claude, which is also a benchmark column. The spec's human spot-check of about 60 dishes across cuisines has not been done, so the figures measure agreement with synthetic labels.
+- The fine-tune's allergen recall (69.3%) is below schema-primed Claude's (79.2%), and it misses rare allergens: 0% recall on sulphites and celery, where it answers `may` instead of `contains`.
+- Claude's figures come from a 100-row subsample.
+- Not a medical device. Confirm allergens with restaurant staff.
 
 ## License
 
-MIT, see [`LICENSE`](LICENSE).
+[MIT](LICENSE) © 2026 Jeremy Lee

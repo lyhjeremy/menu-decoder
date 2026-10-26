@@ -3,111 +3,138 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Menu Decoder: photograph any menu, get allergen-safe picks</title>
-<meta name="description" content="Photograph a foreign-language menu and speak your dietary constraints: get every dish translated, allergen-flagged with a deliberately fail-safe design (no green checkmark, ever), and pronounced. Plus a locally fine-tuned dish tagger benchmarked on allergen recall, not just accuracy." />
+<title>Menu Decoder: a 1.5B LoRA dish tagger for 14 allergens</title>
+<meta name="description" content="Photograph a foreign-language menu and get each dish translated and tagged for cuisine, 14 EU allergens, spice and diet. A LoRA-tuned Qwen2.5-1.5B emits the full tag set from a dish name alone; the app never shows an allergen as safe." />
+<link rel="stylesheet" href="assets/family.css" />
 <style>
-@font-face{font-family:"Source Serif 4";src:url("fonts/SourceSerif4-400.woff2")format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"Source Serif 4";src:url("fonts/SourceSerif4-600.woff2")format("woff2");font-weight:600;font-display:swap}
-@font-face{font-family:"IBM Plex Sans";src:url("fonts/IBMPlexSans-400.woff2")format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"IBM Plex Sans";src:url("fonts/IBMPlexSans-600.woff2")format("woff2");font-weight:600;font-display:swap}
-@font-face{font-family:"IBM Plex Mono";src:url("fonts/IBMPlexMono-400.woff2")format("woff2");font-weight:400;font-display:swap}
-
-  :root{--ink:#2b1608;--paper:#FBF3E7;--rule:#EAD9C4;--soft:#6b5a45;--accent:#B5451B;--terracotta:#B5451B;--olive:#6B7A3A}
-  *{box-sizing:border-box} html,body{margin:0;padding:0}
-  body{background:var(--paper);color:var(--ink);font-family:"Source Serif 4", "Iowan Old Style", "Palatino Linotype", Palatino, serif;line-height:1.7;font-size:18px}
-  .hero{width:100%;background:#2b1608;overflow:hidden}
-  .hero img{width:100%;display:block}
-  .container{max-width:820px;margin:0 auto;padding:38px 24px 80px}
-  .kicker{text-transform:uppercase;letter-spacing:.16em;font-family:"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:13px;color:var(--soft);font-weight:700;text-align:center;margin-bottom:12px}
-  h1{font-size:40px;line-height:1.16;text-align:center;margin:0 0 14px}
-  .lede{font-size:20px;color:#3d2c1c;text-align:center;margin:0 auto 6px;max-width:680px}
-  .byline{color:var(--soft);font-style:italic;text-align:center;margin:18px 0 30px}
-  h2{font-size:26px;margin:50px 0 14px;border-bottom:1px solid var(--rule);padding-bottom:8px}
-  p{margin:0 0 16px} a{color:var(--terracotta)}
-  .features{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:26px 0}
-  .card{background:#F5F5F0;border:1px solid var(--rule);border-radius: 0;padding:20px;font-family:"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif}
-  .card .ico{font-size:24px}.card h3{margin:8px 0 6px;font-size:18px}.card p{font-size:15px;color:#444;margin:0;line-height:1.6}
-  .steps{counter-reset:step;list-style:none;padding:0;margin:24px 0}
-  .steps li{position:relative;padding:12px 0 12px 54px;border-bottom:1px dashed var(--rule);font-family:"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:16px}
-  .steps li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:10px;width:34px;height:34px;border-radius: 0;background:var(--terracotta);color:#F5F5F0;font-weight:700;display:flex;align-items:center;justify-content:center}
-  .note{background:#F5F5F0;border:1px solid var(--rule);border-left:4px solid var(--terracotta);border-radius: 0;padding:14px 20px;font-size:14.5px;color:#444;font-family:"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;margin:24px 0}
-  .badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;font-family:"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:14px;margin:18px 0}
-  .badge{padding:6px 14px;border-radius: 0;font-weight:700}
-  .b-contains{background:#F4D6D0;color:#8a2b12}
-  .b-may{background:#F7E7C4;color:#7a5a10}
-  .b-none{background:#E4E9DC;color:#43502a}
-  table{width:100%;border-collapse:collapse;font-family:"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:14.5px;margin:20px 0}
-  th,td{padding:10px 12px;border-bottom:1px solid var(--rule);text-align:left}
-  th{color:var(--soft);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
-  .btnrow{text-align:center;margin:40px 0 8px}
-  .btn{display:inline-block;font-family:"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:15px;font-weight:600;text-decoration:none;padding:13px 24px;border-radius: 0;margin:6px}
-  .btn-solid{background:var(--terracotta);color:#F5F5F0}.btn-ghost{border:1px solid var(--terracotta);color:var(--terracotta)}
-  .footer{text-align:center;color:var(--soft);font-size:14px;margin-top:54px;font-family:"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif}
-  @media(max-width:600px){h1{font-size:30px}.features{grid-template-columns:1fr}}
+  * { box-sizing: border-box; border-radius: 0; }
+  html, body { margin: 0; padding: 0; }
+  body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+  a { color: var(--signal); }
+  a:hover { color: var(--ink); }
+  :focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+  code { font-family: var(--font-mono); font-size: .88em; }
+  .wrap { width: min(100% - 2.4rem, 70rem); margin: 0 auto; }
+  .bar { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; border: 1px solid var(--edge); padding: 10px 14px; margin-top: 24px; }
+  .bar .name { font-family: var(--font-display); font-weight: 600; font-size: 19px; }
+  .bar .meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
+  .top { display: grid; grid-template-columns: 1fr; gap: 36px; padding: 44px 0 40px; border-bottom: 1px solid var(--edge); }
+  @media (min-width: 900px) { .top { grid-template-columns: 1.35fr 1fr; gap: 56px; } }
+  h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(34px, 5vw, 58px); line-height: 1.02; letter-spacing: -.02em; margin: 0 0 20px; }
+  h2 { font-family: var(--font-mono); font-weight: 600; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); margin: 0 0 12px; }
+  p { margin: 0 0 14px; max-width: 62ch; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin-top: 22px; }
+  .btn { display: inline-block; background: var(--ink); color: var(--paper); border: 1px solid var(--ink); padding: 11px 20px; font-weight: 600; text-decoration: none; font-size: 15px; }
+  .btn:hover { background: var(--signal); border-color: var(--signal); color: var(--paper); }
+  .box { border: 1px solid var(--edge); background: var(--panel); }
+  .box + .box { margin-top: 18px; }
+  .box h2 { padding: 10px 14px; margin: 0; border-bottom: 1px solid var(--edge); }
+  dl.legend { margin: 0; }
+  dl.legend div { display: grid; grid-template-columns: 9.5rem 1fr; gap: 12px; padding: 10px 14px; border-bottom: 1px solid var(--rule); }
+  dl.legend div:last-child { border-bottom: 0; }
+  dl.legend dt { font-family: var(--font-mono); font-size: 13px; color: var(--ink-2); }
+  dl.legend dd { margin: 0; font-weight: 600; }
+  .box p { font-size: 14px; color: var(--ink-2); padding: 10px 14px; margin: 0; border-top: 1px solid var(--rule); }
+  .scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-family: var(--font-mono); font-size: 13.5px; }
+  th, td { text-align: left; padding: 8px 14px; border-bottom: 1px solid var(--rule); white-space: nowrap; }
+  th { font-weight: 600; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
+  td:first-child { font-family: var(--font-body); font-weight: 600; }
+  tr.me td { background: var(--paper); color: var(--ink); font-weight: 600; }
+  td.bad { color: var(--signal-2); font-weight: 600; }
+  .row { padding: 40px 0; border-bottom: 1px solid var(--edge); }
+  .steps { display: grid; grid-template-columns: 1fr; gap: 0; margin: 0; border-top: 1px solid var(--rule); counter-reset: s; }
+  .steps div { display: grid; grid-template-columns: 3rem 1fr; padding: 12px 0; border-bottom: 1px solid var(--rule); counter-increment: s; }
+  .steps div::before { content: counter(s, decimal-leading-zero); font: 600 13px/1.6 var(--font-mono); color: var(--signal); }
+  .steps dt { display: none; }
+  .steps dd { margin: 0; }
+  footer { padding: 24px 0 60px; font-size: 14px; color: var(--ink-2); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  footer a { color: var(--ink-2); }
 </style>
 </head>
 <body>
 <a href="overview/" data-overview-link style="display:block;background:#1C1E1B;color:#EDEDE7;text-align:center;padding:11px 18px;font:600 14.5px/1.45 -apple-system,'Helvetica Neue',Arial,sans-serif;letter-spacing:.01em;text-decoration:none">Read the full writeup&nbsp;&rarr;</a>
 
-<div class="hero"><img src="assets/banner.png" alt="Menu Decoder"/></div>
-<div class="container">
-  <p class="kicker">No green checkmark for allergens, ever</p>
-  <h1>Menu Decoder</h1>
-  <p class="lede">Photograph any foreign-language menu, say your dietary constraints out loud: get every dish <strong>translated</strong>, <strong>allergen-flagged with a deliberately fail-safe design</strong>, and pronounced, plus an honest "what I'd order for you."</p>
-  <p class="byline">By Jeremy Lee</p>
+<div class="wrap">
+  <header class="bar">
+    <span class="name">Menu Decoder</span>
+    <span class="meta">Local LoRA fine-tune / benchmarked against Claude</span>
+  </header>
 
-  <div class="badges">
-    <span class="badge b-contains">contains</span>
-    <span class="badge b-may">may, ask the staff</span>
-    <span class="badge b-none">○ not indicated</span>
-  </div>
+  <section class="top">
+    <div>
+      <h1>A 1.5B model that tags menu dishes for 14 allergens from the dish name alone</h1>
+      <p>Photograph a menu in any language and say your allergies and diet. Menu Decoder translates each dish and tags it for cuisine, the 14 EU allergens, spice and vegetarian or vegan. The tagger is Qwen2.5-1.5B with a LoRA adapter that learned the whole JSON schema, so its prompt is one line: <code>Dish: Pad Thai.</code></p>
+      <p>On 303 held-out dishes it returns valid tags every time and catches 69.3% of the allergens a dish contains. Claude does better on allergens (79.2%) but only when the full schema is written into every prompt; without it, Claude answers a different question. Because the tagger misses some allergens, the app never marks one as safe.</p>
+      <div class="links">
+        <a class="btn" href="https://github.com/lyhjeremy/menu-decoder">Code and benchmark</a>
+        <a href="overview/">Write-up</a>
+        <a href="https://github.com/lyhjeremy/menu-decoder/blob/main/writeup.md">Engineering notes</a>
+      </div>
+    </div>
+    <div>
+      <div class="box">
+        <h2>Allergen badges</h2>
+        <dl class="legend">
+          <div><dt>contains</dt><dd>a cross mark</dd></div>
+          <div><dt>may</dt><dd>ask the staff</dd></div>
+          <div><dt>not_indicated</dt><dd>not indicated</dd></div>
+        </dl>
+        <p>There is no green check. Dishes tagged contains or may for your allergens are removed in code before the model recommends anything.</p>
+      </div>
+      <div class="box">
+        <h2>Held-out benchmark</h2>
+        <div class="scroll">
+          <table>
+            <thead><tr><th>System</th><th>Recall</th><th>False-safe</th></tr></thead>
+            <tbody>
+              <tr><td>Base 1.5B</td><td>0.0%</td><td>100.0%</td></tr>
+              <tr class="me"><td>1.5B + LoRA</td><td>69.3%</td><td>7.3%</td></tr>
+              <tr><td>Claude, bare prompt</td><td>0.0%</td><td>100.0%</td></tr>
+              <tr><td>Claude, schema in prompt</td><td>79.2%</td><td>1.7%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Recall on dishes labeled contains; false-safe is a contains dish tagged not indicated. Base and LoRA on 303 rows, Claude on 100.</p>
+      </div>
+    </div>
+  </section>
 
-  <h2>Why</h2>
-  <p>Ask a chatbot to read a menu you can't decipher and tell you what's safe, and you're trusting it to translate correctly <em>and</em> never quietly clear an allergen it wasn't sure about. Menu Decoder is built around one asymmetric rule: a missed allergen is dangerous, a false warning is just a shrug, so the system is biased toward warning everywhere it can be. There is no code path anywhere in this app that renders a green checkmark for an allergen.</p>
+  <section class="row">
+    <h2>Per allergen, LoRA against Claude with the schema</h2>
+    <div class="box">
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Allergen</th><th>Contains (N)</th><th>LoRA recall</th><th>LoRA false-safe</th><th>Claude recall</th><th>Claude false-safe</th></tr></thead>
+          <tbody>
+            <tr><td>Gluten</td><td>130</td><td>91.5%</td><td>0.0%</td><td>84.4%</td><td>0.0%</td></tr>
+            <tr><td>Milk</td><td>103</td><td>90.3%</td><td>1.9%</td><td>95.2%</td><td>0.0%</td></tr>
+            <tr><td>Fish</td><td>71</td><td>94.4%</td><td>2.8%</td><td>96.0%</td><td>4.0%</td></tr>
+            <tr><td>Nuts</td><td>68</td><td>92.7%</td><td>5.9%</td><td>94.1%</td><td>0.0%</td></tr>
+            <tr><td>Molluscs</td><td>23</td><td>56.5%</td><td class="bad">39.1%</td><td>66.7%</td><td>0.0%</td></tr>
+            <tr><td>Peanuts</td><td>22</td><td>72.7%</td><td class="bad">18.2%</td><td>85.7%</td><td class="bad">14.3%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Six of 14 allergens; all 14 are in <a href="https://github.com/lyhjeremy/menu-decoder/blob/main/eval/benchmark.md">eval/benchmark.md</a>. Every label is synthetic and was generated by Claude; the human spot-check the spec calls for has not been done.</p>
+    </div>
+  </section>
 
-  <div class="features">
-    <div class="card"><h3>One photo, whole menu</h3><p>Vision extraction reads every dish in one call: unreadable lines are flagged, never silently dropped, with a completeness % shown.</p></div>
-    <div class="card"><h3>Locally fine-tuned tagger</h3><p>A LoRA-tuned Qwen2.5-1.5B model tags cuisine + all 14 EU allergens + spice + vegetarian/vegan per dish: runs on a laptop, $0 marginal cost.</p></div>
-    <div class="card"><h3>3-layer allergen fail-safe</h3><p>Cautious prompt rubric · unoverridable badge rendering · deterministic safe-list filter before the LLM ever picks.</p></div>
-    <div class="card"><h3>Dish-name pronunciation</h3><p>Tap a dish to hear its name spoken in the menu's own language: unsupported locales hide the button rather than faking it.</p></div>
-  </div>
+  <section class="row">
+    <h2>How it works</h2>
+    <dl class="steps">
+      <div><dt>Extract</dt><dd>One vision call reads the whole menu into a structured list of dishes, translations and prices. Lines it can't read are flagged, not dropped.</dd></div>
+      <div><dt>Brief</dt><dd>Your spoken or typed constraints become a structured diet brief.</dd></div>
+      <div><dt>Tag</dt><dd>The local LoRA model tags each dish, prompted to answer may whenever an allergen is plausible.</dd></div>
+      <div><dt>Filter</dt><dd><code>filter_safe_dishes</code> drops every dish marked contains or may for your allergens, or failing your diet.</dd></div>
+      <div><dt>Pick</dt><dd>The LLM recommends two or three dishes from what is left. Tap a dish to hear its name in the menu's language.</dd></div>
+    </dl>
+  </section>
 
-  <h2>The tagger, honestly benchmarked</h2>
-  <p>Given a dish name (+ optional description), the model emits the full allergen/dietary JSON tagging. A generative structured-output task, not a single-label guess. Trained on 6,750 synthetic dish rows across 15 cuisines, split <strong>by dish family</strong> so a dish's 3 prompt variants never straddle train/test. The metric that matters is allergen <strong>recall on "contains"</strong> and the <strong>false-safe rate</strong>. Reported per allergen, not averaged away.</p>
-
-  <table>
-    <tr><th>System</th><th>Allergen recall</th><th>False-safe rate</th><th>Cost</th></tr>
-    <tr><td>Base Qwen2.5-1.5B (bare prompt)</td><td>0.0%</td><td>100.0%</td><td>$0</td></tr>
-    <tr><td><strong>+ LoRA fine-tune</strong></td><td><strong>69.3%</strong></td><td><strong>7.3%</strong></td><td>$0</td></tr>
-    <tr><td>Claude teacher (bare prompt, same as LoRA sees)</td><td>0.0%</td><td>100.0%</td><td>Max subscription</td></tr>
-    <tr><td>Claude teacher (schema-primed)</td><td>79.2%</td><td>1.7%</td><td>Max subscription</td></tr>
-  </table>
-
-  <div class="note">Claude appears twice on purpose. Given the identical bare prompt the LoRA model trained on (no schema described anywhere), Claude answers a different, reasonable question and its own JSON shape. Hence the ~0% row, which is a real measured result, not a bug. Told the exact output contract (no answer key), it jumps to 79.2% recall. That gap <em>is</em> the finding: the LoRA model needs zero schema in its prompt because the schema is baked into its weights, a real token-optimization result, detailed in <a href="writeup.md">writeup.md</a> alongside two real CLI bugs found while building this benchmark.</div>
-
-  <div class="note"><strong>Human slice not yet available.</strong> The spec's mandatory ~60-dish stratified spot-check (Jeremy hand-verifying the labels) hasn't run yet. It requires him personally. Reported as an open gap, not hidden or faked.</div>
-
-  <p style="text-align:center;font-family:"IBM Plex Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;font-size:14px;"><a href="eval/benchmark.md">Full per-allergen benchmark →</a></p>
-
-  <h2>How it works</h2>
-  <ol class="steps">
-    <li>Photograph the menu, one vision call extracts every dish, its translation, price, and an explicit unreadable-line flag where needed.</li>
-    <li>Speak or type your diets and allergens, parsed into a structured preference brief.</li>
-    <li>Each dish gets tagged locally (LoRA) or via a batched Gemini call on the hosted Space, badges render with no green checkmark ever possible for an allergen.</li>
-    <li>The safe-list filter runs in code first; the model only picks 2–3 recommendations from what already passed.</li>
-    <li>Tap any dish to hear it pronounced in the menu's own language.</li>
-  </ol>
-
-  <div class="note">Everything runs locally except one <code>claude -p</code> call per menu for extraction, no metered API, no vision API key required. See the <a href="writeup.md">full writeup</a> for the honest engineering story, including the real bugs found and fixed along the way.</div>
-
-  <div class="btnrow">
-    <a class="btn btn-solid" href="https://github.com/lyhjeremy/menu-decoder">View on GitHub</a>
-    <a class="btn btn-ghost" href="writeup.md">Read the writeup</a>
-  </div>
-
-  <p class="footer">Built by Jeremy Lee · MIT licensed</p>
+  <footer>
+    <span>Jeremy Lee · MIT. Same series: <a href="https://lyhjeremy.github.io/cellar-scanner/">Cellar Scanner</a>, <a href="https://lyhjeremy.github.io/race-day-copilot/">Race Day Copilot</a>, <a href="https://lyhjeremy.github.io/receipt-auditor/">Receipt Auditor</a>. Not a medical device.</span>
+    <span><a href="privacy/">Privacy</a> · <a href="terms/">Terms</a></span>
+  </footer>
 </div>
-<footer><p class="legal"><a href="privacy/">Privacy</a> &nbsp; <a href="terms/">Terms</a></p>
-</footer>
 </body>
 </html>
