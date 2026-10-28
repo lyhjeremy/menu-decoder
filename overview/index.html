@@ -343,9 +343,9 @@
       <code>flavor_profile</code>). None of them match the scored fields, so that
       row is zero by construction. With <code>src/decoder.py</code>'s tagging
       rubric and a JSON format description appended, and no examples or answers,
-      Claude beats the fine-tune on allergens. The fine-tune's advantage is that
-      the 14-allergen contract lives in its weights, so the prompt can be one
-      line, and it runs locally at no cost per call.
+      Claude beats the fine-tune on allergens. What the fine-tune has going for
+      it is that the 14-allergen contract lives in its weights, so the prompt can
+      be one line, and it runs locally at no cost per call.
     </p>
   </section>
 
@@ -353,8 +353,8 @@
     <p class="eyebrow">Per allergen</p>
     <h2>Where the fine-tune misses</h2>
     <p>
-      Averages hide the dangerous cases, so the benchmark reports each allergen
-      separately. The fine-tune is close to Claude on the common allergens and
+      An average would hide the dangerous cases, so the benchmark reports each
+      allergen on its own. The fine-tune is close to Claude on the common allergens and
       falls behind on the rarer ones.
     </p>
     <div class="sheet">
@@ -417,8 +417,8 @@
       every dish marked <code>contains</code> or <code>may</code> for any of the
       user's allergens, and every dish that fails a stated vegetarian or vegan
       diet. The LLM picks two or three dishes from what is left and cannot bring
-      a filtered dish back. Lines the vision step can't read are flagged as
-      unreadable rather than dropped.
+      a filtered dish back. Lines the vision step can't read stay on the menu,
+      flagged as unreadable.
     </p>
     <figure>
       <div class="plate">

@@ -123,7 +123,7 @@
   <section class="row">
     <h2>How it works</h2>
     <dl class="steps">
-      <div><dt>Extract</dt><dd>One vision call reads the whole menu into a structured list of dishes, translations and prices. Lines it can't read are flagged, not dropped.</dd></div>
+      <div><dt>Extract</dt><dd>One vision call reads the whole menu into a structured list of dishes, translations and prices. Lines it can't read stay in the list, flagged as unreadable.</dd></div>
       <div><dt>Brief</dt><dd>Your spoken or typed constraints become a structured diet brief.</dd></div>
       <div><dt>Tag</dt><dd>The local LoRA model tags each dish, prompted to answer may whenever an allergen is plausible.</dd></div>
       <div><dt>Filter</dt><dd><code>filter_safe_dishes</code> drops every dish marked contains or may for your allergens, or failing your diet.</dd></div>

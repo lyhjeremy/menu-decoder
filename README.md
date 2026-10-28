@@ -21,18 +21,19 @@ The tagger takes a one-line prompt (`Dish: Pad Thai.`) and emits JSON with cuisi
 
 Allergen recall is macro recall on dishes labeled `contains`. False-safe is the share of `contains` dishes tagged `not_indicated`, the dangerous miss.
 
-Given the bare prompt, Claude describes the dish in its own JSON keys and scores zero by construction. Given the tagging rubric and output format, it beats the fine-tune on allergens. The fine-tune's advantage is that the schema lives in its weights: the prompt is one line, it runs locally, and it costs nothing per call. Its weakest allergens are molluscs (39.1% false-safe) and peanuts (18.2%).
+With the bare prompt, Claude describes the dish under its own JSON keys and scores zero by construction. With the tagging rubric and output format added, it beats the fine-tune on allergens. What the fine-tune has going for it is that the schema lives in its weights, so the prompt is one line, and it runs locally at no cost per call. Its weakest allergens are molluscs (39.1% false-safe) and peanuts (18.2%).
 
 ![Per-allergen recall and false-safe rate for base, LoRA and schema-primed Claude across 14 allergens; LoRA's false-safe rate is highest on molluscs](eval/allergen_recall_chart.png)
 
 ## Method
 
-- **Data.** `scripts/gen_dishes.py` generated 6,750 rows with `claude -p`: 15 cuisines, 150 dishes each, three prompt variants per dish (name only, name with description, original script with translation).
-- **Split.** By dish family, so a dish's three variants share a side. Row IDs are hashes, so `training/prep_tagger.py` rebuilds the generator's item list to recover families: 2,250 families, 6,096 train / 351 validation / 303 test rows, leakage check passed.
-- **Fine-tune.** LoRA on `mlx-community/Qwen2.5-1.5B-Instruct-4bit` with MLX on Apple Silicon: batch 4, 12 layers, 800 iterations, learning rate 1.5e-4, sequence length 768 (median target about 204 tokens). This is a generative structured-output fine-tune, not a single-label classifier.
-- **Benchmark.** `training/bench_tagger.py` scores parse rate, cuisine, spice within 1, vegetarian and vegan agreement, and per-allergen recall and false-safe rate. Claude runs from a scratch directory outside the repo so it can't read the training code.
-- **Fail-safe.** Three layers: the tagging rubric asks for `may` whenever an allergen is plausible; `src/safelist.py` renders `contains` as a cross, `may` as "ask the staff" and `not_indicated` as "not indicated", with no green check; and `filter_safe_dishes` removes every `contains` or `may` dish for the user's allergens, and any dish failing a stated diet, before the LLM recommends anything.
-- **Other guardrails.** A domain gate refuses non-menu photos, unreadable lines are flagged rather than dropped, recommendations are checked against real dish IDs, and translations and tags are cached on `(original_text, language)`.
+`scripts/gen_dishes.py` generated 6,750 rows with `claude -p`: 15 cuisines, 150 dishes each, and three prompt variants per dish (name only, name with description, original script with translation). The split is by dish family, so a dish's three variants always share a side. Row IDs are hashes, so `training/prep_tagger.py` rebuilds the generator's item list to recover the families; that gives 2,250 families and 6,096 train / 351 validation / 303 test rows, and the leakage check passes.
+
+The fine-tune is LoRA on `mlx-community/Qwen2.5-1.5B-Instruct-4bit` with MLX on Apple Silicon (batch 4, 12 layers, 800 iterations, learning rate 1.5e-4, sequence length 768; the median target is about 204 tokens). Unlike the single-label classifiers elsewhere in the series, this one generates a full structured JSON object per dish. `training/bench_tagger.py` scores parse rate, cuisine, spice within 1, vegetarian and vegan agreement, and per-allergen recall and false-safe rate. Claude runs from a scratch directory outside the repo so it can't read the training code.
+
+The fail-safe has three layers. The tagging rubric asks for `may` whenever an allergen is plausible. `src/safelist.py` renders `contains` as a cross, `may` as "ask the staff" and `not_indicated` as "not indicated", and has no green check to show. Then `filter_safe_dishes` removes every `contains` or `may` dish for the user's allergens, and any dish failing a stated diet, before the LLM recommends anything.
+
+Around that, a domain gate refuses non-menu photos, unreadable lines are kept and flagged, recommendations are checked against the extracted dish IDs, and translations and tags are cached on `(original_text, language)`.
 
 ## Stack
 
