@@ -242,22 +242,108 @@
   .stop--key::before, .stop--warn::before, .stop--end::before { background: var(--paper); border: 0; }
   .stop--end::before { color: var(--ink); }
 
-
-  .sheet { margin-top: 30px; border: 1px solid var(--edge); background: var(--card); }
-  .sheet-head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding: 9px 16px; border-bottom: 1px solid var(--edge); font: 600 11.5px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-  .sheet table { min-width: 560px; font-family: var(--mono); font-size: 13.5px; }
-  .sheet th, .sheet td { padding: 8px 12px; }
-  .sheet td:first-child { font-family: var(--sans); font-weight: 600; color: var(--ink); }
-  .sheet td.n { color: var(--muted); }
-  .sheet td.bad { color: var(--accent2); font-weight: 600; }
-  .sheet tr.grp td { border-top: 2px solid var(--edge); }
-  .sheet .sheet-foot { margin: 0; max-width: none; padding: 10px 16px; border-top: 1px solid var(--rule); font-family: var(--sans); font-size: 14px; color: var(--muted); }
-  .badges { margin-top: 24px; border: 1px solid var(--edge); }
-  .badges .spec { padding: 12px 16px; }
-  .badges .spec dd { font-family: var(--mono); color: var(--ink); }
 </style>
 </head>
 <body>
+<style>
+  /* Menu Decoder: a solid-ruled tag sheet. Green = LoRA, amber = Claude with the schema. */
+  .sheet { margin-top: 30px; border: 1px solid var(--edge); background: var(--card); }
+  .sheet-head { display: flex; justify-content: space-between; gap: 6px 12px; flex-wrap: wrap; padding: 9px 16px;
+                border-bottom: 1px solid var(--edge); font: 600 11.5px/1.4 var(--mono); letter-spacing: .1em;
+                text-transform: uppercase; color: var(--muted); }
+  .sheet-body { padding: 16px; }
+  .sheet .sheet-title { font: 600 clamp(19px, 2.4vw, 24px)/1.2 var(--display); color: var(--ink); margin: 0 0 6px; max-width: none; }
+  .sheet .sheet-sub { font: 14px/1.5 var(--sans); color: var(--muted); margin: 0 0 14px; max-width: none; }
+  .sheet .sheet-foot { margin: 0; max-width: none; padding: 10px 16px 12px; border-top: 1px solid var(--rule);
+                       font-family: var(--sans); font-size: 14px; line-height: 1.5; color: var(--muted); }
+
+  /* Four-system result grid */
+  .rg { display: grid; grid-template-columns: minmax(12rem, 1.4fr) repeat(4, minmax(0, 1fr)); font-family: var(--mono); }
+  .rg > div { padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+  .rg .h { font: 600 11px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-bottom-color: var(--edge); }
+  .rg .sys { font: 600 14px/1.35 var(--sans); color: var(--ink); }
+  .rg .sys small { display: block; font: 12px/1.4 var(--mono); color: var(--muted); font-weight: 400; }
+  .rg .c { font-size: 15px; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .rg .c i { display: block; height: 5px; margin-top: 6px; background: color-mix(in srgb, var(--ink) 8%, transparent); }
+  .rg .c i b { display: block; height: 100%; background: var(--muted); }
+  .rg .c.lo i b { background: var(--accent); } .rg .c.cl i b { background: var(--accent2); }
+  .rg .c.bad { color: var(--accent2); font-weight: 600; }
+  .rg .last { border-bottom: 0; }
+  @media (max-width: 700px) {
+    .rg { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .rg .h0 { display: none; }
+    .rg .sys { grid-column: 1 / -1; border-bottom: 0; padding-bottom: 0; }
+    .rg .c { font-size: 13.5px; padding: 6px 8px 10px; }
+    .rg .h { padding: 8px; font-size: 10px; }
+  }
+
+  .seg { display: flex; flex-wrap: wrap; margin: 0 0 14px; }
+  .seg button { font: 600 12px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 10px 12px;
+                background: transparent; color: var(--ink2); border: 1px solid var(--edge); margin: 0 -1px -1px 0; cursor: pointer; }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .seg button:hover { color: var(--ink); border-color: var(--ink); }
+  .seg button[aria-pressed="true"]:hover { color: var(--paper); }
+
+  /* Per-allergen dumbbells */
+  .key { display: flex; gap: 18px; flex-wrap: wrap; font: 12.5px var(--mono); color: var(--ink2); margin: 0 0 8px; }
+  .key span::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: -1px; }
+  .key .kl::before { background: var(--accent); } .key .kc::before { background: var(--accent2); }
+  .db { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr) 7.5rem; gap: 0 14px; align-items: center;
+        padding: 6px 0; border-bottom: 1px solid var(--rule); font: 13.5px/1.3 var(--mono); }
+  .db:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .db .nm { color: var(--ink); }
+  .db .nm small { display: block; color: var(--muted); font-size: 11.5px; }
+  .db .vals { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink2); }
+  .db .vals b { color: var(--accent); font-weight: 600; } .db .vals em { font-style: normal; color: var(--accent2); font-weight: 600; }
+  .db .tr { position: relative; height: 22px; }
+  .db .tr::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; border-top: 1px dotted var(--edge); }
+  .db .ln { position: absolute; top: calc(50% - 1px); height: 2px; background: var(--ink2); }
+  .db .dot { position: absolute; top: 50%; width: 12px; height: 12px; margin: -6px 0 0 -6px; }
+  .db .dot.l { background: var(--accent); } .db .dot.c { background: var(--accent2); transform: rotate(45deg); width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; }
+  .db.thin { opacity: .6; }
+  .db-axis { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr) 7.5rem; gap: 0 14px; font: 11px var(--mono); color: var(--muted); padding-top: 6px; }
+  .db-axis .ax { display: flex; justify-content: space-between; }
+  @media (max-width: 560px) {
+    .db, .db-axis { grid-template-columns: 6.6rem minmax(0, 1fr); }
+    .db .vals { grid-column: 2; text-align: left; font-size: 12px; }
+    .db-axis > span:last-child { display: none; }
+  }
+
+  /* Filter demo */
+  .chips { display: flex; flex-wrap: wrap; gap: 0; margin: 0 0 12px; }
+  .chips label { display: inline-flex; align-items: center; gap: 7px; padding: 8px 11px; border: 1px solid var(--edge);
+                 margin: 0 -1px -1px 0; font: 13px var(--mono); color: var(--ink2); cursor: pointer; }
+  .chips input { accent-color: var(--accent); margin: 0; width: 15px; height: 15px; }
+  .chips label:has(input:checked) { color: var(--ink); background: color-mix(in srgb, var(--accent) 12%, transparent); border-color: var(--ink); }
+  .chips label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; position: relative; }
+  .fl-row { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; font: 13px var(--mono); color: var(--ink2); margin: 4px 0 18px; }
+  .fl-row select { font: 600 13px var(--mono); color: var(--ink); background: var(--paper); border: 1px solid var(--edge); padding: 6px 8px; }
+  .fl-out { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 18px; align-items: end; }
+  .fl-big { font: 600 clamp(44px, 7vw, 64px)/0.95 var(--mono); color: var(--accent); letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
+  .fl-big.zero { color: var(--accent2); }
+  .fl-cap { font: 14px/1.45 var(--sans); color: var(--ink2); padding-bottom: 4px; }
+  .fl-bar { grid-column: 1 / -1; display: flex; height: 18px; margin-top: 12px; background: color-mix(in srgb, var(--ink) 6%, transparent); }
+  .fl-bar span { display: block; height: 100%; }
+  .fl-bar .bc { background: var(--accent2); }
+  .fl-bar .bm { background: color-mix(in srgb, var(--accent2) 45%, var(--card)); }
+  .fl-bar .bd { background: var(--muted); }
+  .fl-bar .bl { background: var(--accent); }
+  .fl-legend { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 4px 18px; font: 12.5px var(--mono); color: var(--ink2); margin-top: 8px; }
+  .fl-legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: -1px; }
+  .fl-legend .bc::before { background: var(--accent2); }
+  .fl-legend .bm::before { background: color-mix(in srgb, var(--accent2) 45%, var(--card)); }
+  .fl-legend .bd::before { background: var(--muted); }
+  .fl-legend .bl::before { background: var(--accent); }
+
+  .layers { margin-top: 26px; border: 1px solid var(--edge); }
+  .layers > div { display: grid; grid-template-columns: 3rem 11rem minmax(0, 1fr); gap: 4px 14px; padding: 13px 16px;
+                  border-bottom: 1px solid var(--rule); font: 15.5px/1.5 var(--sans); color: var(--ink2); }
+  .layers > div:last-child { border-bottom: 0; }
+  .layers .k { font: 600 12px/1.9 var(--mono); color: var(--accent); }
+  .layers .w { font: 600 12.5px/1.8 var(--mono); color: var(--ink); }
+  @media (max-width: 560px) { .layers > div { grid-template-columns: 2.4rem minmax(0, 1fr); } .layers > div > span:last-child { grid-column: 2; } }
+</style>
+
 <div class="wrap">
   <header class="masthead">
     <div class="logo">Menu Decoder</div>
@@ -270,43 +356,37 @@
 
     <p class="hero-sub">
       Menu Decoder reads a photographed menu, translates each dish, and tags it
-      for cuisine, 14 EU allergens, spice and vegetarian or vegan. The tagger is
-      Qwen2.5-1.5B with a LoRA adapter trained to emit the whole tag set as JSON
-      from a prompt as short as <code>Dish: Pad Thai.</code> On 303 held-out
-      rows it returns valid JSON every time, gets the cuisine right 99.3% of the
-      time, and catches 69.3% of allergens a dish contains. Claude given the same
-      bare prompt doesn't attempt the task. Claude given the full schema does
-      better on allergens: 79.2% recall and a 1.7% false-safe rate, against the
-      fine-tune's 7.3%.
+      for cuisine, 14 EU allergens, spice and diet. The tagger is Qwen2.5-1.5B
+      with a LoRA adapter that writes the whole tag set as JSON from a prompt as
+      short as <code>Dish: Pad Thai.</code> Claude given that prompt describes
+      the dish instead. Claude given the full schema catches more allergens
+      than the fine-tune does, and misses fewer outright.
     </p>
 
     <div class="cta-row">
       <a class="btn btn-primary" href="https://github.com/lyhjeremy/menu-decoder">Code and benchmark</a>
-      <a class="textlink" href="https://github.com/lyhjeremy/menu-decoder/blob/main/writeup.md">Read the write-up</a>
+      <a class="textlink" href="https://github.com/lyhjeremy/menu-decoder/blob/main/eval/benchmark.md">Full benchmark table</a>
     </div>
 
-    <div class="claims">
-      <div class="claim">
-        <div class="n">0% &rarr; 100%</div>
-        <p>Valid tag JSON from base Qwen2.5-1.5B before and after the LoRA
-           fine-tune, on the same bare prompt.</p>
+    <figure class="sheet" style="margin-top:42px">
+      <div class="sheet-head"><span>Held-out test set, 303 dishes</span><span>eval/benchmark.json</span></div>
+      <div class="rg" role="table" aria-label="Benchmark: four systems by valid JSON, cuisine accuracy, allergen recall and false-safe rate">
+        <div class="h h0" role="columnheader">System</div><div class="h" role="columnheader">Valid JSON</div><div class="h" role="columnheader">Cuisine</div><div class="h" role="columnheader">Allergen recall</div><div class="h" role="columnheader">False-safe</div>
+
+        <div class="sys" role="rowheader">Base Qwen2.5-1.5B<small>bare prompt, n = 303, 5.4 s</small></div>
+        <div class="c" role="cell">0.0%<i><b style="width:0%"></b></i></div><div class="c" role="cell">0.0%<i><b style="width:0%"></b></i></div><div class="c" role="cell">0.0%<i><b style="width:0%"></b></i></div><div class="c bad" role="cell">100.0%<i><b style="width:100%"></b></i></div>
+
+        <div class="sys" role="rowheader">Qwen2.5-1.5B + LoRA<small>bare prompt, n = 303, 6.7 s</small></div>
+        <div class="c lo" role="cell">100.0%<i><b style="width:100%"></b></i></div><div class="c lo" role="cell">99.3%<i><b style="width:99.3%"></b></i></div><div class="c lo" role="cell">69.3%<i><b style="width:69.3%"></b></i></div><div class="c lo" role="cell">7.3%<i><b style="width:7.3%"></b></i></div>
+
+        <div class="sys" role="rowheader">Claude<small>bare prompt, n = 100, 16.5 s</small></div>
+        <div class="c" role="cell">94.0%<i><b style="width:94%"></b></i></div><div class="c" role="cell">43.0%<i><b style="width:43%"></b></i></div><div class="c" role="cell">0.0%<i><b style="width:0%"></b></i></div><div class="c bad" role="cell">100.0%<i><b style="width:100%"></b></i></div>
+
+        <div class="sys last" role="rowheader">Claude<small>schema in prompt, n = 100, 13.4 s</small></div>
+        <div class="c cl last" role="cell">99.0%<i><b style="width:99%"></b></i></div><div class="c cl last" role="cell">81.0%<i><b style="width:81%"></b></i></div><div class="c cl last" role="cell">79.2%<i><b style="width:79.2%"></b></i></div><div class="c cl last" role="cell">1.7%<i><b style="width:1.7%"></b></i></div>
       </div>
-      <div class="claim">
-        <div class="n">99.3%</div>
-        <p>Cuisine accuracy across 15 cuisines, against 81.0% for Claude given
-           the full schema.</p>
-      </div>
-      <div class="claim">
-        <div class="n">7.3% / 1.7%</div>
-        <p>False-safe rate, LoRA against schema-primed Claude: how often a dish
-           that contains an allergen was tagged "not indicated".</p>
-      </div>
-      <div class="claim">
-        <div class="n">3</div>
-        <p>Independent layers that bias the app toward warning: the tagging
-           rubric, the badge renderer and a code filter before recommendations.</p>
-      </div>
-    </div>
+      <figcaption class="sheet-foot">Allergen recall is macro recall on dishes labeled <code>contains</code>. False-safe is the share of <code>contains</code> dishes tagged <code>not_indicated</code>, the dangerous miss; a <code>may</code> still warns, so it does not count. Claude ran on a 100-row subsample.</figcaption>
+    </figure>
   </section>
 </div>
 
@@ -315,118 +395,113 @@
 
   <section class="stop stop--key">
     <p class="eyebrow">Benchmark</p>
-    <h2>Four rows, and why Claude has two</h2>
+    <h2>Why Claude has two rows</h2>
     <p>
-      Base and LoRA ran on the full 303-row test set; Claude ran on a 100-row
-      subsample. Allergen recall is measured on dishes whose label is
-      <code>contains</code>. A false-safe is a <code>contains</code> dish tagged
-      <code>not_indicated</code>; a <code>may</code> still warns, so it doesn't
-      count.
-    </p>
-    <div class="tablewrap">
-      <table>
-        <thead>
-          <tr><th>System</th><th>N</th><th>Valid JSON</th><th>Cuisine</th><th>Allergen recall</th><th>False-safe</th><th>Latency</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Base Qwen2.5-1.5B, bare prompt</td><td>303</td><td>0.0%</td><td>0.0%</td><td>0.0%</td><td>100.0%</td><td>5.4 s</td></tr>
-          <tr class="win"><td>Qwen2.5-1.5B + LoRA, bare prompt</td><td>303</td><td>100.0%</td><td>99.3%</td><td>69.3%</td><td>7.3%</td><td>6.7 s</td></tr>
-          <tr><td>Claude, bare prompt</td><td>100</td><td>94.0%</td><td>43.0%</td><td>0.0%</td><td>100.0%</td><td>16.5 s</td></tr>
-          <tr><td>Claude, schema in prompt</td><td>100</td><td>99.0%</td><td>81.0%</td><td>79.2%</td><td>1.7%</td><td>13.4 s</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="margin-top:22px">
       Given only <code>Dish: X.</code>, Claude answers a different question,
-      "tell me about this dish", and returns valid JSON with its own keys
-      (<code>region</code>, <code>main_ingredients</code>,
-      <code>flavor_profile</code>). None of them match the scored fields, so that
-      row is zero by construction. With <code>src/decoder.py</code>'s tagging
-      rubric and a JSON format description appended, and no examples or answers,
-      Claude beats the fine-tune on allergens. What the fine-tune has going for
-      it is that the 14-allergen contract lives in its weights, so the prompt can
-      be one line, and it runs locally at no cost per call.
+      "tell me about this dish". It returns valid JSON 94% of the time, but
+      under its own keys (<code>region</code>, <code>main_ingredients</code>,
+      <code>flavor_profile</code>), none of which match the scored fields, so
+      its allergen scores are zero by construction. The second row appends
+      <code>src/decoder.py</code>'s tagging rubric and a description of the
+      output format, with no examples and no answers. With that, Claude beats
+      the fine-tune on allergens.
+    </p>
+    <p>
+      The fine-tune's case is narrower. The 14-allergen contract lives in its
+      weights, so the prompt can be one line, and it runs locally with no
+      per-call cost. It also gets cuisine right 99.3% of the time against
+      Claude's 81.0%.
     </p>
   </section>
 
   <section class="stop">
     <p class="eyebrow">Per allergen</p>
-    <h2>Where the fine-tune misses</h2>
+    <h2>Close on the common allergens, behind on the rare ones</h2>
     <p>
-      An average would hide the dangerous cases, so the benchmark reports each
-      allergen on its own. The fine-tune is close to Claude on the common allergens and
-      falls behind on the rarer ones.
+      An average hides the dangerous cases, so the benchmark scores each
+      allergen on its own. Switch to false-safe to see where the fine-tune
+      tells a diner a dish is clear when it is not.
     </p>
-    <div class="sheet">
-      <div class="sheet-head"><span>Recall on contains / false-safe rate</span><span>LoRA vs Claude, schema in prompt</span></div>
-      <div class="tablewrap" style="margin:0;border:0">
-        <table>
-          <thead><tr><th>Allergen</th><th>Contains (N)</th><th>LoRA recall</th><th>LoRA false-safe</th><th>Claude recall</th><th>Claude false-safe</th></tr></thead>
-          <tbody>
-            <tr><td>Gluten</td><td class="n">130</td><td>91.5%</td><td>0.0%</td><td>84.4%</td><td>0.0%</td></tr>
-            <tr><td>Milk</td><td class="n">103</td><td>90.3%</td><td>1.9%</td><td>95.2%</td><td>0.0%</td></tr>
-            <tr><td>Eggs</td><td class="n">71</td><td>81.7%</td><td>2.8%</td><td>76.7%</td><td>3.3%</td></tr>
-            <tr><td>Fish</td><td class="n">71</td><td>94.4%</td><td>2.8%</td><td>96.0%</td><td>4.0%</td></tr>
-            <tr><td>Nuts</td><td class="n">68</td><td>92.7%</td><td>5.9%</td><td>94.1%</td><td>0.0%</td></tr>
-            <tr><td>Soy</td><td class="n">63</td><td>88.9%</td><td>0.0%</td><td>80.8%</td><td>0.0%</td></tr>
-            <tr><td>Crustaceans</td><td class="n">45</td><td>86.7%</td><td>6.7%</td><td>91.7%</td><td>0.0%</td></tr>
-            <tr><td>Sesame</td><td class="n">38</td><td>81.6%</td><td>7.9%</td><td>92.3%</td><td>0.0%</td></tr>
-            <tr class="grp"><td>Molluscs</td><td class="n">23</td><td>56.5%</td><td class="bad">39.1%</td><td>66.7%</td><td>0.0%</td></tr>
-            <tr><td>Peanuts</td><td class="n">22</td><td>72.7%</td><td class="bad">18.2%</td><td>85.7%</td><td class="bad">14.3%</td></tr>
-            <tr><td>Mustard</td><td class="n">11</td><td>63.6%</td><td>9.1%</td><td>100.0%</td><td>0.0%</td></tr>
-            <tr><td>Sulphites</td><td class="n">11</td><td class="bad">0.0%</td><td>0.0%</td><td>66.7%</td><td>0.0%</td></tr>
-            <tr><td>Celery</td><td class="n">2</td><td class="bad">0.0%</td><td>0.0%</td><td>0.0%</td><td>0.0%</td></tr>
-          </tbody>
-        </table>
+
+    <figure class="sheet" id="db">
+      <div class="sheet-head"><span>Per allergen, LoRA vs Claude with the schema</span><span>eval/benchmark.json</span></div>
+      <div class="sheet-body">
+        <div class="seg" role="group" aria-label="Metric">
+          <button type="button" data-m="r" aria-pressed="true">Recall on contains</button>
+          <button type="button" data-m="f" aria-pressed="false">False-safe rate</button>
+        </div>
+        <p class="sheet-title" id="db-title">Within 11 points on the eight common allergens, then the fine-tune falls behind</p>
+        <p class="sheet-sub" id="db-sub">Higher is better. Rows run from most to fewest test cases.</p>
+        <div class="key"><span class="kl">LoRA (square)</span><span class="kc">Claude, schema (diamond)</span></div>
+        <div id="db-rows"></div>
+        <div class="db-axis"><span></span><span class="ax"><span>0%</span><span>50%</span><span>100%</span></span><span></span></div>
       </div>
-      <p class="sheet-foot">From <code>eval/benchmark.md</code>. N counts true <code>contains</code> cases in the 303-row set; Claude's figures come from its 100-row subsample. Lupin had no <code>contains</code> cases.</p>
-    </div>
-    <p style="margin-top:24px">
-      Molluscs is the worst result: the fine-tune tagged 39.1% of mollusc dishes
-      "not indicated". For sulphites, recall is 0% with no false-safes, which
-      means every sulphite dish got <code>may</code>: a warning, but not a
-      confident one.
-    </p>
-    <figure>
-      <div class="plate">
-        <img width="1950" height="1350" src="../eval/allergen_recall_chart.png" loading="lazy"
-          alt="Two bar charts across 14 allergens. Top: recall on contains for LoRA and schema-primed Claude, both mostly between 0.6 and 1.0, with LoRA lower on mustard, sesame, sulphites and molluscs. Bottom: false-safe rate, 1.0 for the base model everywhere, near zero for Claude except peanuts, and highest for LoRA on molluscs at about 0.39." />
-      </div>
-      <figcaption>Per-allergen recall (top) and false-safe rate (bottom) for base, LoRA and schema-primed Claude.</figcaption>
+      <figcaption class="sheet-foot">n is the number of test dishes labeled <code>contains</code> for that allergen: the first figure for LoRA on all 303 rows, the second for Claude on its 100-row subsample. Faded rows have fewer than 5 Claude cases. Lupin had no <code>contains</code> cases and is left out.</figcaption>
     </figure>
+
+    <p style="margin-top:26px">
+      Molluscs is the worst result: the fine-tune tagged 39.1% of mollusc
+      dishes "not indicated", and peanuts follow at 18.2%. Sulphites and celery
+      show 0% recall with no false-safes, which means the fine-tune never said
+      <code>contains</code> for either; it said <code>may</code>, a warning
+      without confidence.
+    </p>
   </section>
 
   <section class="stop">
     <p class="eyebrow">Fail-safe design</p>
     <h2>The app can warn about an allergen but never clear one</h2>
     <p>
-      Because the tagger misses some allergens, the app around it assumes it
-      will. The tagging rubric tells the model to answer <code>may</code>
-      whenever an allergen is plausible in a typical preparation, such as sesame
-      oil in many Asian dishes or gluten in most sauces and breading. The badge
-      renderer in <code>src/safelist.py</code> maps the three levels to fixed
-      strings and has no entry that shows a green check:
+      The tagger misses allergens, so the app around it assumes it will. Three
+      layers push every decision toward a warning, and two of them are plain
+      code the model cannot override.
     </p>
-    <dl class="specs badges">
-      <div class="spec"><dt>contains</dt><dd>a cross mark</dd></div>
-      <div class="spec"><dt>may</dt><dd>ask the staff</dd></div>
-      <div class="spec"><dt>not_indicated</dt><dd>not indicated (open circle)</dd></div>
-    </dl>
-    <p style="margin-top:24px">
-      Before the recommendation step, <code>filter_safe_dishes</code> removes
-      every dish marked <code>contains</code> or <code>may</code> for any of the
-      user's allergens, and every dish that fails a stated vegetarian or vegan
-      diet. The LLM picks two or three dishes from what is left and cannot bring
-      a filtered dish back. Lines the vision step can't read stay on the menu,
-      flagged as unreadable.
+    <div class="layers">
+      <div><span class="k">01</span><span class="w">Tagging rubric</span><span>Answer <code>may</code> whenever an allergen is plausible in a typical preparation: sesame oil in many Asian dishes, gluten in most sauces and breading. "When uncertain, prefer <code>may</code> over <code>not_indicated</code>."</span></div>
+      <div><span class="k">02</span><span class="w">Badge renderer</span><span><code>ALLERGEN_BADGE</code> in <code>src/safelist.py</code> maps <code>contains</code> to a cross, <code>may</code> to "ask the staff" and <code>not_indicated</code> to an open circle. It has no entry for a check mark.</span></div>
+      <div><span class="k">03</span><span class="w">Safe-list filter</span><span><code>filter_safe_dishes</code> removes every dish marked <code>contains</code> or <code>may</code> for any of the diner's allergens, and any dish that fails a stated diet or spice limit, before the recommendation call. The model picks from what is left.</span></div>
+    </div>
+
+    <p style="margin-top:26px">
+      The cost of layer 03 shows up when you run it over the fine-tune's own
+      tags for the 303 test dishes. Pick allergens below and see how much of
+      the menu survives.
     </p>
-    <figure>
-      <div class="plate">
-        <img width="1620" height="870" src="../assets/architecture.png" loading="lazy"
-          alt="Pipeline diagram: menu photo to one vision extraction call, per-dish tagging by the fine-tuned model, a deterministic allergen and diet filter, then recommendation from the filtered list, with dish-name text-to-speech." />
+
+    <figure class="sheet" id="fl">
+      <div class="sheet-head"><span>Layer 03 on the test set</span><span>eval/raw_outputs.json, lora_out</span></div>
+      <div class="sheet-body">
+        <p class="sheet-title">A gluten allergy clears none of the 303 test dishes</p>
+        <p class="sheet-sub">The fine-tune tagged gluten <code>contains</code> on 137 dishes and <code>may</code> on the other 166.</p>
+        <fieldset style="border:0;margin:0;padding:0">
+          <legend class="sheet-sub" style="margin-bottom:8px">Allergens</legend>
+          <div class="chips" id="fl-al"></div>
+        </fieldset>
+        <div class="fl-row">
+          <div class="chips" style="margin:0"><label><input type="checkbox" id="fl-veg" /> vegetarian</label><label><input type="checkbox" id="fl-vgn" /> vegan</label></div>
+          <label>Spice limit
+            <select id="fl-spice"><option value="">none</option><option value="0">0</option><option value="1">1</option><option value="2">2</option></select>
+          </label>
+        </div>
+        <div class="fl-out" aria-live="polite">
+          <div class="fl-big" id="fl-n">0</div>
+          <div class="fl-cap" id="fl-cap">of 303 dishes left to recommend from</div>
+          <div class="fl-bar" id="fl-bar"></div>
+          <div class="fl-legend"><span class="bc" id="fl-lc">contains</span><span class="bm" id="fl-lm">may</span><span class="bd" id="fl-ld">diet or spice</span><span class="bl" id="fl-ll">left</span></div>
+        </div>
       </div>
-      <figcaption>The pipeline. The allergen filter runs in code before the model chooses anything.</figcaption>
+      <figcaption class="sheet-foot">Same rule as <code>is_safe_for_brief</code> in <code>src/safelist.py</code>, applied in your browser to the fine-tune's stored output for each test dish. A dish is counted under the first rule that removes it. The fine-tune called 11 of the 303 test dishes vegetarian and none vegan.</figcaption>
     </figure>
+
+    <p style="margin-top:26px">
+      The filter is doing what it was built to do, and this is what it
+      costs. For gluten the filter leaves nothing, for sulphites 31
+      dishes, and for soy or sesame fewer than half the menu. A diner with one
+      of those allergies gets few or no recommendations and a menu of "ask
+      the staff" badges. Lines
+      the vision step can't read stay on the menu, flagged as unreadable,
+      rather than disappearing.
+    </p>
   </section>
 
   <section class="stop">
@@ -434,18 +509,18 @@
     <h2>6,750 synthetic dishes, split by dish family</h2>
     <p>
       <code>scripts/gen_dishes.py</code> generated 6,750 rows with
-      <code>claude -p</code>: 15 cuisines, 150 dishes each, three prompt variants
-      per dish (name only, name with description, original script with
-      translation, such as <code>ผัดไทย (Pad Thai)</code>). The three variants of
-      a dish share a split, so the model can't memorize a dish from one variant
-      and get credit for it on another. The row IDs are hashes, so
-      <code>training/prep_tagger.py</code> rebuilds the generator's item list to
-      recover each row's dish family. That gives 2,250 families and 6,096 train,
-      351 validation and 303 test rows, with the leakage check passing.
+      <code>claude -p</code>: 15 cuisines, 150 dishes each, three prompt
+      variants per dish (name only, name with description, original script
+      with translation, such as <code>ผัดไทย (Pad Thai)</code>). The three
+      variants of a dish always share a split, so the model can't memorize a
+      dish from one variant and get credit on another. Row IDs are hashes, so
+      <code>training/prep_tagger.py</code> rebuilds the generator's item list
+      to recover each row's family: 2,250 families, 6,096 train, 351
+      validation and 303 test rows, leakage check passing.
     </p>
     <p>
       Training used MLX on Apple Silicon: batch 4, 12 LoRA layers, 800
-      iterations, learning rate 1.5e-4, sequence length 768, chosen after
+      iterations, learning rate 1.5e-4, sequence length 768, set after
       measuring a median target of about 204 tokens.
     </p>
   </section>
@@ -454,25 +529,26 @@
     <p class="eyebrow">Limitations</p>
     <h2>Labels from Claude, no human check yet</h2>
     <p>
-      Every label in the benchmark was generated by Claude, and Claude is also
-      one of the systems being scored. The spec requires a human spot-check of
-      about 60 dishes stratified across cuisines; it has not been done. Until it
-      is, the Claude rows measure agreement with Claude's own labels, and every
-      figure here is about synthetic data.
+      Every label in the benchmark was generated by Claude, and Claude is
+      also one of the systems being scored. The spec requires a human
+      spot-check of about 60 dishes stratified across cuisines; it has not
+      been done. Until it is, the Claude rows measure agreement with Claude's
+      own labels, and every figure here is about synthetic data.
     </p>
     <p>
-      The first Claude run was contaminated. <code>claude -p</code> ran inside the
-      repo, and 8 of the first 100 answers read the training code to find the
-      schema. Turning tools off made it worse: answers turned into narrated tool
-      calls. The fix was to run the CLI from a scratch directory outside the
-      repo, and the rerun showed no contaminated answers.
+      The first Claude run was contaminated. <code>claude -p</code> ran inside
+      the repo, and 8 of the first 100 answers read the training code to find
+      the schema. Turning tools off made it worse: answers turned into
+      narrated tool calls. Running the CLI from a scratch directory outside
+      the repo fixed it, and the rerun showed no contaminated answers.
     </p>
     <p>
-      The LoRA path in the app was also broken at first. It parsed
-      <code>mlx_lm.generate</code>'s raw output, which wraps the JSON in a banner,
-      and expected a <code>dish_id</code> the model never produces, so every call
-      fell back to the default. Both are fixed and the 10 tests pass. This is not
-      a medical device; confirm allergens with restaurant staff.
+      The LoRA path in the app was broken at first too. It parsed
+      <code>mlx_lm.generate</code>'s raw output, which wraps the JSON in a
+      banner, and expected a <code>dish_id</code> the model never produces,
+      so every call fell back to the default. Both are fixed and the 10 tests
+      pass. This is not a medical device; confirm allergens with restaurant
+      staff.
     </p>
   </section>
 
@@ -497,7 +573,7 @@
     <h2>Read the code and the per-allergen results</h2>
     <div class="cta-row">
       <a class="btn btn-primary" href="https://github.com/lyhjeremy/menu-decoder">Code and benchmark</a>
-      <a class="textlink" href="https://github.com/lyhjeremy/menu-decoder/blob/main/eval/benchmark.md">Full benchmark table</a>
+      <a class="textlink" href="https://github.com/lyhjeremy/menu-decoder/blob/main/writeup.md">Engineering notes</a>
     </div>
   </section>
 
@@ -505,7 +581,7 @@
     <p>
       Menu Decoder ·
       <a href="../">Project page</a> ·
-      <a href="https://github.com/lyhjeremy/menu-decoder/blob/main/writeup.md">Write-up</a> ·
+      <a href="https://github.com/lyhjeremy/menu-decoder/blob/main/writeup.md">Engineering notes</a> ·
       <a href="https://github.com/lyhjeremy/menu-decoder">Source</a> ·
       <a href="../privacy/">Privacy</a> ·
       <a href="../terms/">Terms</a> ·
@@ -514,5 +590,76 @@
     <p>Not a medical device. Always confirm allergens with restaurant staff.</p>
   </footer>
 </div>
+
+<script>
+(function () {
+  /* eval/benchmark.json, per_allergen: [name, n LoRA, LoRA recall, LoRA false-safe, n Claude, Claude recall, Claude false-safe] */
+  var AL = [
+    ["gluten", 130, 0.9154, 0.0, 45, 0.8444, 0.0], ["milk", 103, 0.9029, 0.0194, 42, 0.9524, 0.0], ["eggs", 71, 0.8169, 0.0282, 30, 0.7667, 0.0333],
+    ["fish", 71, 0.9437, 0.0282, 25, 0.96, 0.04], ["nuts", 68, 0.9265, 0.0588, 17, 0.9412, 0.0], ["soy", 63, 0.8889, 0.0, 26, 0.8077, 0.0],
+    ["crustaceans", 45, 0.8667, 0.0667, 12, 0.9167, 0.0], ["sesame", 38, 0.8158, 0.0789, 13, 0.9231, 0.0], ["molluscs", 23, 0.5652, 0.3913, 6, 0.6667, 0.0],
+    ["peanuts", 22, 0.7273, 0.1818, 7, 0.8571, 0.1429], ["mustard", 11, 0.6364, 0.0909, 2, 1.0, 0.0], ["sulphites", 11, 0.0, 0.0, 3, 0.6667, 0.0],
+    ["celery", 2, 0.0, 0.0, 1, 0.0, 0.0]
+  ];
+  var TXT = {
+    r: ["Within 11 points on the eight common allergens, then the fine-tune falls behind", "Higher is better. Rows run from most to fewest test cases."],
+    f: ["Molluscs is the dangerous miss: 39.1% tagged not indicated", "Lower is better. Rows run from most to fewest test cases."]
+  };
+  var pct = function (v) { return (Math.round(v * 1000) / 10).toFixed(1) + "%"; };
+  function draw(m) {
+    var li = m === "r" ? 2 : 3, ci = m === "r" ? 5 : 6;
+    document.getElementById("db-rows").innerHTML = AL.map(function (a) {
+      var l = a[li] * 100, c = a[ci] * 100, lo = Math.min(l, c), hi = Math.max(l, c);
+      var label = a[0] + ", " + (m === "r" ? "recall" : "false-safe rate") + ": LoRA " + pct(a[li]) + " of " + a[1] + ", Claude " + pct(a[ci]) + " of " + a[4];
+      return '<div class="db' + (a[4] < 5 ? ' thin' : '') + '" tabindex="0" role="img" aria-label="' + label + '">' +
+        '<span class="nm">' + a[0] + '<small>n ' + a[1] + ' / ' + a[4] + '</small></span>' +
+        '<span class="tr"><span class="ln" style="left:' + lo + '%;width:' + (hi - lo) + '%"></span>' +
+        '<span class="dot c" style="left:' + c + '%"></span><span class="dot l" style="left:' + l + '%"></span></span>' +
+        '<span class="vals"><b>' + pct(a[li]) + '</b> / <em>' + pct(a[ci]) + '</em></span></div>';
+    }).join("");
+    document.getElementById("db-title").textContent = TXT[m][0];
+    document.getElementById("db-sub").textContent = TXT[m][1];
+  }
+  var seg = document.querySelector("#db .seg");
+  seg.querySelectorAll("button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      seg.querySelectorAll("button").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      draw(b.getAttribute("data-m"));
+    });
+  });
+  draw("r");
+
+  /* eval/raw_outputs.json lora_out, one string per test dish: 14 allergen levels (c/m/n, order below),
+     vegetarian (y/n), vegan (y/n), spice 0-3. */
+  var ORDER = ["gluten", "crustaceans", "eggs", "fish", "peanuts", "soy", "milk", "nuts", "celery", "mustard", "sesame", "sulphites", "lupin", "molluscs"];
+  var TAGS = ["cnmnnnccmncmnnnn1","mnnnnmnnmnnmnnnn1","mnnnnnnnmnnmnnnn0","mcncncnnnnmmncnn0","cnmnnmcnmmnmnnnn0","cncnnncnmnnmnnnn0","mmmcmmnnnnmmnmnn2","mcmcmmnnnnmmnnnn2","mcmcnmnnnnmmncnn1","mnnnnmnnmnnmnnnn0","cnnnncnnnnmmnnnn0","cnnnncnnnnmmnnnn0","cncnnncnmnnmnnnn0","mnnnncnnnnmmnnnn0","cncnnncnmncmnnnn1","mncnnncnnnnnnnnn2","mnncmmnnnnmmnnnn1","mnnnnncnnnnnnnnn2","mncnnncnnnnmnnnn2","cnmmnnmnmnnmncnn1","cnmnnmcnmmnmnnnn0","mnnnccnnnncmnnnn2","cnmnnnmcmnmmnnnn1","cnmnnmmcnnmmnnnn1","cnmnnmmcnnmmnnnn1","cncnnncnmnnmnnyn0","mmncmmnnnnmmnmnn2","cnmnnnccmncmnnnn1","cncmncnnnnmmnnnn0","mcncmmnnnnmmnnnn2","mnnnccnnnncmnnnn3","cnmnnnmcmnmmnnnn1","ccmmnncnmncmnmnn0","cnmnnmmcnnmmnnnn1","mnnnnmmnmnnmnnnn2","mnncncnnnnmmnnnn0","cncnnnccmnnmnnnn0","cnmnnnmcmncmnnnn1","mncnnmcnmmnmnnnn0","cnccnnmnnnmmnnnn1","mmncmmnnnnmmnmnn2","mnnnnmcnnnnmnnnn1","cnmnnmmcnnmmnnnn1","cncnnncnmnnmnnnn0","cncnnmcnmmnmnnnn0","mnnnccnnnncmnnnn2","mnncnncnnnmmnnnn2","ccccnncnmnnmnnnn0","cnmnnmccmncmnnnn1","mnnnnncnmnnmnnnn0","ccccnncnmnnmnnnn0","mncnnncnnnnnnnnn2","mnnncmnnncmnnnyn2","mnncnncnnnnmnnnn2","mmmcmmnnnnmmnnnn2","mnncncnnnnmmnnnn0","mcnmncnnnncmnnnn0","cnmnnnccmncmnnnn1","cnmnnmcnmmnmnnnn0","cnccnnccmnnmnnnn0","cnmmncnnnnmmnnnn1","mnnnnncnncnnnnyn2","cncnnncnmnnmnnnn0","mnncnmnnnnnnnnnn0","cncnnmcnmmnmnnnn0","mcnmncnnnnmmnmnn2","cnnnncnnnnmmnnnn0","mnnmncnnnnmmnnnn3","cncnnmcnmmnmnnnn0","cncnnmcnmmnmnnnn0","mnnmncnnnnmmnnnn3","mcccncnnnnmmnnnn1","mcccmmnnnnmmnnnn2","mnnnnmmnmnnmnnnn2","cnmnnmcnmmnmnnnn0","mmnccmnnnnmmnmnn2","mnncncnnnnmmnnnn1","mncnnncnnnnnnnnn2","cncnnncnmnnmnnnn0","cnmnnnccmnnmnnnn0","cnccnncnmncmnnnn0","cnmnnnmnmnnmnnnn0","cnmmnmnnnnmmnnnn2","cncnnncnmnnmnnnn0","cncmncnnnncmnnnn0","mnnccmnnnnmmnnnn1","mnnnnncnnnmmnnnn2","cncnnmcnmmnmnnnn0","cnccncnnnnmmnnnn1","cnmnnnccmnnmnnnn1","mnnnccnnnncmnnnn2","mccnncnnnnmmnnnn0","mmncmmnnnnmmnmnn2","mncnnncnnnnnnnnn2","mnnnnncnnnnmnnyn2","mnnnnmnnmnnmnnnn1","mcmcnmnnnnmmnnnn1","cnmnnmcnmmnmnnnn0","mnncnncnnnnmnnnn2","mnnncnnnnncnnnyn2","mnnnnmnnmnnmnnnn1","cnmnnnmcmncmnnnn1","cnnnnncnnmnnnnnn2","cnmnnmmcnnmmnnnn1","mnnnnncnncnnnnyn2","mncnncnnnnmmnnnn0","mnnnnncmnmnnnnnn2","cnmnnncnmnnmnnnn1","mcmmncnnnnmmnnnn0","mnnnnncnmnnmnnnn0","mnnnnmmnmnnmnnnn1","cncnnmcnmmnmnnnn0","mmmcmmnnnnmmnnnn1","cncmncnnnnmmnnnn0","mnnnnmnnmnnmnnnn2","mnnnnmnnmnnmnnnn1","mnnnnncmnmnnnnnn2","cnmnnmmcnnmmnnnn1","cnmnnnccmncmnnnn1","mnnnnmnnmnnmnnnn1","cnccncnnnncmnnnn1","mnnnnncnmnnmnnnn1","mnnnnnccmnnmnnnn0","cncnnnccmnnmnnnn0","cnmnnnmcmncmnnnn1","cnmnnmmcnnmmnnnn1","cnmcnnmcmnnmnnnn0","cnmnnnmcmnmmnnnn1","cnmcnnmcmncmnnnn1","cnmnnncnmnnmnnnn1","mnnnnmnnmnnmnnnn1","mnnnnncmnmnnnnnn2","mnnccmnnnnmmnnnn1","mmnmncnnnnmmnmnn2","cncnnnccmnnmnnnn0","mnncnncnnnmmnnnn2","mnnnnnmmnmnnnnnn2","cnmmccncnnmmncnn1","mnnnnmnnmnnmnnnn0","ccmmncnnnnmmnmnn0","cnmnnnmcmnnmnnnn1","mnnnnncnncnnnnyn2","cnmnnmmcmnmmnnnn1","mcncmmnnnnmmncnn2","mnnnnmnnnnmmnnnn0","cnmnnmccnnnmnnnn1","cmccmmnnnnmmnnnn2","cnnnncnnnnmmnnnn0","mmncmmnnnnmmnmnn2","mncmncnnnncmnnnn2","ccmcnnnnmnnmncnn0","cncnnncnmnnmnnnn0","cnmnnmmcnnmmnnnn1","cncnnmcnmmnmnnnn0","mnnnnncnnnmmnnnn2","mnnnnmnnmnnmnnnn1","cnmnnmccmncmnnnn1","mnnnnncmnmnnnnnn2","cnmnnncnmnnmnnnn0","cnncnnmnmnnmncnn0","mmncmmnnnnmmnnnn2","cnccnnmcmnnmnnnn0","ccmmnmnnnnmmnnnn0","mnnnnmnnmnnmnnnn1","cncnnmcnmmnmnnnn0","mncnnncnnnnnnnnn2","mcncnnnnnnmmncnn1","cnmnnnmcmnmmnnnn1","cncnnmcnmmnmnnnn1","cnmnnnmnmnnmnnnn0","mnncncnnnnmmnnnn1","cnccnnmnmnnmnnnn0","cnmnnmcnmcnmnnnn0","mnncncnnnnmmnnnn2","mmncmmnnnnmmnmnn2","mcncmmnnnnmmnnnn2","mnnnnncnnnmmnnnn2","cnmnnmcnmmnmnnnn0","cnmmccnnnncmnnnn2","ccmmncnnnnmmnnnn0","cncmnnmnmnnmncnn0","cnmnnmcnmmnmnnnn0","cnnnnncnnnnmnnyn2","cnmnnnmnmnnmnnnn0","cnmnnmmcnnmmnnnn1","cncnnnccmnnmnnnn0","mnnnncnnnnmmnnnn0","mnnnnmnnmnnmnnnn0","mcnmncnnnnmmnnnn1","cnmnncnnnncmnnnn0","cncnnmcnmmnmnnnn0","cnmnnmcnmmnmnnnn0","mnnnnmnnmnnmnnnn1","mmnccmnnnnmmnnnn2","mnnnccnnnncmnnnn2","mcnmncncnncmnnnn1","mncnnncnnnnnnnnn2","mnnnccnnnnmmnnnn2","cnmmccncnncmnnnn1","cnmnnncnmnnmnnnn0","cnmnnnmnmnnmnnnn0","cnmnnmcnmmnmnnnn0","mncnncnnnnmmnnnn0","mnnnnmnnmnnmnnnn1","mnnnnncnnnmmnnnn2","cnmnnmmcnnmmnnnn1","cncnnncnmnnmnnnn0","mnnnnnccncnnnnyn2","cncnnncnmnnmnnnn0","cncnnnccmnnmnnnn0","cnmnnnmcmnmmnnnn1","cnccnnccmnnmnnnn0","cncnnncnmnnmnnnn0","cnmnnnccmnnmnnnn0","mcnnnnncnccnnnnn2","mnncccnnnnmmnnnn1","mcnmnmnnnncmnnnn2","cncnnmcnmmnmnnnn0","cncnnmcnmmnmnnnn1","mccmncnnnnmmnnnn2","mnnnnmnnmnnmnnnn1","cnmnnnmcmnmmnnnn1","mnnmccnnnncmnnnn3","cnmcnnmcmncmnnnn1","mcnnnmnnnnmmnnnn1","mnnnnmnnmnnmnnnn0","mnnnncnnnnmmnnnn0","mmncmmnnnnmmnmnn2","cnmnnnmcmncmnnnn1","cccmncnnnnmmnnnn1","mnncnmnnnnnnnnnn0","cnmmncnmnnmmnnnn2","mncnnmcnmmnmnnnn0","mcmcnmnnnnmmnnnn1","mnnnnmmnmnnmnnnn2","mcccncnnnnmmnnnn1","mcnnnmmnnnnmnnnn2","mnnnnncmnmnnnnnn2","mnnnnncnnmnnnnnn2","mcnccmnnnnmmnnnn2","mnnnnncmnmnnnnnn2","cnmnnmmcnnmmnnnn1","mmnmncnnnnmmnmnn2","mnncmcnnnnmmnnnn3","mncnnncnnnnnnnnn2","mnnnnncmnmnnnnnn2","mnncncnnnnmmnnnn0","cnmnnnmcmnmmnnnn1","mcnmnnnnmnnmnnnn2","cnmnnnccmncmnnnn1","mnncncnnnncmnnnn0","mcnmnmnnnnmmnnnn2","mnncnnncmnnmnnnn0","mnnnnmmnmnnmnnnn2","mcmcnmnnnnmmnnnn1","mnncncnnnnmmnnnn0","mcncmmnnnnmmnnnn2","mnnnnnccnmcnnnyn2","cnncnnmcmnnmncnn0","cnmmncnnnnmmnnnn2","mmncmmnnnnmmnmnn2","mcncnnncmnnmncnn0","mnnnnmnnmnnmnnnn1","cnmnnmmcmnmmnnnn1","mcccncnnnnmmnnnn0","ccmmnmnnnnmmnnnn0","mcmccmnnnnmmnnnn1","mnnnnmnnmnnmnnnn0","mmncmmnnnnmmnnnn2","ccmcnnncmnnmncnn0","mnnnnncnnnmmnnnn2","mnnnnncnnnmmnnnn2","mcmcnmnnnnmmncnn1","cncnnncnmnnmncnn0","mnnnmncmnmnnnnnn1","cncnnmcnmmnmnnnn0","mcccncnnnnmmnnnn1","mnncnncnnnnmnnnn2","mnnnnncmnmnnnnyn2","cnnnnnmnmnnmnnnn0","mnncncnnnnmmnnnn0","cnmnnmccmnnmnnnn1","mnncncnnnnmmnnnn2","cnmnnmccmncmnnnn1","mnncnncnnnnmnnnn2","cncnnnccmnnmnnnn0","cncnnncnmnnmnnnn0","cnmnnmcnmmnmnnnn0","mncnccnnnncmnnnn2","mnnnccnnnncmnnnn3","mmnccmnnnnmmnnnn2","mnncnmnnnnnnnnnn0","mnncncnnnnmmnnnn1","cnmnnmmcnnmmnnnn1","mmncmmnnnnmmnnnn2","cnmnnmcnmmnmnnnn0","mnnnnmccnnnmnnnn2","mnnnnmmnmnnmnnnn2","mnnnccnnnncmnnnn2","mnncccnnnnmmnnnn2","mnncncnnnnmmnnnn0","cnmnnnmnmnnmnnnn0","mnnnnmnnmnnmnnnn1"];
+  var box = document.getElementById("fl-al");
+  box.innerHTML = ORDER.map(function (a, i) {
+    return '<label><input type="checkbox" value="' + i + '"' + (a === "gluten" ? " checked" : "") + ' /> ' + a + '</label>';
+  }).join("");
+  var veg = document.getElementById("fl-veg"), vgn = document.getElementById("fl-vgn"), sp = document.getElementById("fl-spice");
+  function run() {
+    var sel = Array.prototype.map.call(box.querySelectorAll("input:checked"), function (i) { return +i.value; });
+    var lim = sp.value === "" ? null : +sp.value, nc = 0, nm = 0, nd = 0, nl = 0;
+    TAGS.forEach(function (t) {
+      if (sel.some(function (i) { return t[i] === "c"; })) nc++;
+      else if (sel.some(function (i) { return t[i] === "m"; })) nm++;
+      else if ((veg.checked && t[14] !== "y") || (vgn.checked && t[15] !== "y") || (lim !== null && +t[16] > lim)) nd++;
+      else nl++;
+    });
+    var N = TAGS.length, w = function (x) { return (x / N * 100) + "%"; };
+    var big = document.getElementById("fl-n");
+    big.textContent = nl; big.className = "fl-big" + (nl === 0 ? " zero" : "");
+    document.getElementById("fl-cap").textContent = "of " + N + " dishes left to recommend from";
+    document.getElementById("fl-bar").innerHTML = '<span class="bc" style="width:' + w(nc) + '"></span><span class="bm" style="width:' + w(nm) + '"></span><span class="bd" style="width:' + w(nd) + '"></span><span class="bl" style="width:' + w(nl) + '"></span>';
+    document.getElementById("fl-lc").textContent = nc + " contains";
+    document.getElementById("fl-lm").textContent = nm + " may only";
+    document.getElementById("fl-ld").textContent = nd + " diet or spice";
+    document.getElementById("fl-ll").textContent = nl + " left";
+  }
+  [box, veg, vgn, sp].forEach(function (el) { el.addEventListener("change", run); });
+  run();
+})();
+</script>
 </body>
 </html>
