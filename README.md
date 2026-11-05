@@ -46,9 +46,11 @@ Python, Gradio, MLX (`mlx_lm`), Qwen2.5-1.5B-Instruct, Pydantic, tesseract, Clau
 ## How to run
 
 ```bash
+git clone https://github.com/lyhjeremy/menu-decoder && cd menu-decoder
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 ./setup_ocr.sh                          # tesseract and language packs, one time
-python scripts/gen_dishes.py            # synthetic corpus (long-running, resumable)
+python scripts/gen_dishes.py            # synthetic corpus: 6,750 items, a claude -p call each; resumable
 python training/prep_tagger.py          # dish-family split train/valid/test
 bash training/lora_harness/train.sh mlx-community/Qwen2.5-1.5B-Instruct-4bit \
     data/lora training/adapters 4 12 800 1.5e-4 768

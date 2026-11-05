@@ -8,6 +8,6 @@ edge-tts
 google-genai
 anthropic
 Pillow
-mlx-lm
+mlx-lm<0.32   # 0.32 dropped the "Iter N: Train loss" lines that train.sh extracts
 matplotlib
 pytest
