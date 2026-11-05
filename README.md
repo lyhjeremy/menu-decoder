@@ -23,6 +23,8 @@ The tagger takes a one-line prompt (`Dish: Pad Thai.`) and emits JSON with cuisi
 
 Allergen recall is macro recall on dishes labeled `contains`. False-safe is the share of `contains` dishes tagged `not_indicated`, the dangerous miss.
 
+Schema-primed Claude costs $0.056 a dish ($56.02 per 1,000) at API prices: the `total_cost_usd` that `claude -p --output-format json` reports, measured on 2026-11-05 by rerunning 25 dishes of its subsample with the benchmark's own prompt and flags ([`eval/claude_cost/`](eval/claude_cost/)). The CLI runs on a Claude subscription, so nothing was billed. The LoRA model costs nothing per call.
+
 With the bare prompt, Claude describes the dish under its own JSON keys and scores zero by construction. With the tagging rubric and output format added, it beats the fine-tune on allergens. What the fine-tune has going for it is that the schema lives in its weights, so the prompt is one line, and it runs locally at no cost per call. Its weakest allergens are molluscs (39.1% false-safe) and peanuts (18.2%).
 
 ![Per-allergen recall and false-safe rate for base, LoRA and schema-primed Claude across 14 allergens; LoRA's false-safe rate is highest on molluscs](eval/allergen_recall_chart.png)

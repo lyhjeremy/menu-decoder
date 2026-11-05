@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-05",
+  "machine": "Apple M4, macOS 26.5.2",
+  "percentile_method": "nearest rank",
+  "n": 25,
+  "models": [
+    "claude-sonnet-5-5"
+  ],
+  "cost_per_item_usd_median": 0.06,
+  "cost_per_item_usd_mean": 0.056,
+  "cost_per_1000_items_usd": 56.02,
+  "latency_median_s": 4.1,
+  "latency_p95_s": 9.1,
+  "cost_note": "total_cost_usd from claude -p --output-format json: the API-equivalent cost; the CLI runs on a Max subscription, so nothing was billed",
+  "task": "tag one dish: cuisine, 14 allergens, spice, vegetarian, vegan",
+  "sample": "first 25 rows of the benchmark's seed-42 Claude subsample, schema-primed prompt",
+  "cli_args": "-p --model sonnet --output-format json",
+  "cwd": "BLIND_CWD (temp dir outside the repo)",
+  "valid_json": 25
+}

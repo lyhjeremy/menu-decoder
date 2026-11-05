@@ -389,7 +389,7 @@
           <div><dt>Eval set</dt><dd>303 dishes held out by dish family (101 families, 3 variants each), leakage-checked; Claude on a 100-dish subsample. Labels are Claude-generated and not yet human-checked</dd></div>
           <div><dt>Baseline</dt><dd>Claude with the schema in its prompt: 79.2% allergen recall, 1.7% false-safe, 81.0% cuisine</dd></div>
           <div><dt>Result</dt><dd>LoRA: 100% valid JSON, 99.3% cuisine, <b>69.3%</b> allergen recall, <b>7.3%</b> false-safe</dd></div>
-          <div><dt>Cost / dish</dt><dd>$0 per call on the laptop; Claude ran on a Max subscription and its per-call cost was not recorded</dd></div>
+          <div><dt>Cost / dish</dt><dd>$0 per call on the laptop; schema-primed Claude <b>$0.056</b> API-equivalent ($56.02 per 1,000), from 25 dishes rerun on 2026-11-05 with the benchmark's prompt and CLI flags (<code>eval/claude_cost/</code>)</dd></div>
           <div><dt>Latency</dt><dd>LoRA <b>6.5 s</b> median, 7.6 s p95 (n&nbsp;=&nbsp;303, model reloaded every call); Claude with schema <b>12.3 s</b>, 18.4 s p95 (n&nbsp;=&nbsp;100)</dd></div>
           <div class="wide"><dt>Main failure</dt><dd>Rare allergens: it catches 0 of 11 sulphite dishes and 0 of 2 celery dishes, and calls 39.1% of the 23 mollusc dishes safe</dd></div>
         </dl>
