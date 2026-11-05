@@ -21,6 +21,7 @@ from cache import FileCache, SemanticCache
 from decoder import build_recommend_prompt, build_tagging_prompt
 from guardrails import GuardrailError, Refusal, generate_validated
 from safelist import ALLERGEN_BADGE, filter_safe_dishes, is_safe_for_brief
+from brief_parse import parse_brief, warning_text
 from schemas import DietBrief, Dish, DishTags, DishTagsBatch, Menu
 
 DATA_DIR = Path(__file__).resolve().parent / "data"
@@ -132,9 +133,9 @@ def process_menu_and_brief(menu: Menu | None, diets_text: str, allergens_text: s
     if menu is None:
         return "⚠ Extract a menu first.", None
 
-    diets = [d.strip() for d in diets_text.split(",") if d.strip()] if diets_text else []
-    allergens = [a.strip() for a in allergens_text.split(",") if a.strip()] if allergens_text else []
-    brief = DietBrief(diets=diets, allergens=allergens, spice_max=spice_max)
+    brief, unknown_allergens, unknown_diets = parse_brief(diets_text, allergens_text, spice_max)
+    allergens = brief.allergens
+    warning = warning_text(unknown_allergens, unknown_diets)
 
     dishes = menu.all_dishes()
     tags_list = tag_dishes(menu)
@@ -153,6 +154,8 @@ def process_menu_and_brief(menu: Menu | None, diets_text: str, allergens_text: s
 
     safe_dishes = filter_safe_dishes([(d, tags_by_id[d.id]) for d in dishes if d.id in tags_by_id], brief)
     picks_summary = f"{len(safe_dishes)} of {len(dishes)} dishes match your preferences."
+    if warning:
+        picks_summary = f"{warning}\n\n{picks_summary}"
 
     return picks_summary, rows
 
