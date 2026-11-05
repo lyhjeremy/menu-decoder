@@ -1,5 +1,7 @@
 # Menu Decoder
 
+[![tests](https://github.com/lyhjeremy/menu-decoder/actions/workflows/tests.yml/badge.svg)](https://github.com/lyhjeremy/menu-decoder/actions/workflows/tests.yml)
+
 Photograph a foreign-language menu and get each dish translated and tagged for cuisine, 14 EU allergens, spice and diet by a Qwen2.5-1.5B LoRA fine-tune, with an allergen display that can warn but never clear.
 
 [Project page](https://lyhjeremy.github.io/menu-decoder/) · [Write-up](https://lyhjeremy.github.io/menu-decoder/overview/) · [Engineering notes](writeup.md) · [Full benchmark](eval/benchmark.md)
