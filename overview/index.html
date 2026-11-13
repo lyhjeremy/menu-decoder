@@ -453,7 +453,7 @@
         <div class="c" role="cell">94.0%<i><b style="width:94%"></b></i></div><div class="c" role="cell">43.0%<i><b style="width:43%"></b></i></div><div class="c" role="cell">0.0%<i><b style="width:0%"></b></i></div><div class="c bad" role="cell">100.0%<i><b style="width:100%"></b></i></div>
 
         <div class="sys last" role="rowheader">Claude<small>schema in prompt, n = 100, 13.4 s</small></div>
-        <div class="c cl last" role="cell">99.0%<i><b style="width:99%"></b></i></div><div class="c cl last" role="cell">81.0%<i><b style="width:81%"></b></i></div><div class="c cl last" role="cell">79.2%<i><b style="width:79.2%"></b></i></div><div class="c cl last" role="cell">1.7%<i><b style="width:1.7%"></b></i></div>
+        <div class="c cl last" role="cell">99.0%<i><b style="width:99%"></b></i></div><div class="c cl last" role="cell">81.0%<i><b style="width:81%"></b></i></div><div class="c cl last" role="cell">79.3%<i><b style="width:79.3%"></b></i></div><div class="c cl last" role="cell">1.7%<i><b style="width:1.7%"></b></i></div>
       </div>
       <figcaption class="sheet-foot">Allergen recall is macro recall on dishes labeled <code>contains</code>. False-safe is the share of <code>contains</code> dishes tagged <code>not_indicated</code>, the dangerous miss; a <code>may</code> still warns, so it does not count. Claude ran on a 100-row subsample.</figcaption>
     </figure>
@@ -501,19 +501,19 @@
         </div>
         <div class="gd-set" data-set="test" hidden>
           <p class="sheet-title">On the held-out set, false-safe falls from 7.3% to 0.8%</p>
-          <p class="sheet-sub">Same metrics as the benchmark above (macro over allergens; counts are allergen slots). 658 slots labeled contains, 2,319 labeled not indicated.</p>
+          <p class="sheet-sub">Recall and false-safe are macro over allergens, as in the benchmark above; the small line gives the pooled rate over allergen slots and its count. 658 slots labeled contains, 2,319 labeled not indicated; over-warning is a share of the latter.</p>
           <div class="rg gd" role="table" aria-label="Held-out set: recall, false-safe rate, over-warning and added cost per dish for each layer">
             <div class="h h0" role="columnheader">Layer</div><div class="h" role="columnheader">Recall</div><div class="h" role="columnheader">False-safe</div><div class="h" role="columnheader">Over-warning</div><div class="h" role="columnheader">Adds per dish</div>
             <div class="sys" role="rowheader">L1 LoRA<small>saved run, 6.5 s with a model reload per dish</small></div>
-            <div class="c" role="cell">69.3%</div><div class="c bad" role="cell">7.3%<small>30 of 658</small></div><div class="c" role="cell">6.2%</div><div class="c" role="cell">$0</div>
+            <div class="c" role="cell">69.3%</div><div class="c bad" role="cell">7.3%<small>slots: 4.6%, 30 of 658</small></div><div class="c" role="cell">6.2%</div><div class="c" role="cell">$0</div>
             <div class="sys" role="rowheader">L1 + L2 lexicon<small>0.04 ms</small></div>
-            <div class="c" role="cell">79.7%</div><div class="c" role="cell">4.5%<small>17 of 658</small></div><div class="c" role="cell">7.2%</div><div class="c" role="cell">$0</div>
+            <div class="c" role="cell">79.7%</div><div class="c" role="cell">4.5%<small>slots: 2.6%, 17 of 658</small></div><div class="c" role="cell">7.2%</div><div class="c" role="cell">$0</div>
             <div class="sys" role="rowheader">L1 + L2 + L3 Haiku<small>13.0 s per batch of 10, 16.1 s p95</small></div>
-            <div class="c lo" role="cell">82.0%</div><div class="c lo" role="cell">0.8%<small>2 of 658</small></div><div class="c" role="cell">8.9%</div><div class="c" role="cell">$0.00018</div>
+            <div class="c lo" role="cell">82.0%</div><div class="c lo" role="cell">0.8%<small>slots: 0.3%, 2 of 658</small></div><div class="c" role="cell">8.9%</div><div class="c" role="cell">$0.00018</div>
             <div class="sys last" role="rowheader">Claude with schema, alone<small>100-dish subsample, 13.4 s per dish</small></div>
-            <div class="c cl last" role="cell">79.2%</div><div class="c cl last" role="cell">1.7%<small>3 of 229</small></div><div class="c last" role="cell">3.3%</div><div class="c last" role="cell">$0.056</div>
+            <div class="c cl last" role="cell">79.3%</div><div class="c cl last" role="cell">1.7%<small>slots: 1.3%, 3 of 229</small></div><div class="c last" role="cell">3.3%</div><div class="c last" role="cell">$0.056</div>
           </div>
-          <p class="sheet-sub" style="margin:12px 0 0">On the same 100 dishes Claude saw, the three layers score 81.3% recall and 0.3% false-safe (1 of 229) at 9.2% over-warning.</p>
+          <p class="sheet-sub" style="margin:12px 0 0">On the same 100 dishes Claude saw, the three layers score 81.3% recall and 0.3% false-safe (macro; 1 of 229 slots, 0.4%) at 9.2% over-warning. Claude's 79.3% was printed as 79.2% before 2026-11-13; the exact mean is 79.25%.</p>
         </div>
       </div>
       <figcaption class="sheet-foot">Costs are API-equivalent, as reported by the Claude CLI (<code>total_cost_usd</code>); the runs used a subscription. Haiku: 31 calls for the held-out set, $0.055 in all; 6 calls for the adversarial set, $0.011. Adversarial recall and false-safe count only the hidden allergens each dish was built around. Run with <code>python eval/guardrails/run_guard.py</code>.</figcaption>

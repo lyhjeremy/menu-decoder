@@ -74,7 +74,7 @@
     <div>
       <h1>A 1.5B model that tags menu dishes for 14 allergens from the dish name alone</h1>
       <p>Photograph a menu in any language and say your allergies and diet. Menu Decoder translates each dish and tags it for cuisine, the 14 EU allergens, spice and vegetarian or vegan. The tagger is Qwen2.5-1.5B with a LoRA adapter that learned the whole JSON schema, so its prompt is one line: <code>Dish: Pad Thai.</code></p>
-      <p>On 303 held-out dishes it returns valid tags every time and catches 69.3% of the allergens a dish contains. Claude does better on allergens (79.2%) but only when the full schema is written into every prompt; without it, Claude answers a different question. Because the tagger misses some allergens, the app never marks one as safe.</p>
+      <p>On 303 held-out dishes it returns valid tags every time and catches 69.3% of the allergens a dish contains. Claude does better on allergens (79.3%) but only when the full schema is written into every prompt; without it, Claude answers a different question. Because the tagger misses some allergens, the app never marks one as safe.</p>
       <div class="links">
         <a class="btn" href="https://github.com/lyhjeremy/menu-decoder">Code and benchmark</a>
         <a href="overview/">Write-up</a>
@@ -100,7 +100,7 @@
               <tr><td>Base 1.5B</td><td>0.0%</td><td>100.0%</td></tr>
               <tr class="me"><td>1.5B + LoRA</td><td>69.3%</td><td>7.3%</td></tr>
               <tr><td>Claude, bare prompt</td><td>0.0%</td><td>100.0%</td></tr>
-              <tr><td>Claude, schema in prompt</td><td>79.2%</td><td>1.7%</td></tr>
+              <tr><td>Claude, schema in prompt</td><td>79.3%</td><td>1.7%</td></tr>
             </tbody>
           </table>
         </div>

@@ -4,7 +4,7 @@ If you ask a chatbot to read a menu you can't read and tell you what's safe to e
 
 Design and copy follow [these standards](https://github.com/lyhjeremy/lyhjeremy/blob/main/DESIGN_STANDARDS.md).
 
-The tagger is Qwen2.5-1.5B with a LoRA adapter that learned the whole output schema, so its prompt is one line. On 303 held-out dishes it returns valid tags every time and catches 69.3% of the allergens a dish contains. Claude, given the full schema in its prompt, catches 79.2%. So the small model loses on the number that matters most, and the app is designed on the assumption that it will miss some.
+The tagger is Qwen2.5-1.5B with a LoRA adapter that learned the whole output schema, so its prompt is one line. On 303 held-out dishes it returns valid tags every time and catches 69.3% of the allergens a dish contains. Claude, given the full schema in its prompt, catches 79.3%. So the small model loses on the number that matters most, and the app is designed on the assumption that it will miss some.
 
 It is one of four apps that each fine-tune a small local model and benchmark it against Claude; the others are [Cellar Scanner](https://github.com/lyhjeremy/cellar-scanner), [Race Day Copilot](https://github.com/lyhjeremy/race-day-copilot) and [Receipt Auditor](https://github.com/lyhjeremy/receipt-auditor).
 
@@ -39,11 +39,11 @@ Base and LoRA ran on all 303 test rows. Claude ran on a 100-row subsample, becau
 | Base Qwen2.5-1.5B, bare prompt | 303 | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 0.0% | 100.0% | 5.4 s |
 | Qwen2.5-1.5B + LoRA, bare prompt | 303 | **100.0%** | **99.3%** | **99.0%** | 94.1% | **96.7%** | 69.3% | 7.3% | 6.7 s |
 | Claude, bare prompt | 100 | 94.0% | 43.0% | 0.0% | 0.0% | 0.0% | 0.0% | 100.0% | 16.5 s |
-| Claude, schema in prompt | 100 | 99.0% | 81.0% | 99.0% | **97.0%** | 96.0% | **79.2%** | **1.7%** | 13.4 s |
+| Claude, schema in prompt | 100 | 99.0% | 81.0% | 99.0% | **97.0%** | 96.0% | **79.3%** | **1.7%** | 13.4 s |
 
 Claude has two rows on purpose. The bare-prompt row gets exactly what the LoRA model gets, `"Dish: X."`. The schema row adds `src/decoder.py`'s `TAGGING_SYSTEM` rubric and a single-dish JSON format description, with no answers and no examples.
 
-Given only the dish name, Claude answers a sensible but different question ("tell me about this dish") and returns valid JSON with its own keys: `dish_name_arabic`, `region`, `main_ingredients`, `flavor_profile`. It parses, but none of those keys are scored, so the row is zero. The untrained base model fails for the mirror-image reason; it has no idea what format to produce and writes prose. With the schema, Claude reaches 81.0% on cuisine and 79.2% allergen recall with a 1.7% false-safe rate, which puts it ahead of the fine-tune on allergen safety.
+Given only the dish name, Claude answers a sensible but different question ("tell me about this dish") and returns valid JSON with its own keys: `dish_name_arabic`, `region`, `main_ingredients`, `flavor_profile`. It parses, but none of those keys are scored, so the row is zero. The untrained base model fails for the mirror-image reason; it has no idea what format to produce and writes prose. With the schema, Claude reaches 81.0% on cuisine and 79.3% allergen recall with a 1.7% false-safe rate, which puts it ahead of the fine-tune on allergen safety.
 
 What the fine-tune buys is that the 14-allergen contract sits in its weights. The prompt is one line and the model runs locally at no cost per call, while a zero-shot model needs the full rubric in every call before it can attempt the task at all.
 
