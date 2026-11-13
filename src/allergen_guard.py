@@ -158,3 +158,43 @@ def guard_levels(text: str, lora_levels: dict[str, str]) -> dict[str, str]:
 
 def level_max(a: str, b: str) -> str:
     return a if LEVEL_RANK[a] >= LEVEL_RANK[b] else b
+
+
+def guard_menu(dishes, tags_list, user_allergens: list[str], second=True, call=_claude, model: str = "haiku"):
+    """Apply layers 2 and 3 to the app's tags for one menu, in place of the raw tagger output.
+
+    dishes: schemas.Dish list; tags_list: schemas.DishTags list (same dish ids).
+    Layer 3 asks only about the user's allergens that are still not indicated, ten
+    dishes per call, and is skipped when `second` is False or the CLI call fails
+    (the lexicon result stands). Returns (new tags list, notes)."""
+    from schemas import AllergenCall, DishTags
+
+    by_id = {d.id: d for d in dishes}
+    texts, levels = {}, {}
+    for t in tags_list:
+        d = by_id.get(t.dish_id)
+        if d is None:
+            continue
+        texts[t.dish_id] = " ".join(x for x in (d.original, d.translation, d.description) if x)
+        levels[t.dish_id] = guard_levels(texts[t.dish_id], {c.allergen: c.level for c in t.allergen_calls})
+    notes = {"second_opinion_calls": 0, "second_opinion_error": None}
+    if second and user_allergens:
+        todo = [{"id": i, "text": texts[i], "open": open_allergens(lv, only=user_allergens)} for i, lv in levels.items()]
+        todo = [x for x in todo if x["open"]]
+        for b in range(0, len(todo), 10):
+            try:
+                res = second_opinion(todo[b:b + 10], model=model, call=call)
+            except Exception as e:  # no CLI, timeout: keep layers 1 and 2
+                notes["second_opinion_error"] = str(e)[:200]
+                break
+            notes["second_opinion_calls"] += len(res["attempts"])
+            for i, extra in res["calls"].items():
+                levels[i] = raise_levels(levels[i], extra)
+    out = []
+    for t in tags_list:
+        lv = levels.get(t.dish_id)
+        if lv is None:
+            out.append(t)
+            continue
+        out.append(DishTags(**{**t.model_dump(), "allergen_calls": [AllergenCall(allergen=a, level=lv[a]) for a in ALLERGENS]}))
+    return out, notes

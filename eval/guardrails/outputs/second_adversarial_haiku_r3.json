@@ -1,0 +1,1326 @@
+{
+ "set": "adversarial",
+ "model": "haiku",
+ "run": 3,
+ "batch_size": 10,
+ "batches": [
+  {
+   "ids": [
+    "caesar",
+    "bloody-mary-prawns",
+    "coq-au-vin",
+    "bordelaise",
+    "risotto-milanese",
+    "moules",
+    "vongole",
+    "pulpo",
+    "calamares",
+    "gambas"
+   ],
+   "open": {
+    "caesar": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "bloody-mary-prawns": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "coq-au-vin": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "bordelaise": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "risotto-milanese": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "moules": [
+     "eggs",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "vongole": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "pulpo": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "calamares": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "gambas": [
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "caesar": {
+     "fish": "contains"
+    },
+    "bloody-mary-prawns": {
+     "mustard": "may"
+    },
+    "coq-au-vin": {},
+    "bordelaise": {
+     "celery": "may"
+    },
+    "risotto-milanese": {},
+    "moules": {},
+    "vongole": {},
+    "pulpo": {},
+    "calamares": {
+     "milk": "may"
+    },
+    "gambas": {}
+   },
+   "why": {
+    "caesar": {
+     "fish": "Anchovies are standard in Caesar dressing and Worcestershire."
+    },
+    "bloody-mary-prawns": {
+     "mustard": "Marie Rose and Bloody Mary mixes often include mustard."
+    },
+    "coq-au-vin": {},
+    "bordelaise": {
+     "celery": "Demi-glace and stock bases often use celery in mirepoix."
+    },
+    "risotto-milanese": {},
+    "moules": {},
+    "vongole": {},
+    "pulpo": {},
+    "calamares": {
+     "milk": "Some Romana batters use milk alongside flour and water."
+    },
+    "gambas": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0011686699999999997,
+     "duration_ms": 9429,
+     "wall_s": 9.99,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 361,
+      "cache_read_input_tokens": 1227,
+      "output_tokens": 2168,
+      "output_tokens_details": {
+       "thinking_tokens": 1831
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 361,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2168,
+        "cache_read_input_tokens": 1227,
+        "cache_creation_input_tokens": 361,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 361
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": [{\"allergen\": \"fish\", \"level\": \"contains\", \"why\": \"Anchovies are standard in Caesar dressing and Worcestershire.\"}]}, {\"id\": \"d2\", \"flags\": [{\"allergen\": \"mustard\", \"level\": \"may\", \"why\": \"Marie Rose and Bloody Mary mixes often include mustard.\"}]}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": [{\"allergen\": \"celery\", \"level\": \"may\", \"why\": \"Demi-glace and stock bases often use celery in mirepoix.\"}]}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": [{\"allergen\": \"milk\", \"level\": \"may\", \"why\": \"Some Romana batters use milk alongside flour and water.\"}]}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 9.99
+  },
+  {
+   "ids": [
+    "ebi-chili",
+    "tom-kha",
+    "som-tam",
+    "pad-see-ew",
+    "pho",
+    "bibimbap",
+    "bulgogi",
+    "kimchi-jjigae",
+    "hummus",
+    "baklava"
+   ],
+   "open": {
+    "ebi-chili": [
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "tom-kha": [
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "som-tam": [
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "pad-see-ew": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "pho": [
+     "crustaceans",
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "bibimbap": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "bulgogi": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "kimchi-jjigae": [
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "hummus": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "baklava": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "ebi-chili": {
+     "eggs": "may",
+     "molluscs": "may"
+    },
+    "tom-kha": {
+     "nuts": "may"
+    },
+    "som-tam": {},
+    "pad-see-ew": {
+     "molluscs": "may"
+    },
+    "pho": {},
+    "bibimbap": {},
+    "bulgogi": {},
+    "kimchi-jjigae": {},
+    "hummus": {},
+    "baklava": {
+     "nuts": "contains"
+    }
+   },
+   "why": {
+    "ebi-chili": {
+     "eggs": "Shrimp are often coated in egg white or batter.",
+     "molluscs": "Some versions use oyster sauce in the chili sauce."
+    },
+    "tom-kha": {
+     "nuts": "Coconut milk is sometimes treated as a tree nut."
+    },
+    "som-tam": {},
+    "pad-see-ew": {
+     "molluscs": "Oyster sauce is commonly used in the stir-fry sauce."
+    },
+    "pho": {},
+    "bibimbap": {},
+    "bulgogi": {},
+    "kimchi-jjigae": {},
+    "hummus": {},
+    "baklava": {
+     "nuts": "Walnuts or pistachios are the standard filling."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.00164691,
+     "duration_ms": 14005,
+     "wall_s": 14.61,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 360,
+      "cache_read_input_tokens": 1121,
+      "output_tokens": 3127,
+      "output_tokens_details": {
+       "thinking_tokens": 2540
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 360,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 3127,
+        "cache_read_input_tokens": 1121,
+        "cache_creation_input_tokens": 360,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 360
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": [{\"allergen\": \"crustaceans\", \"level\": \"contains\", \"why\": \"Shrimp is the main ingredient.\"}, {\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Shrimp are often coated in egg white or batter.\"}, {\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Some versions use oyster sauce in the chili sauce.\"}]}, {\"id\": \"d2\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"may\", \"why\": \"Coconut milk is sometimes treated as a tree nut.\"}]}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"contains\", \"why\": \"Crushed roasted peanuts are a standard garnish.\"}, {\"allergen\": \"crustaceans\", \"level\": \"may\", \"why\": \"Dried shrimp are often added for flavour.\"}]}, {\"id\": \"d4\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Oyster sauce is commonly used in the stir-fry sauce.\"}]}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Salted seafood (jeotgal) is often used in kimchi jjigae.\"}]}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"milk\", \"level\": \"contains\", \"why\": \"Phyllo layers are brushed with melted butter.\"}, {\"allergen\": \"nuts\", \"level\": \"contains\", \"why\": \"Walnuts or pistachios are the standard filling.\"}]}]}",
+     "dropped_flags": 5
+    }
+   ],
+   "wall_s": 14.61
+  },
+  {
+   "ids": [
+    "mole-poblano",
+    "chiles-nogada",
+    "korma",
+    "shorshe-ilish",
+    "waldorf",
+    "tartare",
+    "vitello-tonnato",
+    "benedict",
+    "meuniere",
+    "bouillabaisse"
+   ],
+   "open": {
+    "mole-poblano": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "chiles-nogada": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "korma": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "shorshe-ilish": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "milk",
+     "nuts",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "waldorf": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "tartare": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "vitello-tonnato": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "benedict": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "meuniere": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "bouillabaisse": [
+     "eggs",
+     "peanuts",
+     "soy",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "mole-poblano": {
+     "nuts": "contains",
+     "sesame": "contains",
+     "peanuts": "may",
+     "milk": "may"
+    },
+    "chiles-nogada": {
+     "eggs": "may"
+    },
+    "korma": {},
+    "shorshe-ilish": {},
+    "waldorf": {
+     "nuts": "contains"
+    },
+    "tartare": {
+     "mustard": "contains"
+    },
+    "vitello-tonnato": {
+     "mustard": "may"
+    },
+    "benedict": {},
+    "meuniere": {},
+    "bouillabaisse": {
+     "molluscs": "may",
+     "eggs": "may"
+    }
+   },
+   "why": {
+    "mole-poblano": {
+     "nuts": "Traditional mole includes almonds.",
+     "sesame": "Sesame seeds are a standard mole ingredient.",
+     "peanuts": "Peanuts are often ground into mole for thickening.",
+     "milk": "Chocolate or cheese garnish may contain milk."
+    },
+    "chiles-nogada": {
+     "eggs": "Some versions batter or bind the stuffed chile with egg."
+    },
+    "korma": {},
+    "shorshe-ilish": {},
+    "waldorf": {
+     "nuts": "Walnuts are a defining ingredient of Waldorf salad."
+    },
+    "tartare": {
+     "mustard": "Dijon mustard is a standard steak tartare ingredient."
+    },
+    "vitello-tonnato": {
+     "mustard": "Tuna mayonnaise sauce often includes mustard."
+    },
+    "benedict": {},
+    "meuniere": {},
+    "bouillabaisse": {
+     "molluscs": "Mussels are often included in bouillabaisse.",
+     "eggs": "Rouille topping often contains egg yolk."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.00176553,
+     "duration_ms": 14672,
+     "wall_s": 15.18,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 362,
+      "cache_read_input_tokens": 1193,
+      "output_tokens": 3362,
+      "output_tokens_details": {
+       "thinking_tokens": 2568
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 362,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 3362,
+        "cache_read_input_tokens": 1193,
+        "cache_creation_input_tokens": 362,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 362
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"contains\", \"why\": \"Traditional mole includes almonds.\"}, {\"allergen\": \"sesame\", \"level\": \"contains\", \"why\": \"Sesame seeds are a standard mole ingredient.\"}, {\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Peanuts are often ground into mole for thickening.\"}, {\"allergen\": \"milk\", \"level\": \"may\", \"why\": \"Chocolate or cheese garnish may contain milk.\"}]}, {\"id\": \"d2\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"contains\", \"why\": \"Walnut cream sauce (nogada) is the defining ingredient.\"}, {\"allergen\": \"milk\", \"level\": \"contains\", \"why\": \"Nogada sauce uses cream and queso fresco.\"}, {\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Some versions batter or bind the stuffed chile with egg.\"}]}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"milk\", \"level\": \"contains\", \"why\": \"Korma sauce is built on yogurt and cream.\"}, {\"allergen\": \"nuts\", \"level\": \"contains\", \"why\": \"Ground cashews or almonds thicken the standard korma sauce.\"}]}, {\"id\": \"d4\", \"flags\": [{\"allergen\": \"mustard\", \"level\": \"contains\", \"why\": \"Shorshe means mustard; the sauce is mustard paste based.\"}]}, {\"id\": \"d5\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"contains\", \"why\": \"Walnuts are a defining ingredient of Waldorf salad.\"}]}, {\"id\": \"d6\", \"flags\": [{\"allergen\": \"mustard\", \"level\": \"contains\", \"why\": \"Dijon mustard is a standard steak tartare ingredient.\"}]}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"mustard\", \"level\": \"may\", \"why\": \"Tuna mayonnaise sauce often includes mustard.\"}]}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Mussels are often included in bouillabaisse.\"}, {\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Rouille topping often contains egg yolk.\"}]}]}",
+     "dropped_flags": 5
+    }
+   ],
+   "wall_s": 15.18
+  },
+  {
+   "ids": [
+    "tiramisu",
+    "creme-brulee",
+    "nata",
+    "tremocos",
+    "altramuces",
+    "gumbo",
+    "jambalaya",
+    "bolognese",
+    "minestrone",
+    "osso-buco"
+   ],
+   "open": {
+    "tiramisu": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "creme-brulee": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "nata": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "tremocos": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "molluscs"
+    ],
+    "altramuces": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "nuts",
+     "mustard",
+     "sesame",
+     "molluscs"
+    ],
+    "gumbo": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "jambalaya": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "bolognese": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "minestrone": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "osso-buco": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "tiramisu": {
+     "soy": "may",
+     "nuts": "may"
+    },
+    "creme-brulee": {},
+    "nata": {},
+    "tremocos": {},
+    "altramuces": {},
+    "gumbo": {
+     "celery": "contains",
+     "milk": "may",
+     "mustard": "may"
+    },
+    "jambalaya": {
+     "crustaceans": "may",
+     "mustard": "may"
+    },
+    "bolognese": {},
+    "minestrone": {
+     "celery": "contains",
+     "nuts": "may",
+     "eggs": "may"
+    },
+    "osso-buco": {}
+   },
+   "why": {
+    "tiramisu": {
+     "soy": "Soy lecithin is often in cocoa or chocolate garnish and ladyfingers.",
+     "nuts": "Some versions use hazelnut or almond liqueur or garnish."
+    },
+    "creme-brulee": {},
+    "nata": {},
+    "tremocos": {},
+    "altramuces": {},
+    "gumbo": {
+     "celery": "Gumbo's holy trinity includes celery.",
+     "milk": "Roux is often made with butter.",
+     "mustard": "Some Cajun or Creole seasoning blends contain mustard powder."
+    },
+    "jambalaya": {
+     "crustaceans": "Shrimp is common in jambalaya, though not in every version.",
+     "mustard": "Some Cajun seasoning blends contain mustard powder."
+    },
+    "bolognese": {},
+    "minestrone": {
+     "celery": "Celery is a standard soffritto vegetable in minestrone.",
+     "nuts": "Pesto garnish may use walnuts or almonds, not only pine nuts.",
+     "eggs": "Fresh pasta often contains eggs."
+    },
+    "osso-buco": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0015402399999999998,
+     "duration_ms": 12751,
+     "wall_s": 13.2,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 361,
+      "cache_read_input_tokens": 1184,
+      "output_tokens": 2912,
+      "output_tokens_details": {
+       "thinking_tokens": 2233
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 361,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2912,
+        "cache_read_input_tokens": 1184,
+        "cache_creation_input_tokens": 361,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 361
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": [{\"allergen\": \"soy\", \"level\": \"may\", \"why\": \"Soy lecithin is often in cocoa or chocolate garnish and ladyfingers.\"}, {\"allergen\": \"nuts\", \"level\": \"may\", \"why\": \"Some versions use hazelnut or almond liqueur or garnish.\"}]}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": [{\"allergen\": \"lupin\", \"level\": \"contains\", \"why\": \"Tremocos are lupin beans, a core ingredient.\"}]}, {\"id\": \"d5\", \"flags\": [{\"allergen\": \"lupin\", \"level\": \"contains\", \"why\": \"Altramuces are lupin beans, a core ingredient.\"}]}, {\"id\": \"d6\", \"flags\": [{\"allergen\": \"celery\", \"level\": \"contains\", \"why\": \"Gumbo's holy trinity includes celery.\"}, {\"allergen\": \"milk\", \"level\": \"may\", \"why\": \"Roux is often made with butter.\"}, {\"allergen\": \"mustard\", \"level\": \"may\", \"why\": \"Some Cajun or Creole seasoning blends contain mustard powder.\"}]}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"crustaceans\", \"level\": \"may\", \"why\": \"Shrimp is common in jambalaya, though not in every version.\"}, {\"allergen\": \"mustard\", \"level\": \"may\", \"why\": \"Some Cajun seasoning blends contain mustard powder.\"}]}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": [{\"allergen\": \"celery\", \"level\": \"contains\", \"why\": \"Celery is a standard soffritto vegetable in minestrone.\"}, {\"allergen\": \"nuts\", \"level\": \"may\", \"why\": \"Pesto garnish may use walnuts or almonds, not only pine nuts.\"}, {\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Fresh pasta often contains eggs.\"}]}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 2
+    }
+   ],
+   "wall_s": 13.2
+  },
+  {
+   "ids": [
+    "saumon-beurre-blanc",
+    "marsala",
+    "gazpacho",
+    "poireaux",
+    "lapin-moutarde",
+    "chicago-dog",
+    "tonkatsu",
+    "tempura",
+    "miso-soup",
+    "okonomiyaki"
+   ],
+   "open": {
+    "saumon-beurre-blanc": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "marsala": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "gazpacho": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "poireaux": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "lapin-moutarde": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "chicago-dog": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "tonkatsu": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "tempura": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "miso-soup": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "okonomiyaki": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "saumon-beurre-blanc": {},
+    "marsala": {},
+    "gazpacho": {},
+    "poireaux": {
+     "eggs": "may"
+    },
+    "lapin-moutarde": {},
+    "chicago-dog": {
+     "sesame": "may"
+    },
+    "tonkatsu": {
+     "eggs": "contains",
+     "mustard": "may"
+    },
+    "tempura": {
+     "crustaceans": "contains",
+     "molluscs": "may"
+    },
+    "miso-soup": {
+     "molluscs": "may"
+    },
+    "okonomiyaki": {
+     "crustaceans": "may",
+     "molluscs": "may",
+     "mustard": "may"
+    }
+   },
+   "why": {
+    "saumon-beurre-blanc": {},
+    "marsala": {},
+    "gazpacho": {},
+    "poireaux": {
+     "eggs": "Often garnished with chopped hard-boiled egg."
+    },
+    "lapin-moutarde": {},
+    "chicago-dog": {
+     "sesame": "Poppy seed buns often include sesame seeds or share equipment."
+    },
+    "tonkatsu": {
+     "eggs": "Egg wash is used to bind the panko breading.",
+     "mustard": "Karashi mustard is served with it, and some tonkatsu sauces contain mustard."
+    },
+    "tempura": {
+     "crustaceans": "Assorted tempura typically includes prawns or shrimp.",
+     "molluscs": "Squid is a common ingredient in moriawase assortments."
+    },
+    "miso-soup": {
+     "molluscs": "Clam-based miso soup variants are common in Japan."
+    },
+    "okonomiyaki": {
+     "crustaceans": "Shrimp okonomiyaki variants are common.",
+     "molluscs": "Squid or octopus toppings are common in some versions.",
+     "mustard": "Okonomi sauce recipes may contain mustard."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0017406099999999996,
+     "duration_ms": 14973,
+     "wall_s": 15.43,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 361,
+      "cache_read_input_tokens": 1221,
+      "output_tokens": 3312,
+      "output_tokens_details": {
+       "thinking_tokens": 2633
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 361,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 3312,
+        "cache_read_input_tokens": 1221,
+        "cache_creation_input_tokens": 361,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 361
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": [{\"allergen\": \"mustard\", \"level\": \"may\", \"why\": \"Dijon mustard is often whisked into the vinaigrette.\"}, {\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Often garnished with chopped hard-boiled egg.\"}]}, {\"id\": \"d5\", \"flags\": [{\"allergen\": \"mustard\", \"level\": \"contains\", \"why\": \"Mustard is the defining ingredient of the sauce.\"}]}, {\"id\": \"d6\", \"flags\": [{\"allergen\": \"sesame\", \"level\": \"may\", \"why\": \"Poppy seed buns often include sesame seeds or share equipment.\"}]}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"contains\", \"why\": \"Egg wash is used to bind the panko breading.\"}, {\"allergen\": \"mustard\", \"level\": \"may\", \"why\": \"Karashi mustard is served with it, and some tonkatsu sauces contain mustard.\"}]}, {\"id\": \"d8\", \"flags\": [{\"allergen\": \"crustaceans\", \"level\": \"contains\", \"why\": \"Assorted tempura typically includes prawns or shrimp.\"}, {\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Squid is a common ingredient in moriawase assortments.\"}]}, {\"id\": \"d9\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Clam-based miso soup variants are common in Japan.\"}]}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"crustaceans\", \"level\": \"may\", \"why\": \"Shrimp okonomiyaki variants are common.\"}, {\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Squid or octopus toppings are common in some versions.\"}, {\"allergen\": \"mustard\", \"level\": \"may\", \"why\": \"Okonomi sauce recipes may contain mustard.\"}]}]}",
+     "dropped_flags": 2
+    }
+   ],
+   "wall_s": 15.43
+  },
+  {
+   "ids": [
+    "kung-pao",
+    "mapo",
+    "gai-lan",
+    "char-siu-bao",
+    "doro-wat",
+    "spanakopita",
+    "moussaka",
+    "paella-marisco",
+    "ceviche",
+    "tres-leches"
+   ],
+   "open": {
+    "kung-pao": [
+     "eggs",
+     "fish",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "mapo": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "gai-lan": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "char-siu-bao": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "doro-wat": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "spanakopita": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "moussaka": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "paella-marisco": [
+     "eggs",
+     "peanuts",
+     "soy",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "ceviche": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "tres-leches": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "kung-pao": {
+     "eggs": "may"
+    },
+    "mapo": {
+     "celery": "may"
+    },
+    "gai-lan": {
+     "celery": "may"
+    },
+    "char-siu-bao": {
+     "milk": "may",
+     "peanuts": "may",
+     "molluscs": "may"
+    },
+    "doro-wat": {
+     "sulphites": "may"
+    },
+    "spanakopita": {},
+    "moussaka": {},
+    "paella-marisco": {},
+    "ceviche": {
+     "crustaceans": "may",
+     "molluscs": "may"
+    },
+    "tres-leches": {
+     "eggs": "contains",
+     "nuts": "may"
+    }
+   },
+   "why": {
+    "kung-pao": {
+     "eggs": "Chicken is often velveted with egg white marinade."
+    },
+    "mapo": {
+     "celery": "Stock base often includes celery."
+    },
+    "gai-lan": {
+     "celery": "Stock or wine base may include celery."
+    },
+    "char-siu-bao": {
+     "milk": "Bao dough often contains milk or milk powder.",
+     "peanuts": "Hoisin sauce in char siu marinade often contains peanuts.",
+     "molluscs": "Char siu marinades often use oyster sauce."
+    },
+    "doro-wat": {
+     "sulphites": "Red wine is often added to doro wat."
+    },
+    "spanakopita": {},
+    "moussaka": {},
+    "paella-marisco": {},
+    "ceviche": {
+     "crustaceans": "Ceviche often includes shrimp.",
+     "molluscs": "Ceviche often includes squid, octopus or scallops."
+    },
+    "tres-leches": {
+     "eggs": "Tres leches cake batter is egg-based.",
+     "nuts": "Almond garnish or nut toppings are common."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0015308899999999998,
+     "duration_ms": 12786,
+     "wall_s": 13.33,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 361,
+      "cache_read_input_tokens": 1199,
+      "output_tokens": 2893,
+      "output_tokens_details": {
+       "thinking_tokens": 2307
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 361,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2893,
+        "cache_read_input_tokens": 1199,
+        "cache_creation_input_tokens": 361,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 361
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Chicken is often velveted with egg white marinade.\"}]}, {\"id\": \"d2\", \"flags\": [{\"allergen\": \"celery\", \"level\": \"may\", \"why\": \"Stock base often includes celery.\"}]}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"celery\", \"level\": \"may\", \"why\": \"Stock or wine base may include celery.\"}]}, {\"id\": \"d4\", \"flags\": [{\"allergen\": \"milk\", \"level\": \"may\", \"why\": \"Bao dough often contains milk or milk powder.\"}, {\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Hoisin sauce in char siu marinade often contains peanuts.\"}, {\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Char siu marinades often use oyster sauce.\"}]}, {\"id\": \"d5\", \"flags\": [{\"allergen\": \"sulphites\", \"level\": \"may\", \"why\": \"Red wine is often added to doro wat.\"}]}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": [{\"allergen\": \"crustaceans\", \"level\": \"may\", \"why\": \"Ceviche often includes shrimp.\"}, {\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Ceviche often includes squid, octopus or scallops.\"}]}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"contains\", \"why\": \"Tres leches cake batter is egg-based.\"}, {\"allergen\": \"nuts\", \"level\": \"may\", \"why\": \"Almond garnish or nut toppings are common.\"}]}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 13.33
+  }
+ ]
+}

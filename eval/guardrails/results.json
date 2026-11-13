@@ -1,0 +1,2018 @@
+{
+ "generated": "2026-11-13",
+ "machine": "Apple M4",
+ "cost_note": "API-equivalent cost reported by the Claude CLI (total_cost_usd); the CLI runs on a subscription.",
+ "sets": {
+  "test": {
+   "n_dishes": 303,
+   "layers": {
+    "L1": {
+     "label": "LoRA",
+     "all": {
+      "n_dishes": 303,
+      "n_contains_pairs": 658,
+      "recall_macro": 69.3,
+      "false_safe_macro": 7.3,
+      "recall_micro": 85.4,
+      "false_safe_micro": 4.6,
+      "false_safe_count": 30,
+      "over_warning_micro": 6.2,
+      "n_not_indicated_pairs": 2319,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 130,
+        "recall": 91.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 45,
+        "recall": 86.7,
+        "false_safe": 6.7,
+        "false_safe_count": 3
+       },
+       "eggs": {
+        "n_contains": 71,
+        "recall": 81.7,
+        "false_safe": 2.8,
+        "false_safe_count": 2
+       },
+       "fish": {
+        "n_contains": 71,
+        "recall": 94.4,
+        "false_safe": 2.8,
+        "false_safe_count": 2
+       },
+       "peanuts": {
+        "n_contains": 22,
+        "recall": 72.7,
+        "false_safe": 18.2,
+        "false_safe_count": 4
+       },
+       "soy": {
+        "n_contains": 63,
+        "recall": 88.9,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 103,
+        "recall": 90.3,
+        "false_safe": 1.9,
+        "false_safe_count": 2
+       },
+       "nuts": {
+        "n_contains": 68,
+        "recall": 92.6,
+        "false_safe": 5.9,
+        "false_safe_count": 4
+       },
+       "celery": {
+        "n_contains": 2,
+        "recall": 0.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "mustard": {
+        "n_contains": 11,
+        "recall": 63.6,
+        "false_safe": 9.1,
+        "false_safe_count": 1
+       },
+       "sesame": {
+        "n_contains": 38,
+        "recall": 81.6,
+        "false_safe": 7.9,
+        "false_safe_count": 3
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 0.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 0,
+        "recall": null,
+        "false_safe": null,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 23,
+        "recall": 56.5,
+        "false_safe": 39.1,
+        "false_safe_count": 9
+       }
+      }
+     }
+    },
+    "L2": {
+     "label": "LoRA + lexicon",
+     "all": {
+      "n_dishes": 303,
+      "n_contains_pairs": 658,
+      "recall_macro": 79.7,
+      "false_safe_macro": 4.5,
+      "recall_micro": 90.9,
+      "false_safe_micro": 2.6,
+      "false_safe_count": 17,
+      "over_warning_micro": 7.2,
+      "n_not_indicated_pairs": 2319,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 130,
+        "recall": 96.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 45,
+        "recall": 88.9,
+        "false_safe": 4.4,
+        "false_safe_count": 2
+       },
+       "eggs": {
+        "n_contains": 71,
+        "recall": 83.1,
+        "false_safe": 2.8,
+        "false_safe_count": 2
+       },
+       "fish": {
+        "n_contains": 71,
+        "recall": 95.8,
+        "false_safe": 1.4,
+        "false_safe_count": 1
+       },
+       "peanuts": {
+        "n_contains": 22,
+        "recall": 72.7,
+        "false_safe": 18.2,
+        "false_safe_count": 4
+       },
+       "soy": {
+        "n_contains": 63,
+        "recall": 92.1,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 103,
+        "recall": 94.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "nuts": {
+        "n_contains": 68,
+        "recall": 98.5,
+        "false_safe": 1.5,
+        "false_safe_count": 1
+       },
+       "celery": {
+        "n_contains": 2,
+        "recall": 0.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "mustard": {
+        "n_contains": 11,
+        "recall": 63.6,
+        "false_safe": 9.1,
+        "false_safe_count": 1
+       },
+       "sesame": {
+        "n_contains": 38,
+        "recall": 86.8,
+        "false_safe": 7.9,
+        "false_safe_count": 3
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 81.8,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 0,
+        "recall": null,
+        "false_safe": null,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 23,
+        "recall": 82.6,
+        "false_safe": 13.0,
+        "false_safe_count": 3
+       }
+      }
+     }
+    },
+    "L3": {
+     "label": "LoRA + lexicon + Haiku second opinion",
+     "all": {
+      "n_dishes": 303,
+      "n_contains_pairs": 658,
+      "recall_macro": 82.0,
+      "false_safe_macro": 0.8,
+      "recall_micro": 92.2,
+      "false_safe_micro": 0.3,
+      "false_safe_count": 2,
+      "over_warning_micro": 8.9,
+      "n_not_indicated_pairs": 2319,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 130,
+        "recall": 96.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 45,
+        "recall": 93.3,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "eggs": {
+        "n_contains": 71,
+        "recall": 83.1,
+        "false_safe": 1.4,
+        "false_safe_count": 1
+       },
+       "fish": {
+        "n_contains": 71,
+        "recall": 95.8,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "peanuts": {
+        "n_contains": 22,
+        "recall": 81.8,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 63,
+        "recall": 92.1,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 103,
+        "recall": 94.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "nuts": {
+        "n_contains": 68,
+        "recall": 98.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "celery": {
+        "n_contains": 2,
+        "recall": 0.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "mustard": {
+        "n_contains": 11,
+        "recall": 63.6,
+        "false_safe": 9.1,
+        "false_safe_count": 1
+       },
+       "sesame": {
+        "n_contains": 38,
+        "recall": 94.7,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 81.8,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 0,
+        "recall": null,
+        "false_safe": null,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 23,
+        "recall": 91.3,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       }
+      }
+     }
+    }
+   },
+   "lora_latency": {
+    "median_s": 6.51,
+    "p95_s": 7.59,
+    "how": "saved by training/bench_tagger.py, one mlx_lm.generate subprocess per dish (reloads the model each call)"
+   },
+   "lexicon_latency": {
+    "per_dish_ms": 0.038
+   },
+   "second_opinion": {
+    "calls": 31,
+    "batches": 31,
+    "dishes_sent": 303,
+    "retries": 0,
+    "fallback_batches": 0,
+    "total_cost_usd": 0.0551,
+    "cost_per_dish_usd": 0.00018,
+    "cost_per_1000_dishes_usd": 0.18,
+    "batch_latency_median_s": 12.95,
+    "batch_latency_p95_s": 16.11,
+    "cli_duration_median_s": 12.39,
+    "latency_per_dish_s": 1.28
+   },
+   "dishes_sent_to_second_opinion": 303,
+   "claude_subsample": {
+    "n": 100,
+    "note": "first 100 shuffled test rows, the rows bench_tagger.py sent to schema-primed Claude",
+    "claude_schema_primed": {
+     "n_dishes": 100,
+     "n_contains_pairs": 229,
+     "recall_macro": 79.3,
+     "false_safe_macro": 1.7,
+     "recall_micro": 86.9,
+     "false_safe_micro": 1.3,
+     "false_safe_count": 3,
+     "over_warning_micro": 3.3,
+     "n_not_indicated_pairs": 761,
+     "per_allergen": {
+      "gluten": {
+       "n_contains": 45,
+       "recall": 84.4,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "crustaceans": {
+       "n_contains": 12,
+       "recall": 91.7,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "eggs": {
+       "n_contains": 30,
+       "recall": 76.7,
+       "false_safe": 3.3,
+       "false_safe_count": 1
+      },
+      "fish": {
+       "n_contains": 25,
+       "recall": 96.0,
+       "false_safe": 4.0,
+       "false_safe_count": 1
+      },
+      "peanuts": {
+       "n_contains": 7,
+       "recall": 85.7,
+       "false_safe": 14.3,
+       "false_safe_count": 1
+      },
+      "soy": {
+       "n_contains": 26,
+       "recall": 80.8,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "milk": {
+       "n_contains": 42,
+       "recall": 95.2,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "nuts": {
+       "n_contains": 17,
+       "recall": 94.1,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "celery": {
+       "n_contains": 1,
+       "recall": 0.0,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "mustard": {
+       "n_contains": 2,
+       "recall": 100.0,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "sesame": {
+       "n_contains": 13,
+       "recall": 92.3,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "sulphites": {
+       "n_contains": 3,
+       "recall": 66.7,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "lupin": {
+       "n_contains": 0,
+       "recall": null,
+       "false_safe": null,
+       "false_safe_count": 0
+      },
+      "molluscs": {
+       "n_contains": 6,
+       "recall": 66.7,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      }
+     }
+    },
+    "L1": {
+     "n_dishes": 100,
+     "n_contains_pairs": 229,
+     "recall_macro": 73.7,
+     "false_safe_macro": 4.0,
+     "recall_micro": 88.2,
+     "false_safe_micro": 2.6,
+     "false_safe_count": 6,
+     "over_warning_micro": 6.3,
+     "n_not_indicated_pairs": 761,
+     "per_allergen": {
+      "gluten": {
+       "n_contains": 45,
+       "recall": 97.8,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "crustaceans": {
+       "n_contains": 12,
+       "recall": 91.7,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "eggs": {
+       "n_contains": 30,
+       "recall": 86.7,
+       "false_safe": 3.3,
+       "false_safe_count": 1
+      },
+      "fish": {
+       "n_contains": 25,
+       "recall": 92.0,
+       "false_safe": 4.0,
+       "false_safe_count": 1
+      },
+      "peanuts": {
+       "n_contains": 7,
+       "recall": 85.7,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "soy": {
+       "n_contains": 26,
+       "recall": 80.8,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "milk": {
+       "n_contains": 42,
+       "recall": 92.9,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "nuts": {
+       "n_contains": 17,
+       "recall": 88.2,
+       "false_safe": 11.8,
+       "false_safe_count": 2
+      },
+      "celery": {
+       "n_contains": 1,
+       "recall": 0.0,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "mustard": {
+       "n_contains": 2,
+       "recall": 100.0,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "sesame": {
+       "n_contains": 13,
+       "recall": 92.3,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "sulphites": {
+       "n_contains": 3,
+       "recall": 0.0,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "lupin": {
+       "n_contains": 0,
+       "recall": null,
+       "false_safe": null,
+       "false_safe_count": 0
+      },
+      "molluscs": {
+       "n_contains": 6,
+       "recall": 50.0,
+       "false_safe": 33.3,
+       "false_safe_count": 2
+      }
+     }
+    },
+    "L2": {
+     "n_dishes": 100,
+     "n_contains_pairs": 229,
+     "recall_macro": 80.1,
+     "false_safe_macro": 3.3,
+     "recall_micro": 90.8,
+     "false_safe_micro": 1.7,
+     "false_safe_count": 4,
+     "over_warning_micro": 7.4,
+     "n_not_indicated_pairs": 761,
+     "per_allergen": {
+      "gluten": {
+       "n_contains": 45,
+       "recall": 97.8,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "crustaceans": {
+       "n_contains": 12,
+       "recall": 91.7,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "eggs": {
+       "n_contains": 30,
+       "recall": 86.7,
+       "false_safe": 3.3,
+       "false_safe_count": 1
+      },
+      "fish": {
+       "n_contains": 25,
+       "recall": 96.0,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "peanuts": {
+       "n_contains": 7,
+       "recall": 85.7,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "soy": {
+       "n_contains": 26,
+       "recall": 84.6,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "milk": {
+       "n_contains": 42,
+       "recall": 95.2,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "nuts": {
+       "n_contains": 17,
+       "recall": 94.1,
+       "false_safe": 5.9,
+       "false_safe_count": 1
+      },
+      "celery": {
+       "n_contains": 1,
+       "recall": 0.0,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "mustard": {
+       "n_contains": 2,
+       "recall": 100.0,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "sesame": {
+       "n_contains": 13,
+       "recall": 92.3,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "sulphites": {
+       "n_contains": 3,
+       "recall": 66.7,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "lupin": {
+       "n_contains": 0,
+       "recall": null,
+       "false_safe": null,
+       "false_safe_count": 0
+      },
+      "molluscs": {
+       "n_contains": 6,
+       "recall": 50.0,
+       "false_safe": 33.3,
+       "false_safe_count": 2
+      }
+     }
+    },
+    "L3": {
+     "n_dishes": 100,
+     "n_contains_pairs": 229,
+     "recall_macro": 81.3,
+     "false_safe_macro": 0.3,
+     "recall_micro": 91.3,
+     "false_safe_micro": 0.4,
+     "false_safe_count": 1,
+     "over_warning_micro": 9.2,
+     "n_not_indicated_pairs": 761,
+     "per_allergen": {
+      "gluten": {
+       "n_contains": 45,
+       "recall": 97.8,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "crustaceans": {
+       "n_contains": 12,
+       "recall": 91.7,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "eggs": {
+       "n_contains": 30,
+       "recall": 86.7,
+       "false_safe": 3.3,
+       "false_safe_count": 1
+      },
+      "fish": {
+       "n_contains": 25,
+       "recall": 96.0,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "peanuts": {
+       "n_contains": 7,
+       "recall": 85.7,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "soy": {
+       "n_contains": 26,
+       "recall": 84.6,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "milk": {
+       "n_contains": 42,
+       "recall": 95.2,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "nuts": {
+       "n_contains": 17,
+       "recall": 94.1,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "celery": {
+       "n_contains": 1,
+       "recall": 0.0,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "mustard": {
+       "n_contains": 2,
+       "recall": 100.0,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "sesame": {
+       "n_contains": 13,
+       "recall": 92.3,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "sulphites": {
+       "n_contains": 3,
+       "recall": 66.7,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      },
+      "lupin": {
+       "n_contains": 0,
+       "recall": null,
+       "false_safe": null,
+       "false_safe_count": 0
+      },
+      "molluscs": {
+       "n_contains": 6,
+       "recall": 66.7,
+       "false_safe": 0.0,
+       "false_safe_count": 0
+      }
+     }
+    }
+   }
+  },
+  "adversarial": {
+   "n_dishes": 60,
+   "layers": {
+    "L1": {
+     "label": "LoRA",
+     "all": {
+      "n_dishes": 60,
+      "n_contains_pairs": 132,
+      "recall_macro": 43.8,
+      "false_safe_macro": 28.7,
+      "recall_micro": 56.1,
+      "false_safe_micro": 16.7,
+      "false_safe_count": 22,
+      "over_warning_micro": 23.3,
+      "n_not_indicated_pairs": 634,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 22,
+        "recall": 77.3,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 6,
+        "recall": 83.3,
+        "false_safe": 16.7,
+        "false_safe_count": 1
+       },
+       "eggs": {
+        "n_contains": 17,
+        "recall": 64.7,
+        "false_safe": 17.6,
+        "false_safe_count": 3
+       },
+       "fish": {
+        "n_contains": 15,
+        "recall": 60.0,
+        "false_safe": 13.3,
+        "false_safe_count": 2
+       },
+       "peanuts": {
+        "n_contains": 2,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 10,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 19,
+        "recall": 78.9,
+        "false_safe": 5.3,
+        "false_safe_count": 1
+       },
+       "nuts": {
+        "n_contains": 5,
+        "recall": 0.0,
+        "false_safe": 80.0,
+        "false_safe_count": 4
+       },
+       "celery": {
+        "n_contains": 8,
+        "recall": 12.5,
+        "false_safe": 25.0,
+        "false_safe_count": 2
+       },
+       "mustard": {
+        "n_contains": 5,
+        "recall": 20.0,
+        "false_safe": 60.0,
+        "false_safe_count": 3
+       },
+       "sesame": {
+        "n_contains": 4,
+        "recall": 0.0,
+        "false_safe": 50.0,
+        "false_safe_count": 2
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 0.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 2,
+        "recall": 0.0,
+        "false_safe": 100.0,
+        "false_safe_count": 2
+       },
+       "molluscs": {
+        "n_contains": 6,
+        "recall": 66.7,
+        "false_safe": 33.3,
+        "false_safe_count": 2
+       }
+      }
+     },
+     "hidden": {
+      "n_dishes": 60,
+      "n_contains_pairs": 123,
+      "recall_macro": 42.9,
+      "false_safe_macro": 29.4,
+      "recall_micro": 53.7,
+      "false_safe_micro": 17.9,
+      "false_safe_count": 22,
+      "over_warning_micro": null,
+      "n_not_indicated_pairs": 0,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 20,
+        "recall": 75.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 4,
+        "recall": 75.0,
+        "false_safe": 25.0,
+        "false_safe_count": 1
+       },
+       "eggs": {
+        "n_contains": 16,
+        "recall": 62.5,
+        "false_safe": 18.8,
+        "false_safe_count": 3
+       },
+       "fish": {
+        "n_contains": 14,
+        "recall": 57.1,
+        "false_safe": 14.3,
+        "false_safe_count": 2
+       },
+       "peanuts": {
+        "n_contains": 2,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 9,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 17,
+        "recall": 82.4,
+        "false_safe": 5.9,
+        "false_safe_count": 1
+       },
+       "nuts": {
+        "n_contains": 5,
+        "recall": 0.0,
+        "false_safe": 80.0,
+        "false_safe_count": 4
+       },
+       "celery": {
+        "n_contains": 8,
+        "recall": 12.5,
+        "false_safe": 25.0,
+        "false_safe_count": 2
+       },
+       "mustard": {
+        "n_contains": 5,
+        "recall": 20.0,
+        "false_safe": 60.0,
+        "false_safe_count": 3
+       },
+       "sesame": {
+        "n_contains": 4,
+        "recall": 0.0,
+        "false_safe": 50.0,
+        "false_safe_count": 2
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 0.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 2,
+        "recall": 0.0,
+        "false_safe": 100.0,
+        "false_safe_count": 2
+       },
+       "molluscs": {
+        "n_contains": 6,
+        "recall": 66.7,
+        "false_safe": 33.3,
+        "false_safe_count": 2
+       }
+      }
+     }
+    },
+    "L2": {
+     "label": "LoRA + lexicon",
+     "all": {
+      "n_dishes": 60,
+      "n_contains_pairs": 132,
+      "recall_macro": 61.8,
+      "false_safe_macro": 12.4,
+      "recall_micro": 67.4,
+      "false_safe_micro": 8.3,
+      "false_safe_count": 11,
+      "over_warning_micro": 23.5,
+      "n_not_indicated_pairs": 634,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 22,
+        "recall": 81.8,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "eggs": {
+        "n_contains": 17,
+        "recall": 64.7,
+        "false_safe": 11.8,
+        "false_safe_count": 2
+       },
+       "fish": {
+        "n_contains": 15,
+        "recall": 66.7,
+        "false_safe": 6.7,
+        "false_safe_count": 1
+       },
+       "peanuts": {
+        "n_contains": 2,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 10,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 19,
+        "recall": 84.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "nuts": {
+        "n_contains": 5,
+        "recall": 20.0,
+        "false_safe": 60.0,
+        "false_safe_count": 3
+       },
+       "celery": {
+        "n_contains": 8,
+        "recall": 12.5,
+        "false_safe": 25.0,
+        "false_safe_count": 2
+       },
+       "mustard": {
+        "n_contains": 5,
+        "recall": 40.0,
+        "false_safe": 20.0,
+        "false_safe_count": 1
+       },
+       "sesame": {
+        "n_contains": 4,
+        "recall": 0.0,
+        "false_safe": 50.0,
+        "false_safe_count": 2
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 45.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 2,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       }
+      }
+     },
+     "hidden": {
+      "n_dishes": 60,
+      "n_contains_pairs": 123,
+      "recall_macro": 61.6,
+      "false_safe_macro": 12.5,
+      "recall_micro": 65.9,
+      "false_safe_micro": 8.9,
+      "false_safe_count": 11,
+      "over_warning_micro": null,
+      "n_not_indicated_pairs": 0,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 20,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 4,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "eggs": {
+        "n_contains": 16,
+        "recall": 62.5,
+        "false_safe": 12.5,
+        "false_safe_count": 2
+       },
+       "fish": {
+        "n_contains": 14,
+        "recall": 64.3,
+        "false_safe": 7.1,
+        "false_safe_count": 1
+       },
+       "peanuts": {
+        "n_contains": 2,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 9,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 17,
+        "recall": 88.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "nuts": {
+        "n_contains": 5,
+        "recall": 20.0,
+        "false_safe": 60.0,
+        "false_safe_count": 3
+       },
+       "celery": {
+        "n_contains": 8,
+        "recall": 12.5,
+        "false_safe": 25.0,
+        "false_safe_count": 2
+       },
+       "mustard": {
+        "n_contains": 5,
+        "recall": 40.0,
+        "false_safe": 20.0,
+        "false_safe_count": 1
+       },
+       "sesame": {
+        "n_contains": 4,
+        "recall": 0.0,
+        "false_safe": 50.0,
+        "false_safe_count": 2
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 45.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 2,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       }
+      }
+     }
+    },
+    "L3": {
+     "label": "LoRA + lexicon + Haiku second opinion",
+     "all": {
+      "n_dishes": 60,
+      "n_contains_pairs": 132,
+      "recall_macro": 74.2,
+      "false_safe_macro": 0.0,
+      "recall_micro": 75.8,
+      "false_safe_micro": 0.0,
+      "false_safe_count": 0,
+      "over_warning_micro": 27.0,
+      "n_not_indicated_pairs": 634,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 22,
+        "recall": 81.8,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "eggs": {
+        "n_contains": 17,
+        "recall": 76.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "fish": {
+        "n_contains": 15,
+        "recall": 73.3,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "peanuts": {
+        "n_contains": 2,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 10,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 19,
+        "recall": 84.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "nuts": {
+        "n_contains": 5,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "celery": {
+        "n_contains": 8,
+        "recall": 37.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "mustard": {
+        "n_contains": 5,
+        "recall": 60.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sesame": {
+        "n_contains": 4,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 45.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 2,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       }
+      }
+     },
+     "hidden": {
+      "n_dishes": 60,
+      "n_contains_pairs": 123,
+      "recall_macro": 74.1,
+      "false_safe_macro": 0.0,
+      "recall_micro": 74.8,
+      "false_safe_micro": 0.0,
+      "false_safe_count": 0,
+      "over_warning_micro": null,
+      "n_not_indicated_pairs": 0,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 20,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 4,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "eggs": {
+        "n_contains": 16,
+        "recall": 75.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "fish": {
+        "n_contains": 14,
+        "recall": 71.4,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "peanuts": {
+        "n_contains": 2,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 9,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 17,
+        "recall": 88.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "nuts": {
+        "n_contains": 5,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "celery": {
+        "n_contains": 8,
+        "recall": 37.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "mustard": {
+        "n_contains": 5,
+        "recall": 60.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sesame": {
+        "n_contains": 4,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 45.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 2,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       }
+      }
+     }
+    }
+   },
+   "lora_latency": {
+    "median_s": 2.82,
+    "p95_s": 3.06,
+    "how": "run_lora.py, model loaded once, generation only"
+   },
+   "lexicon_latency": {
+    "per_dish_ms": 0.007
+   },
+   "second_opinion": {
+    "calls": 6,
+    "batches": 6,
+    "dishes_sent": 60,
+    "retries": 0,
+    "fallback_batches": 0,
+    "total_cost_usd": 0.0109,
+    "cost_per_dish_usd": 0.00018,
+    "cost_per_1000_dishes_usd": 0.18,
+    "batch_latency_median_s": 13.95,
+    "batch_latency_p95_s": 17.42,
+    "cli_duration_median_s": 13.39,
+    "latency_per_dish_s": 1.37
+   },
+   "dishes_sent_to_second_opinion": 60,
+   "other_runs": {
+    "haiku_r2": {
+     "all": {
+      "n_dishes": 60,
+      "n_contains_pairs": 132,
+      "recall_macro": 74.2,
+      "false_safe_macro": 0.0,
+      "recall_micro": 75.8,
+      "false_safe_micro": 0.0,
+      "false_safe_count": 0,
+      "over_warning_micro": 27.1,
+      "n_not_indicated_pairs": 634,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 22,
+        "recall": 81.8,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "eggs": {
+        "n_contains": 17,
+        "recall": 76.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "fish": {
+        "n_contains": 15,
+        "recall": 73.3,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "peanuts": {
+        "n_contains": 2,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 10,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 19,
+        "recall": 84.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "nuts": {
+        "n_contains": 5,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "celery": {
+        "n_contains": 8,
+        "recall": 37.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "mustard": {
+        "n_contains": 5,
+        "recall": 60.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sesame": {
+        "n_contains": 4,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 45.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 2,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       }
+      }
+     },
+     "hidden": {
+      "n_dishes": 60,
+      "n_contains_pairs": 123,
+      "recall_macro": 74.1,
+      "false_safe_macro": 0.0,
+      "recall_micro": 74.8,
+      "false_safe_micro": 0.0,
+      "false_safe_count": 0,
+      "over_warning_micro": null,
+      "n_not_indicated_pairs": 0,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 20,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 4,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "eggs": {
+        "n_contains": 16,
+        "recall": 75.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "fish": {
+        "n_contains": 14,
+        "recall": 71.4,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "peanuts": {
+        "n_contains": 2,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 9,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 17,
+        "recall": 88.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "nuts": {
+        "n_contains": 5,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "celery": {
+        "n_contains": 8,
+        "recall": 37.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "mustard": {
+        "n_contains": 5,
+        "recall": 60.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sesame": {
+        "n_contains": 4,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 45.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 2,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       }
+      }
+     },
+     "cost": {
+      "calls": 6,
+      "batches": 6,
+      "dishes_sent": 60,
+      "retries": 0,
+      "fallback_batches": 0,
+      "total_cost_usd": 0.0096,
+      "cost_per_dish_usd": 0.00016,
+      "cost_per_1000_dishes_usd": 0.16,
+      "batch_latency_median_s": 14.05,
+      "batch_latency_p95_s": 15.59,
+      "cli_duration_median_s": 13.49,
+      "latency_per_dish_s": 1.38
+     }
+    },
+    "haiku_r3": {
+     "all": {
+      "n_dishes": 60,
+      "n_contains_pairs": 132,
+      "recall_macro": 72.4,
+      "false_safe_macro": 1.8,
+      "recall_micro": 75.0,
+      "false_safe_micro": 0.8,
+      "false_safe_count": 1,
+      "over_warning_micro": 27.3,
+      "n_not_indicated_pairs": 634,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 22,
+        "recall": 81.8,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "eggs": {
+        "n_contains": 17,
+        "recall": 76.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "fish": {
+        "n_contains": 15,
+        "recall": 73.3,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "peanuts": {
+        "n_contains": 2,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 10,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 19,
+        "recall": 84.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "nuts": {
+        "n_contains": 5,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "celery": {
+        "n_contains": 8,
+        "recall": 37.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "mustard": {
+        "n_contains": 5,
+        "recall": 60.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sesame": {
+        "n_contains": 4,
+        "recall": 25.0,
+        "false_safe": 25.0,
+        "false_safe_count": 1
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 45.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 2,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       }
+      }
+     },
+     "hidden": {
+      "n_dishes": 60,
+      "n_contains_pairs": 123,
+      "recall_macro": 72.3,
+      "false_safe_macro": 1.8,
+      "recall_micro": 74.0,
+      "false_safe_micro": 0.8,
+      "false_safe_count": 1,
+      "over_warning_micro": null,
+      "n_not_indicated_pairs": 0,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 20,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 4,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "eggs": {
+        "n_contains": 16,
+        "recall": 75.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "fish": {
+        "n_contains": 14,
+        "recall": 71.4,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "peanuts": {
+        "n_contains": 2,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 9,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 17,
+        "recall": 88.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "nuts": {
+        "n_contains": 5,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "celery": {
+        "n_contains": 8,
+        "recall": 37.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "mustard": {
+        "n_contains": 5,
+        "recall": 60.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sesame": {
+        "n_contains": 4,
+        "recall": 25.0,
+        "false_safe": 25.0,
+        "false_safe_count": 1
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 45.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 2,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       }
+      }
+     },
+     "cost": {
+      "calls": 6,
+      "batches": 6,
+      "dishes_sent": 60,
+      "retries": 0,
+      "fallback_batches": 0,
+      "total_cost_usd": 0.0094,
+      "cost_per_dish_usd": 0.00016,
+      "cost_per_1000_dishes_usd": 0.16,
+      "batch_latency_median_s": 13.97,
+      "batch_latency_p95_s": 15.43,
+      "cli_duration_median_s": 13.4,
+      "latency_per_dish_s": 1.36
+     }
+    },
+    "sonnet_r1": {
+     "all": {
+      "n_dishes": 60,
+      "n_contains_pairs": 132,
+      "recall_macro": 74.2,
+      "false_safe_macro": 0.0,
+      "recall_micro": 75.8,
+      "false_safe_micro": 0.0,
+      "false_safe_count": 0,
+      "over_warning_micro": 32.2,
+      "n_not_indicated_pairs": 634,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 22,
+        "recall": 81.8,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "eggs": {
+        "n_contains": 17,
+        "recall": 76.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "fish": {
+        "n_contains": 15,
+        "recall": 73.3,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "peanuts": {
+        "n_contains": 2,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 10,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 19,
+        "recall": 84.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "nuts": {
+        "n_contains": 5,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "celery": {
+        "n_contains": 8,
+        "recall": 37.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "mustard": {
+        "n_contains": 5,
+        "recall": 60.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sesame": {
+        "n_contains": 4,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 45.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 2,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       }
+      }
+     },
+     "hidden": {
+      "n_dishes": 60,
+      "n_contains_pairs": 123,
+      "recall_macro": 74.1,
+      "false_safe_macro": 0.0,
+      "recall_micro": 74.8,
+      "false_safe_micro": 0.0,
+      "false_safe_count": 0,
+      "over_warning_micro": null,
+      "n_not_indicated_pairs": 0,
+      "per_allergen": {
+       "gluten": {
+        "n_contains": 20,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "crustaceans": {
+        "n_contains": 4,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "eggs": {
+        "n_contains": 16,
+        "recall": 75.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "fish": {
+        "n_contains": 14,
+        "recall": 71.4,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "peanuts": {
+        "n_contains": 2,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "soy": {
+        "n_contains": 9,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "milk": {
+        "n_contains": 17,
+        "recall": 88.2,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "nuts": {
+        "n_contains": 5,
+        "recall": 80.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "celery": {
+        "n_contains": 8,
+        "recall": 37.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "mustard": {
+        "n_contains": 5,
+        "recall": 60.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sesame": {
+        "n_contains": 4,
+        "recall": 50.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "sulphites": {
+        "n_contains": 11,
+        "recall": 45.5,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "lupin": {
+        "n_contains": 2,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       },
+       "molluscs": {
+        "n_contains": 6,
+        "recall": 100.0,
+        "false_safe": 0.0,
+        "false_safe_count": 0
+       }
+      }
+     },
+     "cost": {
+      "calls": 7,
+      "batches": 6,
+      "dishes_sent": 60,
+      "retries": 1,
+      "fallback_batches": 0,
+      "total_cost_usd": 0.1267,
+      "cost_per_dish_usd": 0.00211,
+      "cost_per_1000_dishes_usd": 2.11,
+      "batch_latency_median_s": 9.59,
+      "batch_latency_p95_s": 15.7,
+      "cli_duration_median_s": 8.29,
+      "latency_per_dish_s": 1.0
+     }
+    }
+   },
+   "haiku_run_agreement": {
+    "open_pairs": 514,
+    "runs": 3,
+    "all_runs_agree": 484,
+    "agreement_pct": 94.2
+   },
+   "haiku_hidden_false_safe_by_run": [
+    0.0,
+    0.0,
+    0.8
+   ]
+  }
+ },
+ "remaining_false_safe": [
+  {
+   "set": "test",
+   "id": "t055",
+   "dish": "陳皮欖角蒸鯪魚球 (Chan Pei Laam Gok Jing Ling Yu Kau). Steamed dace fish balls, hand-beaten with pork fat and water chestnut for a springy bite, folded with aged tangerine peel and finely chopped preserved olive vegetable (欖角), then steamed and finished with a drizzle of hot oil, scallion, and light soy.",
+   "allergen": "eggs",
+   "hidden_target": false,
+   "lora": "not_indicated",
+   "lexicon_terms": [
+    "fish",
+    "soy",
+    "魚"
+   ],
+   "basis": null
+  },
+  {
+   "set": "test",
+   "id": "t182",
+   "dish": "ઊંધિયું (Undhiyu). A layered Gujarati winter mixed-vegetable dish combining purple yam, sweet potato, eggplant, green beans, and banana with spiced muthiya (fenugreek-and-gram-flour dumplings), traditionally slow-cooked upside down in an earthen pot buried in the ground.",
+   "allergen": "mustard",
+   "hidden_target": false,
+   "lora": "not_indicated",
+   "lexicon_terms": [
+    "flour",
+    "dumpling"
+   ],
+   "basis": null
+  }
+ ]
+}

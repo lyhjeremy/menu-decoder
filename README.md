@@ -4,6 +4,10 @@
 
 Photograph a foreign-language menu and get each dish translated and tagged for cuisine, 14 EU allergens, spice and diet by a Qwen2.5-1.5B LoRA fine-tune, with an allergen display that can warn but never clear.
 
+![Allergen guard write-up: the layer table switches between adversarial and held-out results, then the dish inspector steps through Caesar salad, moules marinieres, ragu bolognese and tremocos, showing which layer raised each hidden allergen](assets/demo.gif)
+
+The tagger sits behind a layered allergen guard: an ingredient lexicon and a Claude Haiku second opinion, each able only to add warnings. On 60 adversarial dishes built to hide an allergen, misses fell from 22 of 123 to 0; on the 303 held-out dishes the false-safe rate fell from 7.3% to 0.8%, for $0.18 per 1,000 dishes (API-equivalent) and more warnings (over-warning 6.2% to 8.9%).
+
 [Project page](https://lyhjeremy.github.io/menu-decoder/) · [Write-up](https://lyhjeremy.github.io/menu-decoder/overview/) · [Engineering notes](writeup.md) · [Full benchmark](eval/benchmark.md)
 
 Design and copy follow [these standards](https://github.com/lyhjeremy/lyhjeremy/blob/main/DESIGN_STANDARDS.md).
@@ -28,6 +32,27 @@ Schema-primed Claude costs $0.056 a dish ($56.02 per 1,000) at API prices: the `
 With the bare prompt, Claude describes the dish under its own JSON keys and scores zero by construction. With the tagging rubric and output format added, it beats the fine-tune on allergens. What the fine-tune has going for it is that the schema lives in its weights, so the prompt is one line, and it runs locally at no cost per call. Its weakest allergens are molluscs (39.1% false-safe) and peanuts (18.2%).
 
 ![Per-allergen recall and false-safe rate for base, LoRA and schema-primed Claude across 14 allergens; LoRA's false-safe rate is highest on molluscs](eval/allergen_recall_chart.png)
+
+## Layered allergen guard (2026-11-13)
+
+Each layer can only raise a call (`not_indicated` to `may` to `contains`), so it can only remove false-safe calls; the price is more warnings.
+
+1. LoRA tagger, as benchmarked above.
+2. `src/allergen_lexicon.py`: 541 ingredient, sauce, stock and technique words (English and the menu languages, accents folded, no dish names) mapped to allergens. 0.04 ms a dish.
+3. `src/allergen_guard.py`: Claude Haiku sees ten dishes per call with the allergens still `not_indicated` and says which ones the standard recipe has. The reply must pass a pydantic schema and an id check, gets one retry, and falls back to `may` on everything if the retry fails. In the app it runs only for the diner's own allergens (`MENU_SECOND_OPINION=0` turns it off).
+
+| Set | Layer | Recall | False-safe | Over-warning | Adds per dish |
+|---|---|---|---|---|---|
+| Held-out, 303 dishes | LoRA | 69.3% | 7.3% (30 of 658 slots) | 6.2% | $0 |
+| | + lexicon | 79.7% | 4.5% (17) | 7.2% | $0 |
+| | + Haiku | 82.0% | 0.8% (2) | 8.9% | $0.00018, 13 s per batch of 10 |
+| Adversarial, 60 dishes (hidden allergens) | LoRA | 53.7% | 17.9% (22 of 123) | 23.3% | $0, 2.8 s median |
+| | + lexicon | 65.9% | 8.9% (11) | 23.5% | $0 |
+| | + Haiku | 74.8% | 0.0% (0) | 27.0% | $0.00018 |
+
+Held-out rates are macro over allergens, as in the benchmark; adversarial rates are slot counts over the hidden allergens. On the 100 held-out dishes schema-primed Claude saw, the guarded tagger scores 81.3% recall and 0.3% false-safe against Claude's 79.2% and 1.7%, at 9.2% over-warning against 3.3%. Three Haiku runs agreed on 94.2% of 514 open slots; run 3 cleared hummus of sesame (hidden false-safe 0.0%, 0.0%, 0.8%). Sonnet as the second opinion also reached 0 misses but over-warned on 32.2% of slots at $0.0021 a dish.
+
+The adversarial set (`eval/guardrails/adversarial_set.json`) was frozen in commit 51c4ae3 before any guard run. Its labels were drafted by a model from standard recipes and are not human-checked; `eval/guardrails/labeling_sheet.csv` (840 rows) is there for that. The same agent wrote the lexicon, so the lexicon's adversarial gain is optimistic; the held-out result is the cleaner measure for it. Reproduce: `python eval/guardrails/run_lora.py adversarial`, `python eval/guardrails/run_guard.py second test|adversarial`, `python eval/guardrails/run_guard.py score`. Results: `eval/guardrails/results.json` and `results.md`.
 
 ## Method
 
@@ -58,7 +83,7 @@ python training/bench_tagger.py         # benchmark, writes to eval/
 python app.py
 ```
 
-Menu extraction uses `claude -p` on a Claude subscription. Tests: `pytest tests/` (10 tests).
+Menu extraction uses `claude -p` on a Claude subscription. Tests: `pytest tests/` (25 tests).
 
 ## Repo layout
 
@@ -71,6 +96,8 @@ Menu extraction uses `claude -p` on a Claude subscription. Tests: `pytest tests/
 | `training/make_tagger_chart.py` | Per-allergen chart |
 | `src/decoder.py` | Tagging and recommendation prompts |
 | `src/safelist.py` | Badge rendering and the deterministic filter |
+| `src/allergen_lexicon.py`, `src/allergen_guard.py` | Guard layers 2 and 3 |
+| `eval/guardrails/` | Adversarial set, guard eval, outputs, labeling sheet |
 | `src/` | Shared toolkit: llm, vision, guardrails, context, cache, audio |
 | `eval/` | Benchmark, raw outputs, chart, loss curve, dataset card |
 

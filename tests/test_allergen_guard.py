@@ -6,7 +6,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
 
 import pytest
 
-from allergen_guard import guard_levels, open_allergens, second_opinion, validate_reply
+from allergen_guard import guard_levels, guard_menu, open_allergens, second_opinion, validate_reply
 from allergen_lexicon import lexicon_calls, raise_levels
 
 
@@ -94,3 +94,28 @@ def test_second_opinion_fails_toward_warning():
     out = second_opinion(BATCH, call=fake)
     assert out["fallback"] is True
     assert out["calls"]["d1"] == {"sesame": "may", "milk": "may"}
+
+
+def test_guard_menu_raises_user_allergens_only_via_second_opinion():
+    from schemas import AllergenCall, Dish, DishTags
+
+    dishes = [Dish(id="a", original="Hummus"), Dish(id="b", original="Moules marinieres")]
+    base = [DishTags(dish_id=d.id, cuisine="x", spice=0, vegetarian="unclear", vegan="unclear",
+                     allergen_calls=[AllergenCall(allergen=a, level="not_indicated") for a in
+                                     ["gluten", "sesame", "molluscs", "milk"]]) for d in dishes]
+    seen = []
+
+    def fake(prompt, system, model):
+        seen.append(prompt)
+        return {"result": json.dumps({"dishes": [{"id": "d1", "flags": [{"allergen": "sesame", "level": "contains"}]},
+                                         {"id": "d2", "flags": []}]}),
+                "total_cost_usd": 0.0002, "duration_ms": 500}
+
+    out, notes = guard_menu(dishes, base, ["sesame", "molluscs"], call=fake)
+    levels = {t.dish_id: {c.allergen: c.level for c in t.allergen_calls} for t in out}
+    assert levels["b"]["molluscs"] == "contains"      # lexicon: moules
+    assert levels["a"]["sesame"] == "contains"        # second opinion: tahini
+    assert levels["a"]["gluten"] == "not_indicated"   # not asked: not one of the user's allergens
+    assert levels["b"]["sesame"] == "not_indicated"
+    assert notes["second_opinion_calls"] == 1 and [ln for ln in seen[0].splitlines() if ln.startswith("Not indicated so far")] == [
+        "Not indicated so far: sesame, molluscs", "Not indicated so far: sesame"]

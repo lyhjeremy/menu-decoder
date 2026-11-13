@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Menu Decoder: a 1.5B LoRA dish tagger benchmarked against Claude on 14 allergens</title>
-<meta name="description" content="Photograph a foreign-language menu and get each dish translated and tagged for cuisine, 14 EU allergens, spice and diet. A LoRA-tuned Qwen2.5-1.5B returns the full tag set from a dish name alone; Claude needs the schema in every prompt and, given it, catches more allergens." />
+<title>Menu Decoder: a 1.5B LoRA allergen tagger, a layered guard, and an adversarial test set</title>
+<meta name="description" content="Photograph a foreign-language menu and get each dish translated and tagged for cuisine, 14 EU allergens, spice and diet. A LoRA-tuned Qwen2.5-1.5B returns the full tag set from a dish name alone; An ingredient lexicon and a Haiku second opinion around it cut false-safe calls from 7.3% to 0.8% on 303 held-out dishes and hidden-allergen misses from 22 to 0 on 60 adversarial dishes." />
 <meta name="theme-color" content="#E9EAE6" />
 <meta property="og:title" content="Menu Decoder" />
-<meta property="og:description" content="A 1.5B fine-tune emits valid 14-allergen tags 100% of the time with no schema in the prompt. Claude with the schema still has the lower false-safe rate: 1.7% against 7.3%." />
+<meta property="og:description" content="A lexicon and a Haiku second opinion around a 1.5B LoRA tagger: false-safe allergen calls 7.3% to 0.8% on 303 held-out dishes, hidden-allergen misses 22 to 0 on 60 adversarial dishes, $0.18 per 1,000 dishes." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lyhjeremy.github.io/menu-decoder/overview/" />
 <meta property="og:image" content="https://lyhjeremy.github.io/menu-decoder/og.png" />
@@ -355,6 +355,41 @@
   .glance dd b { font-weight: 600; }
   .glance dl > div.wide { grid-column: 1 / -1; }
   @media (max-width: 640px) { .glance dl { grid-template-columns: 1fr; } .glance dl > div { grid-template-columns: 1fr; } }
+
+  /* Guard section, 2026-11-13 */
+  #guard code { overflow-wrap: anywhere; }
+  .rg.gd .c small { display: block; font: 11.5px/1.3 var(--mono); color: var(--muted); margin-top: 3px; }
+  .gd-pick { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 0 0 14px; font: 13px var(--mono); color: var(--ink2); }
+  .gd-pick select { font: 600 13px var(--mono); color: var(--ink); background: var(--paper); border: 1px solid var(--edge); padding: 7px 8px; max-width: 100%; min-width: 0; flex: 1 1 14rem; }
+  .gd-pick button { font: 600 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 9px 12px; background: transparent; color: var(--ink2); border: 1px solid var(--edge); cursor: pointer; }
+  .gd-pick button:hover { color: var(--ink); border-color: var(--ink); }
+  .gd-pick :focus-visible, .gd-pt :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .gd-dish { font: 600 clamp(18px, 2.2vw, 22px)/1.25 var(--display); color: var(--ink); margin: 0 0 4px; }
+  .gd-meta { font: 13px/1.5 var(--mono); color: var(--muted); margin: 0 0 6px; }
+  .gd-basis { font: 14px/1.5 var(--sans); color: var(--ink2); margin: 0 0 12px; max-width: none; }
+  .gd-scroll { overflow-x: auto; }
+  .gd-t, .gd-pt { width: 100%; border-collapse: collapse; font: 13px/1.35 var(--mono); }
+  .gd-t th, .gd-pt th { font: 600 11px/1.3 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--edge); }
+  .gd-t td, .gd-pt td { padding: 6px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; color: var(--ink2); }
+  .gd-pt td:not(:first-child), .gd-pt th:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
+  .gd-t td.al { color: var(--ink); white-space: nowrap; }
+  .gd-t tr.hid td.al { font-weight: 600; }
+  .gd-t tr.hid td.al::before { content: ""; display: inline-block; width: 3px; height: 1em; background: var(--accent2); margin-right: 6px; vertical-align: -2px; }
+  .gd-t .lv-c { color: var(--accent2); font-weight: 600; }
+  .gd-t .lv-m { color: var(--ink); }
+  .gd-t .lv-n { color: var(--muted); }
+  .gd-t .up { color: var(--accent); font-weight: 600; }
+  .gd-t .miss { color: var(--accent2); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+  .gd-t td.why { font-family: var(--sans); font-size: 12.5px; min-width: 12rem; }
+  .gd-sum { font: 13.5px/1.5 var(--sans); color: var(--ink2); margin: 10px 0 0; max-width: none; }
+  .gd-sk { height: 14px; margin: 0 0 10px; background: var(--rule); }
+  .gd-sk--short { width: 55%; } .gd-sk--tall { height: 140px; }
+  @media (prefers-reduced-motion: no-preference) { .gd-sk { animation: gdsk 1.6s ease-in-out infinite; } }
+  @keyframes gdsk { 0%, 100% { opacity: 1 } 50% { opacity: .55 } }
+  .gd-h3 { font: 600 1.25rem/1.2 var(--display); color: var(--ink); margin: 34px 0 10px; }
+  .gd-next { margin: 0; padding-left: 1.2em; }
+  .gd-next li { margin: 0 0 6px; }
+  @media (max-width: 700px) { .rg.gd { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 </style>
 
 <div class="wrap">
@@ -364,8 +399,8 @@
   </header>
 
   <section class="hero">
-    <p class="kicker">Local LoRA fine-tune, benchmarked against Claude</p>
-    <h1>A 1.5B model tags dishes for 14 allergens with no schema in the prompt</h1>
+    <p class="kicker">Local LoRA fine-tune with a layered allergen guard</p>
+    <h1>A guard around a 1.5B allergen tagger takes false-safe calls from 7.3% to 0.8%</h1>
 
     <p class="hero-sub">
       Menu Decoder reads a photographed menu, translates each dish, and tags it
@@ -375,6 +410,13 @@
       the dish instead. Claude given the full schema catches more allergens
       than the fine-tune does, and misses fewer outright.
     </p>
+    <p class="hero-sub">
+      So the tagger now sits behind two more layers that can only add
+      warnings: an ingredient lexicon and a Claude Haiku second opinion asked
+      about the allergens still marked "not indicated". On 60 dishes built to
+      hide an allergen, the misses go from 22 to 0, for $0.18 per 1,000
+      dishes and more warnings.
+    </p>
 
     <div class="cta-row">
       <a class="btn btn-primary" href="https://github.com/lyhjeremy/menu-decoder">Code and benchmark</a>
@@ -382,16 +424,16 @@
     </div>
 
     <figure class="sheet glance" id="glance" style="margin-top:34px">
-      <div class="sheet-head"><span>At a glance</span><span>eval/benchmark.json, eval/raw_outputs.json</span></div>
+      <div class="sheet-head"><span>At a glance</span><span>eval/guardrails/results.json, eval/benchmark.json</span></div>
       <div class="sheet-body">
         <dl>
-          <div><dt>Task</dt><dd>From a bare <code>Dish: X.</code> prompt, write JSON tags for cuisine (15), 14 EU allergens, spice and diet</dd></div>
-          <div><dt>Eval set</dt><dd>303 dishes held out by dish family (101 families, 3 variants each), leakage-checked; Claude on a 100-dish subsample. Labels are Claude-generated and not yet human-checked</dd></div>
-          <div><dt>Baseline</dt><dd>Claude with the schema in its prompt: 79.2% allergen recall, 1.7% false-safe, 81.0% cuisine</dd></div>
-          <div><dt>Result</dt><dd>LoRA: 100% valid JSON, 99.3% cuisine, <b>69.3%</b> allergen recall, <b>7.3%</b> false-safe</dd></div>
-          <div><dt>Cost / dish</dt><dd>$0 per call on the laptop; schema-primed Claude <b>$0.056</b> API-equivalent ($56.02 per 1,000), from 25 dishes rerun on 2026-11-05 with the benchmark's prompt and CLI flags (<code>eval/claude_cost/</code>)</dd></div>
-          <div><dt>Latency</dt><dd>LoRA <b>6.5 s</b> median, 7.6 s p95 (n&nbsp;=&nbsp;303, model reloaded every call); Claude with schema <b>12.3 s</b>, 18.4 s p95 (n&nbsp;=&nbsp;100)</dd></div>
-          <div class="wide"><dt>Main failure</dt><dd>Rare allergens: it catches 0 of 11 sulphite dishes and 0 of 2 celery dishes, and calls 39.1% of the 23 mollusc dishes safe</dd></div>
+          <div><dt>Task</dt><dd>From a bare <code>Dish: X.</code> prompt, write JSON tags for cuisine (15), 14 EU allergens, spice and diet, and never call a dish clear of an allergen it has</dd></div>
+          <div><dt>Eval sets</dt><dd>303 held-out dishes (split by dish family, Claude-generated labels); 60 adversarial dishes that hide 123 allergens, labels model-drafted from standard recipes, frozen in <code>51c4ae3</code> before any run. Neither is human-checked</dd></div>
+          <div><dt>Baseline</dt><dd>LoRA alone: <b>7.3%</b> false-safe and 69.3% recall held-out; <b>22 of 123</b> hidden allergens missed adversarial. Claude with the schema: 1.7% false-safe on 100 held-out dishes</dd></div>
+          <div><dt>Result</dt><dd>LoRA + lexicon + Haiku: <b>0.8%</b> false-safe and 82.0% recall held-out; <b>0 of 123</b> missed adversarial (0, 0 and 1 over three Haiku runs)</dd></div>
+          <div><dt>Cost / dish</dt><dd>LoRA and lexicon $0; Haiku second opinion <b>$0.00018</b> API-equivalent ($0.18 per 1,000), against $0.056 for schema-primed Claude alone</dd></div>
+          <div><dt>Latency</dt><dd>LoRA <b>2.8 s</b> median, 3.1 s p95 with the model loaded (n&nbsp;=&nbsp;60, Apple M4); lexicon 0.04 ms; Haiku <b>13 s</b> per batch of ten dishes, 16.1 s p95 (n&nbsp;=&nbsp;31 calls)</dd></div>
+          <div class="wide"><dt>Main failure</dt><dd>More warnings: over-warning rises from 6.2% to 8.9% held-out and from 23.3% to 27.0% adversarial, much of it Haiku's "stock may contain soy". On one of three runs Haiku cleared hummus of sesame</dd></div>
         </dl>
       </div>
     </figure>
@@ -420,6 +462,134 @@
 
 <div class="wrap">
 <div class="route">
+
+  <section class="stop stop--key" id="guard">
+    <p class="eyebrow">Guardrails, added 2026-11-13</p>
+    <h2>Two cheap layers behind the tagger, measured on held-out and adversarial dishes</h2>
+    <p>
+      The fine-tune's misses were the reason to build a guard. Each layer
+      reads the same dish text and can only raise an allergen call
+      (<code>not_indicated</code> to <code>may</code> to <code>contains</code>),
+      never lower one, so a layer can only remove false-safe calls and the
+      price is extra warnings. The question was how many of each.
+    </p>
+    <div class="layers">
+      <div><span class="k">L1</span><span class="w">LoRA tagger</span><span>The fine-tune as benchmarked above. On the held-out set its saved outputs from <code>training/bench_tagger.py</code> are reused; on the adversarial set it was run again on this machine (Apple M4), model loaded once.</span></div>
+      <div><span class="k">L2</span><span class="w">Ingredient lexicon</span><span><code>src/allergen_lexicon.py</code>: 541 ingredient, sauce, stock and technique words in English and the menu languages, each mapped to its allergen (tahini to sesame, dashi to fish, <i>moules</i> to molluscs, a wine reduction to sulphites). No dish names, by rule. Matching folds accents and runs in 0.04&nbsp;ms a dish.</span></div>
+      <div><span class="k">L3</span><span class="w">Second opinion</span><span><code>src/allergen_guard.py</code>: Claude Haiku is shown each dish with the allergens still <code>not_indicated</code> and asked which ones its standard recipe usually or often has. Ten dishes per call. The reply must pass a pydantic schema and an id check, gets one retry, and if that fails every open allergen becomes <code>may</code>.</span></div>
+    </div>
+
+    <figure class="sheet" id="gd-table" style="margin-top:26px">
+      <div class="sheet-head"><span>False-safe and over-warning by layer</span><span>eval/guardrails/results.json</span></div>
+      <div class="sheet-body">
+        <div class="seg" role="group" aria-label="Eval set">
+          <button type="button" data-set="adv" aria-pressed="true">Adversarial, 60 dishes</button>
+          <button type="button" data-set="test" aria-pressed="false">Held-out, 303 dishes</button>
+        </div>
+        <div class="gd-set" data-set="adv">
+          <p class="sheet-title">On dishes built to hide an allergen, 22 misses become 0</p>
+          <p class="sheet-sub">123 hidden allergens across 60 dishes; rates here are slot counts. Over-warning is the share of the 634 allergen slots labeled not indicated that got a warning anyway.</p>
+          <div class="rg gd" role="table" aria-label="Adversarial set: recall, false-safe rate, over-warning and added cost per dish for each layer">
+            <div class="h h0" role="columnheader">Layer</div><div class="h" role="columnheader">Recall</div><div class="h" role="columnheader">False-safe</div><div class="h" role="columnheader">Over-warning</div><div class="h" role="columnheader">Adds per dish</div>
+            <div class="sys" role="rowheader">L1 LoRA<small>2.8 s median, 3.1 s p95, local</small></div>
+            <div class="c" role="cell">53.7%</div><div class="c bad" role="cell">17.9%<small>22 of 123</small></div><div class="c" role="cell">23.3%</div><div class="c" role="cell">$0</div>
+            <div class="sys" role="rowheader">L1 + L2 lexicon<small>0.007 ms</small></div>
+            <div class="c" role="cell">65.9%</div><div class="c" role="cell">8.9%<small>11 of 123</small></div><div class="c" role="cell">23.5%</div><div class="c" role="cell">$0</div>
+            <div class="sys last" role="rowheader">L1 + L2 + L3 Haiku<small>14.0 s per batch of 10, 17.4 s p95</small></div>
+            <div class="c lo last" role="cell">74.8%</div><div class="c lo last" role="cell">0.0%<small>0 of 123</small></div><div class="c last" role="cell">27.0%</div><div class="c last" role="cell">$0.00018</div>
+          </div>
+        </div>
+        <div class="gd-set" data-set="test" hidden>
+          <p class="sheet-title">On the held-out set, false-safe falls from 7.3% to 0.8%</p>
+          <p class="sheet-sub">Same metrics as the benchmark above (macro over allergens; counts are allergen slots). 658 slots labeled contains, 2,319 labeled not indicated.</p>
+          <div class="rg gd" role="table" aria-label="Held-out set: recall, false-safe rate, over-warning and added cost per dish for each layer">
+            <div class="h h0" role="columnheader">Layer</div><div class="h" role="columnheader">Recall</div><div class="h" role="columnheader">False-safe</div><div class="h" role="columnheader">Over-warning</div><div class="h" role="columnheader">Adds per dish</div>
+            <div class="sys" role="rowheader">L1 LoRA<small>saved run, 6.5 s with a model reload per dish</small></div>
+            <div class="c" role="cell">69.3%</div><div class="c bad" role="cell">7.3%<small>30 of 658</small></div><div class="c" role="cell">6.2%</div><div class="c" role="cell">$0</div>
+            <div class="sys" role="rowheader">L1 + L2 lexicon<small>0.04 ms</small></div>
+            <div class="c" role="cell">79.7%</div><div class="c" role="cell">4.5%<small>17 of 658</small></div><div class="c" role="cell">7.2%</div><div class="c" role="cell">$0</div>
+            <div class="sys" role="rowheader">L1 + L2 + L3 Haiku<small>13.0 s per batch of 10, 16.1 s p95</small></div>
+            <div class="c lo" role="cell">82.0%</div><div class="c lo" role="cell">0.8%<small>2 of 658</small></div><div class="c" role="cell">8.9%</div><div class="c" role="cell">$0.00018</div>
+            <div class="sys last" role="rowheader">Claude with schema, alone<small>100-dish subsample, 13.4 s per dish</small></div>
+            <div class="c cl last" role="cell">79.2%</div><div class="c cl last" role="cell">1.7%<small>3 of 229</small></div><div class="c last" role="cell">3.3%</div><div class="c last" role="cell">$0.056</div>
+          </div>
+          <p class="sheet-sub" style="margin:12px 0 0">On the same 100 dishes Claude saw, the three layers score 81.3% recall and 0.3% false-safe (1 of 229) at 9.2% over-warning.</p>
+        </div>
+      </div>
+      <figcaption class="sheet-foot">Costs are API-equivalent, as reported by the Claude CLI (<code>total_cost_usd</code>); the runs used a subscription. Haiku: 31 calls for the held-out set, $0.055 in all; 6 calls for the adversarial set, $0.011. Adversarial recall and false-safe count only the hidden allergens each dish was built around. Run with <code>python eval/guardrails/run_guard.py</code>.</figcaption>
+    </figure>
+
+    <p style="margin-top:26px">
+      The adversarial set (<code>eval/guardrails/adversarial_set.json</code>,
+      frozen in commit <code>51c4ae3</code> before any guard run) is 60 dishes
+      whose name or description never says the allergen: <i>Moules
+      Marini&egrave;res</i>, <i>Tremo&ccedil;os</i>, <i>蚝油芥兰</i>, a
+      Caesar salad, a ragù with its soffritto and wine. I drafted it with a
+      model from standard recipes, one recipe note per dish; nobody has
+      checked the labels by hand. Pick a dish to see what each layer did.
+    </p>
+
+    <figure class="sheet" id="gd-insp">
+      <div class="sheet-head"><span>Dish inspector, adversarial set</span><span>overview/guard.json</span></div>
+      <div class="sheet-body">
+        <div class="gd-pick">
+          <label for="gd-dish">Dish</label>
+          <select id="gd-dish" disabled><option>Loading 60 dishes</option></select>
+          <button type="button" id="gd-prev" aria-label="Previous dish">Prev</button>
+          <button type="button" id="gd-next" aria-label="Next dish">Next</button>
+        </div>
+        <div id="gd-card" aria-live="polite">
+          <div class="gd-sk" aria-hidden="true"></div><div class="gd-sk gd-sk--short" aria-hidden="true"></div><div class="gd-sk gd-sk--tall" aria-hidden="true"></div>
+        </div>
+      </div>
+      <figcaption class="sheet-foot">Labels are model-drafted from the recipe note shown. Hidden allergens (the ones the dish was built to hide) are marked with a bar. Reasons are Haiku's own words from its run-1 reply; lexicon reasons are the matched words. Levels: contains, may, not indicated.</figcaption>
+    </figure>
+
+    <figure class="sheet" id="gd-per" style="margin-top:26px">
+      <div class="sheet-head"><span>Per allergen, false-safe slots by layer</span><span>overview/guard.json</span></div>
+      <div class="sheet-body">
+        <div class="seg" role="group" aria-label="Eval set for the per-allergen table">
+          <button type="button" data-pset="adversarial" aria-pressed="true">Adversarial</button>
+          <button type="button" data-pset="test" aria-pressed="false">Held-out</button>
+        </div>
+        <div class="gd-scroll">
+          <table class="gd-pt">
+            <thead><tr><th scope="col">Allergen</th><th scope="col">n contains</th><th scope="col">L1 misses</th><th scope="col">+ L2</th><th scope="col">+ L3</th><th scope="col">Recall L1 to L3</th></tr></thead>
+            <tbody id="gd-pt-body"><tr><td colspan="6"><div class="gd-sk" aria-hidden="true"></div></td></tr></tbody>
+          </table>
+        </div>
+      </div>
+      <figcaption class="sheet-foot">A miss is a slot labeled contains that the guard left at not indicated. The lexicon takes sulphites from 0% to 81.8% recall on the held-out set because the dish descriptions name wine or sherry; the LoRA had answered <code>may</code> on every one.</figcaption>
+    </figure>
+
+    <h3 class="gd-h3">Error analysis: what each layer caught, and what it cost</h3>
+    <dl class="specs">
+      <div class="spec"><dt>Lexicon catches</dt><dd>Translated ingredient words the LoRA read past: <i>gambas</i> (crustaceans), <i>calamares a la romana</i> (molluscs), <i>marisco</i>, <i>tonnato</i> (fish), <i>shorshe</i> (mustard), <i>nogada</i> (nuts), and both lupin dishes, <i>tremoços</i> and <i>altramuces</i>. 11 of the 22 adversarial misses.</dd></div>
+      <div class="spec"><dt>Haiku catches</dt><dd>Recipe knowledge that a word list cannot hold without naming dishes: anchovy in a Caesar dressing, tahini in hummus, walnuts in a Waldorf, almonds and sesame in mole poblano, celery in gumbo and minestrone, the egg wash on tonkatsu. The other 11.</dd></div>
+      <div class="spec"><dt>Misses left</dt><dd>Held-out, two slots: eggs in <i>陳皮欖角蒸鯪魚球</i>, dace fish balls whose description lists no egg, and mustard in <i>undhiyu</i>. Both labels come from the synthetic generator and are arguable; neither layer flagged them.</dd></div>
+      <div class="spec"><dt>Run to run</dt><dd>Three Haiku runs on the adversarial set agreed on 484 of 514 open allergen slots (94.2%). Run 3 cleared <i>Hummus</i> of sesame, so the hidden false-safe rate across runs was 0.0%, 0.0% and 0.8%. One run is not enough to trust the zero.</dd></div>
+      <div class="spec"><dt>False alarms</dt><dd>The lexicon maps the Thai word <i>kung</i> (shrimp) and so warns about crustaceans on Kung Pao chicken. Haiku added 22 warnings on slots labeled not indicated, most of them "stock may contain soy" (coq au vin, bordelaise, risotto) or "frying oil may be peanut oil" (calamares).</dd></div>
+      <div class="spec"><dt>A draft label that is wrong</dt><dd>Haiku called eggs <code>contains</code> on chiles en nogada because the chiles are often battered (<i>capeados</i>). The draft label says not indicated. Haiku is probably right, which is why the set ships with <code>eval/guardrails/labeling_sheet.csv</code>, 840 rows for a person to check.</dd></div>
+      <div class="spec"><dt>Harness bug</dt><dd>On the first adversarial run Haiku copied the example id <code>d1</code> for every dish in two of six batches, both retries failed, and the fail-closed fallback warned on everything. The request now numbers dishes <code>d1</code> to <code>d10</code> (commit <code>6fdaf67</code>); the bad run is kept in <code>outputs/superseded/</code>.</dd></div>
+      <div class="spec"><dt>Sonnet instead</dt><dd>As the second opinion, Sonnet also reached 0 hidden misses, but over-warned on 32.2% of slots and cost $0.0021 a dish, 12 times Haiku.</dd></div>
+    </dl>
+    <p>
+      One caveat on the lexicon's adversarial number: the same agent wrote the
+      lexicon and the adversarial dishes, so its 11 catches there are
+      optimistic. The held-out result (30 misses down to 17) is the cleaner
+      measure of the lexicon, and Haiku never saw any label.
+    </p>
+
+    <h3 class="gd-h3">What I would do next</h3>
+    <ul class="gd-next">
+      <li>Have a person fill in the labeling sheet, then rescore; the chiles en nogada row already says some labels will move.</li>
+      <li>Count the usability cost directly: how many dishes each layer removes from a diner's safe list, per allergen.</li>
+      <li>Run the second opinion five times on the adversarial set and flag a slot if any run flags it, to see whether the hummus miss goes away and what it does to over-warning.</li>
+      <li>Fold Haiku's flags back into the LoRA's training data, so the cheap local model learns the hidden allergens itself.</li>
+      <li>Test on photographed menus, where the dish text comes out of OCR and is messier than any synthetic prompt.</li>
+    </ul>
+  </section>
+
 
   <section class="stop stop--key">
     <p class="eyebrow">Benchmark</p>
@@ -557,6 +727,13 @@
     <p class="eyebrow">Limitations</p>
     <h2>Labels from Claude, no human check yet</h2>
     <p>
+      The adversarial set's labels were drafted by a model too, from the
+      recipe notes in the file, and the agent that drafted them also wrote the
+      lexicon. <code>eval/guardrails/labeling_sheet.csv</code> lists all 840
+      dish and allergen slots with blank reviewer columns for a person to fill
+      in.
+    </p>
+    <p>
       Every label in the benchmark was generated by Claude, and Claude is
       also one of the systems being scored. The spec requires a human
       spot-check of about 60 dishes stratified across cuisines; it has not
@@ -574,7 +751,7 @@
       The LoRA path in the app was broken at first too. It parsed
       <code>mlx_lm.generate</code>'s raw output, which wraps the JSON in a
       banner, and expected a <code>dish_id</code> the model never produces,
-      so every call fell back to the default. Both are fixed and the 10 tests
+      so every call fell back to the default. Both are fixed, and the 25 tests
       pass. This is not a medical device; confirm allergens with restaurant
       staff.
     </p>
@@ -687,6 +864,79 @@
   }
   [box, veg, vgn, sp].forEach(function (el) { el.addEventListener("change", run); });
   run();
+})();
+</script>
+
+<script>
+(function () {
+  /* Guard section: set toggle for the layer table (static numbers from eval/guardrails/results.json). */
+  var seg = document.querySelector("#gd-table .seg");
+  seg.querySelectorAll("button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      seg.querySelectorAll("button").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+      document.querySelectorAll("#gd-table .gd-set").forEach(function (s) { s.hidden = s.getAttribute("data-set") !== b.getAttribute("data-set"); });
+    });
+  });
+
+  /* Dish inspector and per-allergen table: overview/guard.json, written by eval/guardrails/export_web.py. */
+  var LV = { c: "contains", m: "may", n: "not indicated" };
+  var sel = document.getElementById("gd-dish"), card = document.getElementById("gd-card");
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (ch) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[ch]; }); };
+  function cell(code, prev, miss) {
+    var cls = "lv-" + code + (prev && code !== prev ? " up" : "") + (miss ? " miss" : "");
+    return '<td class="' + cls + '">' + LV[code] + "</td>";
+  }
+  function show(G, i) {
+    var d = G.dishes[i], rows = [], raised = 0, missed = 0;
+    G.allergens.forEach(function (a, k) {
+      var t = d.truth[k], l1 = d.l1[k], l2 = d.l2[k], l3 = d.l3[k];
+      var hid = d.hidden.indexOf(a) >= 0, why = "";
+      if (l2 !== l1) why = "lexicon: " + (d.lex[a] || []).join(", ");
+      else if (l3 !== l2) why = "Haiku: " + (d.why[a] || "");
+      if (l3 !== l1) raised++;
+      var miss = t === "c" && l3 === "n";
+      if (miss) missed++;
+      if (t === "n" && l1 === "n" && l3 === "n" && !hid) return; /* nothing to see on this allergen */
+      rows.push('<tr class="' + (hid ? "hid" : "") + '"><td class="al">' + a + (hid ? " (hidden)" : "") + "</td>" +
+        '<td class="lv-' + t + '">' + LV[t] + "</td>" + cell(l1) + cell(l2, l1) + cell(l3, l2, miss) +
+        '<td class="why">' + esc(why) + "</td></tr>");
+    });
+    card.innerHTML = '<p class="gd-dish">' + esc(d.dish) + "</p>" +
+      '<p class="gd-meta">' + esc(d.trap) + " &middot; hides " + esc(d.hidden.join(", ")) + "</p>" +
+      '<p class="gd-basis">Recipe note: ' + esc(d.basis) + "</p>" +
+      '<div class="gd-scroll"><table class="gd-t"><thead><tr><th scope="col">Allergen</th><th scope="col">Label</th><th scope="col">L1 LoRA</th><th scope="col">+ L2</th><th scope="col">+ L3</th><th scope="col">Raised by</th></tr></thead><tbody>' +
+      rows.join("") + "</tbody></table></div>" +
+      '<p class="gd-sum">' + (missed ? missed + " labeled allergen" + (missed > 1 ? "s" : "") + " still not indicated after all three layers. " : "No labeled allergen left at not indicated. ") +
+      raised + " call" + (raised === 1 ? "" : "s") + " raised by layers 2 and 3. Allergens that every layer left at not indicated, as labeled, are not listed.</p>";
+  }
+  function perTable(G, set) {
+    var P = G.per_allergen[set];
+    var f = function (v) { return v === null ? "&ndash;" : v.toFixed(1) + "%"; };
+    document.getElementById("gd-pt-body").innerHTML = G.allergens.map(function (a) {
+      var l1 = P.L1[a], l2 = P.L2[a], l3 = P.L3[a];
+      return "<tr><td>" + a + "</td><td>" + l1[0] + "</td><td>" + l1[1] + "</td><td>" + l2[1] + "</td><td>" + l3[1] + "</td><td>" + f(l1[2]) + " to " + f(l3[2]) + "</td></tr>";
+    }).join("");
+  }
+  fetch("guard.json").then(function (r) { return r.json(); }).then(function (G) {
+    sel.innerHTML = G.dishes.map(function (d, i) { return '<option value="' + i + '">' + esc(d.dish) + "</option>"; }).join("");
+    sel.disabled = false;
+    var start = Math.max(0, G.dishes.findIndex(function (d) { return d.id === "hummus"; }));
+    sel.value = String(start); show(G, start);
+    sel.addEventListener("change", function () { show(G, +sel.value); });
+    var step = function (k) { var i = (+sel.value + k + G.dishes.length) % G.dishes.length; sel.value = String(i); show(G, i); };
+    document.getElementById("gd-prev").addEventListener("click", function () { step(-1); });
+    document.getElementById("gd-next").addEventListener("click", function () { step(1); });
+    perTable(G, "adversarial");
+    var ps = document.querySelector("#gd-per .seg");
+    ps.querySelectorAll("button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        ps.querySelectorAll("button").forEach(function (o) { o.setAttribute("aria-pressed", o === b ? "true" : "false"); });
+        perTable(G, b.getAttribute("data-pset"));
+      });
+    });
+  }).catch(function () {
+    card.innerHTML = '<p class="gd-basis">Could not load guard.json. The same data is in eval/guardrails/outputs/scored_adversarial.json in the repo.</p>';
+  });
 })();
 </script>
 </body>

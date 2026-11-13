@@ -1,0 +1,6115 @@
+{
+ "set": "test",
+ "model": "haiku",
+ "run": 1,
+ "batch_size": 10,
+ "batches": [
+  {
+   "ids": [
+    "t000",
+    "t001",
+    "t002",
+    "t003",
+    "t004",
+    "t005",
+    "t006",
+    "t007",
+    "t008",
+    "t009"
+   ],
+   "open": {
+    "t000": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t001": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t002": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t003": [
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t004": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t005": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t006": [
+     "nuts",
+     "mustard",
+     "lupin"
+    ],
+    "t007": [
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t008": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin"
+    ],
+    "t009": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t000": {},
+    "t001": {},
+    "t002": {
+     "milk": "may"
+    },
+    "t003": {},
+    "t004": {
+     "sesame": "may"
+    },
+    "t005": {},
+    "t006": {},
+    "t007": {},
+    "t008": {},
+    "t009": {}
+   },
+   "why": {
+    "t000": {},
+    "t001": {},
+    "t002": {
+     "milk": "Sweet potato purée often finished with butter or cream."
+    },
+    "t003": {},
+    "t004": {
+     "sesame": "Rye bread or buns may be sesame-topped or contain sesame."
+    },
+    "t005": {},
+    "t006": {},
+    "t007": {},
+    "t008": {},
+    "t009": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0015252999999999998,
+     "duration_ms": 10333,
+     "wall_s": 10.77,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2098,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2211,
+      "output_tokens_details": {
+       "thinking_tokens": 1965
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2098,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2211,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2098,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2098
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"milk\", \"level\": \"may\", \"why\": \"Sweet potato purée often finished with butter or cream.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": [{\"allergen\": \"sesame\", \"level\": \"may\", \"why\": \"Rye bread or buns may be sesame-topped or contain sesame.\"}]}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 10.77
+  },
+  {
+   "ids": [
+    "t010",
+    "t011",
+    "t012",
+    "t013",
+    "t014",
+    "t015",
+    "t016",
+    "t017",
+    "t018",
+    "t019"
+   ],
+   "open": {
+    "t010": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t011": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t012": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t013": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t014": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t015": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t016": [
+     "crustaceans",
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t017": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t018": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t019": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ]
+   },
+   "calls": {
+    "t010": {
+     "molluscs": "may"
+    },
+    "t011": {
+     "eggs": "may",
+     "molluscs": "may"
+    },
+    "t012": {},
+    "t013": {
+     "peanuts": "may"
+    },
+    "t014": {},
+    "t015": {},
+    "t016": {},
+    "t017": {},
+    "t018": {},
+    "t019": {}
+   },
+   "why": {
+    "t010": {
+     "molluscs": "Marinades often include oyster sauce, which counts as a mollusc."
+    },
+    "t011": {
+     "eggs": "Crispy taro coatings are often bound with egg.",
+     "molluscs": "Cantonese steamed rib seasonings often include oyster sauce."
+    },
+    "t012": {},
+    "t013": {
+     "peanuts": "Sichuan beef is often fried in peanut oil."
+    },
+    "t014": {},
+    "t015": {},
+    "t016": {},
+    "t017": {},
+    "t018": {},
+    "t019": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0021931999999999998,
+     "duration_ms": 15696,
+     "wall_s": 16.11,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 1925,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 3616,
+      "output_tokens_details": {
+       "thinking_tokens": 3280
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 1925,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 3616,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1925,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 1925
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Marinades often include oyster sauce, which counts as a mollusc.\"}]}, {\"id\": \"d2\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Crispy taro coatings are often bound with egg.\"}, {\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Cantonese steamed rib seasonings often include oyster sauce.\"}]}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Sichuan beef is often fried in peanut oil.\"}]}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 16.11
+  },
+  {
+   "ids": [
+    "t020",
+    "t021",
+    "t022",
+    "t023",
+    "t024",
+    "t025",
+    "t026",
+    "t027",
+    "t028",
+    "t029"
+   ],
+   "open": {
+    "t020": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t021": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t022": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t023": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t024": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t025": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t026": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t027": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t028": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t029": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t020": {
+     "sesame": "may"
+    },
+    "t021": {},
+    "t022": {},
+    "t023": {},
+    "t024": {},
+    "t025": {},
+    "t026": {},
+    "t027": {},
+    "t028": {
+     "crustaceans": "contains",
+     "molluscs": "contains"
+    },
+    "t029": {
+     "nuts": "may"
+    }
+   },
+   "why": {
+    "t020": {
+     "sesame": "Rye bread is often topped or baked with sesame seeds."
+    },
+    "t021": {},
+    "t022": {},
+    "t023": {},
+    "t024": {},
+    "t025": {},
+    "t026": {},
+    "t027": {},
+    "t028": {
+     "crustaceans": "Standard Haemul Pajeon includes shrimp as the seafood.",
+     "molluscs": "Standard Haemul Pajeon includes squid as the seafood."
+    },
+    "t029": {
+     "nuts": "Coconut milk is often flagged; some curry pastes contain nuts."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0018136,
+     "duration_ms": 12691,
+     "wall_s": 13.23,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 1827,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2896,
+      "output_tokens_details": {
+       "thinking_tokens": 2549
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 1827,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2896,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1827,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 1827
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": [{\"allergen\": \"sesame\", \"level\": \"may\", \"why\": \"Rye bread is often topped or baked with sesame seeds.\"}]}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": [{\"allergen\": \"crustaceans\", \"level\": \"contains\", \"why\": \"Standard Haemul Pajeon includes shrimp as the seafood.\"}, {\"allergen\": \"molluscs\", \"level\": \"contains\", \"why\": \"Standard Haemul Pajeon includes squid as the seafood.\"}]}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"may\", \"why\": \"Coconut milk is often flagged; some curry pastes contain nuts.\"}]}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 13.23
+  },
+  {
+   "ids": [
+    "t030",
+    "t031",
+    "t032",
+    "t033",
+    "t034",
+    "t035",
+    "t036",
+    "t037",
+    "t038",
+    "t039"
+   ],
+   "open": {
+    "t030": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t031": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t032": [
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "lupin"
+    ],
+    "t033": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t034": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t035": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t036": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t037": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t038": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t039": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t030": {},
+    "t031": {},
+    "t032": {},
+    "t033": {},
+    "t034": {
+     "sesame": "may",
+     "nuts": "may"
+    },
+    "t035": {},
+    "t036": {},
+    "t037": {},
+    "t038": {},
+    "t039": {
+     "nuts": "may"
+    }
+   },
+   "why": {
+    "t030": {},
+    "t031": {},
+    "t032": {},
+    "t033": {},
+    "t034": {
+     "sesame": "Mole verde often includes toasted sesame seeds alongside pepitas.",
+     "nuts": "Some mole verde versions add almonds, which are tree nuts."
+    },
+    "t035": {},
+    "t036": {},
+    "t037": {},
+    "t038": {},
+    "t039": {
+     "nuts": "Mansaf is often garnished with almonds or pistachios as well as pine nuts."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0014379999999999998,
+     "duration_ms": 8707,
+     "wall_s": 9.28,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2044,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2058,
+      "output_tokens_details": {
+       "thinking_tokens": 1755
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2044,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2058,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2044,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2044
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": [{\"allergen\": \"sesame\", \"level\": \"may\", \"why\": \"Mole verde often includes toasted sesame seeds alongside pepitas.\"}, {\"allergen\": \"nuts\", \"level\": \"may\", \"why\": \"Some mole verde versions add almonds, which are tree nuts.\"}]}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"may\", \"why\": \"Mansaf is often garnished with almonds or pistachios as well as pine nuts.\"}]}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 9.28
+  },
+  {
+   "ids": [
+    "t040",
+    "t041",
+    "t042",
+    "t043",
+    "t044",
+    "t045",
+    "t046",
+    "t047",
+    "t048",
+    "t049"
+   ],
+   "open": {
+    "t040": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t041": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t042": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t043": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t044": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t045": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t046": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t047": [
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t048": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t049": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t040": {},
+    "t041": {},
+    "t042": {},
+    "t043": {},
+    "t044": {},
+    "t045": {},
+    "t046": {},
+    "t047": {},
+    "t048": {},
+    "t049": {}
+   },
+   "why": {
+    "t040": {},
+    "t041": {},
+    "t042": {},
+    "t043": {},
+    "t044": {},
+    "t045": {},
+    "t046": {},
+    "t047": {},
+    "t048": {},
+    "t049": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0013914,
+     "duration_ms": 7886,
+     "wall_s": 8.33,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2216,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 1896,
+      "output_tokens_details": {
+       "thinking_tokens": 1736
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2216,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 1896,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2216,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2216
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 8.33
+  },
+  {
+   "ids": [
+    "t050",
+    "t051",
+    "t052",
+    "t053",
+    "t054",
+    "t055",
+    "t056",
+    "t057",
+    "t058",
+    "t059"
+   ],
+   "open": {
+    "t050": [
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t051": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t052": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "milk",
+     "nuts",
+     "celery",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t053": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t054": [
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t055": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t056": [
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t057": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t058": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t059": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t050": {},
+    "t051": {
+     "sulphites": "may"
+    },
+    "t052": {
+     "sulphites": "may"
+    },
+    "t053": {},
+    "t054": {},
+    "t055": {},
+    "t056": {},
+    "t057": {},
+    "t058": {
+     "fish": "may"
+    },
+    "t059": {}
+   },
+   "why": {
+    "t050": {},
+    "t051": {
+     "sulphites": "Wine is sometimes added to doro wat."
+    },
+    "t052": {
+     "sulphites": "Amchur is dried mango powder, a dried fruit that often carries sulphites."
+    },
+    "t053": {},
+    "t054": {},
+    "t055": {},
+    "t056": {},
+    "t057": {},
+    "t058": {
+     "fish": "Worcestershire sauce in the beef patty often contains anchovies."
+    },
+    "t059": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0017991,
+     "duration_ms": 11805,
+     "wall_s": 12.45,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2227,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2707,
+      "output_tokens_details": {
+       "thinking_tokens": 2412
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2227,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2707,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2227,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2227
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": [{\"allergen\": \"sulphites\", \"level\": \"may\", \"why\": \"Wine is sometimes added to doro wat.\"}]}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"sulphites\", \"level\": \"may\", \"why\": \"Amchur is dried mango powder, a dried fruit that often carries sulphites.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": [{\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Worcestershire sauce in the beef patty often contains anchovies.\"}]}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 12.45
+  },
+  {
+   "ids": [
+    "t060",
+    "t061",
+    "t062",
+    "t063",
+    "t064",
+    "t065",
+    "t066",
+    "t067",
+    "t068",
+    "t069"
+   ],
+   "open": {
+    "t060": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t061": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t062": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t063": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t064": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t065": [
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t066": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t067": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t068": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t069": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t060": {},
+    "t061": {},
+    "t062": {
+     "mustard": "may"
+    },
+    "t063": {
+     "sulphites": "may"
+    },
+    "t064": {},
+    "t065": {},
+    "t066": {
+     "peanuts": "may",
+     "molluscs": "may"
+    },
+    "t067": {
+     "peanuts": "may"
+    },
+    "t068": {},
+    "t069": {}
+   },
+   "why": {
+    "t060": {},
+    "t061": {},
+    "t062": {
+     "mustard": "Tonnato mayonnaise sauce often contains mustard."
+    },
+    "t063": {
+     "sulphites": "Sake and mirin often carry sulphites."
+    },
+    "t064": {},
+    "t065": {},
+    "t066": {
+     "peanuts": "Hoisin marinade often includes peanut.",
+     "molluscs": "Oyster sauce is common in char siu marinade."
+    },
+    "t067": {
+     "peanuts": "Chili oil dishes often garnished with ground peanuts."
+    },
+    "t068": {},
+    "t069": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0019145,
+     "duration_ms": 12697,
+     "wall_s": 13.17,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2049,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 3009,
+      "output_tokens_details": {
+       "thinking_tokens": 2642
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2049,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 3009,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2049,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2049
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"mustard\", \"level\": \"may\", \"why\": \"Tonnato mayonnaise sauce often contains mustard.\"}]}, {\"id\": \"d4\", \"flags\": [{\"allergen\": \"sulphites\", \"level\": \"may\", \"why\": \"Sake and mirin often carry sulphites.\"}]}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Hoisin marinade often includes peanut.\"}, {\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Oyster sauce is common in char siu marinade.\"}]}, {\"id\": \"d8\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Chili oil dishes often garnished with ground peanuts.\"}]}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 13.17
+  },
+  {
+   "ids": [
+    "t070",
+    "t071",
+    "t072",
+    "t073",
+    "t074",
+    "t075",
+    "t076",
+    "t077",
+    "t078",
+    "t079"
+   ],
+   "open": {
+    "t070": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t071": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t072": [
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t073": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t074": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t075": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t076": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t077": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t078": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t079": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t070": {
+     "peanuts": "may"
+    },
+    "t071": {},
+    "t072": {
+     "molluscs": "may"
+    },
+    "t073": {},
+    "t074": {
+     "fish": "may"
+    },
+    "t075": {
+     "eggs": "may"
+    },
+    "t076": {},
+    "t077": {},
+    "t078": {
+     "mustard": "may"
+    },
+    "t079": {}
+   },
+   "why": {
+    "t070": {
+     "peanuts": "Sichuan stir-fry oils and garnishes often include peanuts or peanut oil."
+    },
+    "t071": {},
+    "t072": {
+     "molluscs": "Pad kra pao sauces often include oyster sauce."
+    },
+    "t073": {},
+    "t074": {
+     "fish": "Worcestershire sauce in meatloaf usually contains anchovies."
+    },
+    "t075": {
+     "eggs": "Pad kra pao is usually served topped with a fried egg."
+    },
+    "t076": {},
+    "t077": {},
+    "t078": {
+     "mustard": "Some blanquette recipes add Dijon mustard to the sauce."
+    },
+    "t079": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0018604000000000001,
+     "duration_ms": 13411,
+     "wall_s": 14.07,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2011,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2916,
+      "output_tokens_details": {
+       "thinking_tokens": 2524
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2011,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2916,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2011,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2011
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Sichuan stir-fry oils and garnishes often include peanuts or peanut oil.\"}]}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Pad kra pao sauces often include oyster sauce.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": [{\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Worcestershire sauce in meatloaf usually contains anchovies.\"}]}, {\"id\": \"d6\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Pad kra pao is usually served topped with a fried egg.\"}]}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": [{\"allergen\": \"mustard\", \"level\": \"may\", \"why\": \"Some blanquette recipes add Dijon mustard to the sauce.\"}]}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 14.07
+  },
+  {
+   "ids": [
+    "t080",
+    "t081",
+    "t082",
+    "t083",
+    "t084",
+    "t085",
+    "t086",
+    "t087",
+    "t088",
+    "t089"
+   ],
+   "open": {
+    "t080": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t081": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t082": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t083": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t084": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t085": [
+     "crustaceans",
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t086": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t087": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t088": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t089": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t080": {},
+    "t081": {},
+    "t082": {
+     "milk": "may"
+    },
+    "t083": {},
+    "t084": {},
+    "t085": {
+     "crustaceans": "may"
+    },
+    "t086": {},
+    "t087": {},
+    "t088": {},
+    "t089": {}
+   },
+   "why": {
+    "t080": {},
+    "t081": {},
+    "t082": {
+     "milk": "Dairy fats are common in this traditional preparation; recipe unclear."
+    },
+    "t083": {},
+    "t084": {},
+    "t085": {
+     "crustaceans": "Some Vietnamese fermented sauces use shrimp paste; mắm nêm recipes vary."
+    },
+    "t086": {},
+    "t087": {},
+    "t088": {},
+    "t089": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0020027,
+     "duration_ms": 12385,
+     "wall_s": 12.95,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2200,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 3125,
+      "output_tokens_details": {
+       "thinking_tokens": 2860
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2200,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 3125,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2200,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2200
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"milk\", \"level\": \"may\", \"why\": \"Dairy fats are common in this traditional preparation; recipe unclear.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": [{\"allergen\": \"crustaceans\", \"level\": \"may\", \"why\": \"Some Vietnamese fermented sauces use shrimp paste; mắm nêm recipes vary.\"}]}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 12.95
+  },
+  {
+   "ids": [
+    "t090",
+    "t091",
+    "t092",
+    "t093",
+    "t094",
+    "t095",
+    "t096",
+    "t097",
+    "t098",
+    "t099"
+   ],
+   "open": {
+    "t090": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t091": [
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t092": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t093": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t094": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t095": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t096": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t097": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t098": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t099": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "soy",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t090": {},
+    "t091": {
+     "fish": "may",
+     "molluscs": "may"
+    },
+    "t092": {
+     "eggs": "may"
+    },
+    "t093": {
+     "sulphites": "may"
+    },
+    "t094": {},
+    "t095": {},
+    "t096": {
+     "peanuts": "may"
+    },
+    "t097": {
+     "fish": "may",
+     "sesame": "may"
+    },
+    "t098": {},
+    "t099": {
+     "milk": "may"
+    }
+   },
+   "why": {
+    "t090": {},
+    "t091": {
+     "fish": "Crab gravies often use fish stock or dried seafood.",
+     "molluscs": "Oyster sauce or dried scallop often flavours Chinese braising gravies."
+    },
+    "t092": {
+     "eggs": "Batter for crispy fried catfish may contain egg."
+    },
+    "t093": {
+     "sulphites": "Some versions add wine or tej, which can contain sulphites."
+    },
+    "t094": {},
+    "t095": {},
+    "t096": {
+     "peanuts": "Often served with a peanut-based dipping sauce alongside nuoc cham."
+    },
+    "t097": {
+     "fish": "Worcestershire sauce, often used on patties, usually contains anchovies.",
+     "sesame": "Some rye or seeded breads contain sesame seeds."
+    },
+    "t098": {},
+    "t099": {
+     "milk": "Ghee or yogurt often finishes Hyderabadi gravies."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0025776,
+     "duration_ms": 18773,
+     "wall_s": 19.22,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2187,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 4280,
+      "output_tokens_details": {
+       "thinking_tokens": 3758
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2187,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 4280,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2187,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2187
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": [{\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Crab gravies often use fish stock or dried seafood.\"}, {\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Oyster sauce or dried scallop often flavours Chinese braising gravies.\"}]}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Batter for crispy fried catfish may contain egg.\"}]}, {\"id\": \"d4\", \"flags\": [{\"allergen\": \"sulphites\", \"level\": \"may\", \"why\": \"Some versions add wine or tej, which can contain sulphites.\"}]}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Often served with a peanut-based dipping sauce alongside nuoc cham.\"}]}, {\"id\": \"d8\", \"flags\": [{\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Worcestershire sauce, often used on patties, usually contains anchovies.\"}, {\"allergen\": \"sesame\", \"level\": \"may\", \"why\": \"Some rye or seeded breads contain sesame seeds.\"}]}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"milk\", \"level\": \"may\", \"why\": \"Ghee or yogurt often finishes Hyderabadi gravies.\"}]}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 19.22
+  },
+  {
+   "ids": [
+    "t100",
+    "t101",
+    "t102",
+    "t103",
+    "t104",
+    "t105",
+    "t106",
+    "t107",
+    "t108",
+    "t109"
+   ],
+   "open": {
+    "t100": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t101": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t102": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t103": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t104": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t105": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t106": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t107": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t108": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t109": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t100": {},
+    "t101": {},
+    "t102": {},
+    "t103": {},
+    "t104": {
+     "nuts": "may",
+     "sulphites": "may"
+    },
+    "t105": {
+     "molluscs": "may"
+    },
+    "t106": {},
+    "t107": {},
+    "t108": {},
+    "t109": {}
+   },
+   "why": {
+    "t100": {},
+    "t101": {},
+    "t102": {},
+    "t103": {},
+    "t104": {
+     "nuts": "Coconut broth; coconut is often grouped with tree nuts.",
+     "sulphites": "Kokum and tamarind are dried fruits, which can carry sulphites."
+    },
+    "t105": {
+     "molluscs": "Cantonese steamed minced pork marinades often include oyster sauce."
+    },
+    "t106": {},
+    "t107": {},
+    "t108": {},
+    "t109": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0019455,
+     "duration_ms": 12854,
+     "wall_s": 13.32,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2114,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 3045,
+      "output_tokens_details": {
+       "thinking_tokens": 2743
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2114,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 3045,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2114,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2114
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"may\", \"why\": \"Coconut broth; coconut is often grouped with tree nuts.\"}, {\"allergen\": \"sulphites\", \"level\": \"may\", \"why\": \"Kokum and tamarind are dried fruits, which can carry sulphites.\"}]}, {\"id\": \"d6\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Cantonese steamed minced pork marinades often include oyster sauce.\"}]}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 13.32
+  },
+  {
+   "ids": [
+    "t110",
+    "t111",
+    "t112",
+    "t113",
+    "t114",
+    "t115",
+    "t116",
+    "t117",
+    "t118",
+    "t119"
+   ],
+   "open": {
+    "t110": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t111": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t112": [
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t113": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t114": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t115": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t116": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t117": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t118": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t119": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t110": {},
+    "t111": {},
+    "t112": {
+     "nuts": "may"
+    },
+    "t113": {},
+    "t114": {},
+    "t115": {},
+    "t116": {
+     "celery": "may",
+     "sulphites": "may"
+    },
+    "t117": {},
+    "t118": {},
+    "t119": {
+     "crustaceans": "contains",
+     "fish": "may",
+     "eggs": "may",
+     "peanuts": "may"
+    }
+   },
+   "why": {
+    "t110": {},
+    "t111": {},
+    "t112": {
+     "nuts": "Often garnished with cashews or other tree nuts in some versions."
+    },
+    "t113": {},
+    "t114": {},
+    "t115": {},
+    "t116": {
+     "celery": "Garam masala blends often include celery seed.",
+     "sulphites": "Vinegar is sometimes used in marinades or restaurant versions."
+    },
+    "t117": {},
+    "t118": {},
+    "t119": {
+     "crustaceans": "Filling traditionally includes shrimp.",
+     "fish": "Nuoc cham dipping sauce usually contains fish sauce.",
+     "eggs": "Some batter versions add egg.",
+     "peanuts": "Sometimes served with crushed peanuts or peanut sauce."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0020659999999999997,
+     "duration_ms": 14399,
+     "wall_s": 14.9,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 1869,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 3384,
+      "output_tokens_details": {
+       "thinking_tokens": 2933
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 1869,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 3384,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1869,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 1869
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"may\", \"why\": \"Often garnished with cashews or other tree nuts in some versions.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"celery\", \"level\": \"may\", \"why\": \"Garam masala blends often include celery seed.\"}, {\"allergen\": \"sulphites\", \"level\": \"may\", \"why\": \"Vinegar is sometimes used in marinades or restaurant versions.\"}]}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"crustaceans\", \"level\": \"contains\", \"why\": \"Filling traditionally includes shrimp.\"}, {\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Nuoc cham dipping sauce usually contains fish sauce.\"}, {\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Some batter versions add egg.\"}, {\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Sometimes served with crushed peanuts or peanut sauce.\"}]}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 14.9
+  },
+  {
+   "ids": [
+    "t120",
+    "t121",
+    "t122",
+    "t123",
+    "t124",
+    "t125",
+    "t126",
+    "t127",
+    "t128",
+    "t129"
+   ],
+   "open": {
+    "t120": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t121": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t122": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t123": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "t124": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t125": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t126": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t127": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t128": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t129": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t120": {},
+    "t121": {},
+    "t122": {},
+    "t123": {},
+    "t124": {},
+    "t125": {},
+    "t126": {},
+    "t127": {},
+    "t128": {},
+    "t129": {}
+   },
+   "why": {
+    "t120": {},
+    "t121": {},
+    "t122": {},
+    "t123": {},
+    "t124": {},
+    "t125": {},
+    "t126": {},
+    "t127": {},
+    "t128": {},
+    "t129": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0014105,
+     "duration_ms": 8003,
+     "wall_s": 8.56,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2399,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 1861,
+      "output_tokens_details": {
+       "thinking_tokens": 1701
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2399,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 1861,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2399,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2399
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 8.56
+  },
+  {
+   "ids": [
+    "t130",
+    "t131",
+    "t132",
+    "t133",
+    "t134",
+    "t135",
+    "t136",
+    "t137",
+    "t138",
+    "t139"
+   ],
+   "open": {
+    "t130": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t131": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t132": [
+     "crustaceans",
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t133": [
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t134": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t135": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t136": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t137": [
+     "crustaceans",
+     "milk",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t138": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t139": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ]
+   },
+   "calls": {
+    "t130": {},
+    "t131": {},
+    "t132": {},
+    "t133": {
+     "eggs": "may"
+    },
+    "t134": {},
+    "t135": {},
+    "t136": {},
+    "t137": {},
+    "t138": {},
+    "t139": {
+     "celery": "may"
+    }
+   },
+   "why": {
+    "t130": {},
+    "t131": {},
+    "t132": {},
+    "t133": {
+     "eggs": "Often topped with a raw egg cracked into the stew."
+    },
+    "t134": {},
+    "t135": {},
+    "t136": {},
+    "t137": {},
+    "t138": {},
+    "t139": {
+     "celery": "Broth or stock often includes celery as an aromatic."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0018249,
+     "duration_ms": 13070,
+     "wall_s": 13.63,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 1961,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2865,
+      "output_tokens_details": {
+       "thinking_tokens": 2624
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 1961,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2865,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1961,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 1961
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Often topped with a raw egg cracked into the stew.\"}]}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"celery\", \"level\": \"may\", \"why\": \"Broth or stock often includes celery as an aromatic.\"}]}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 13.63
+  },
+  {
+   "ids": [
+    "t140",
+    "t141",
+    "t142",
+    "t143",
+    "t144",
+    "t145",
+    "t146",
+    "t147",
+    "t148",
+    "t149"
+   ],
+   "open": {
+    "t140": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t141": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t142": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t143": [
+     "eggs",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t144": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t145": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t146": [
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t147": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t148": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t149": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t140": {},
+    "t141": {
+     "eggs": "may"
+    },
+    "t142": {},
+    "t143": {},
+    "t144": {},
+    "t145": {},
+    "t146": {
+     "mustard": "may"
+    },
+    "t147": {
+     "molluscs": "may",
+     "peanuts": "may"
+    },
+    "t148": {},
+    "t149": {}
+   },
+   "why": {
+    "t140": {},
+    "t141": {
+     "eggs": "Fried kofta dumplings are often bound with egg."
+    },
+    "t142": {},
+    "t143": {},
+    "t144": {},
+    "t145": {},
+    "t146": {
+     "mustard": "Often garnished with pickled mustard greens."
+    },
+    "t147": {
+     "molluscs": "Marinade often includes oyster sauce.",
+     "peanuts": "Some hoisin sauce brands contain peanuts."
+    },
+    "t148": {},
+    "t149": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0018472,
+     "duration_ms": 12791,
+     "wall_s": 13.3,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2145,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2836,
+      "output_tokens_details": {
+       "thinking_tokens": 2517
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2145,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2836,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2145,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2145
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Fried kofta dumplings are often bound with egg.\"}]}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"mustard\", \"level\": \"may\", \"why\": \"Often garnished with pickled mustard greens.\"}]}, {\"id\": \"d8\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Marinade often includes oyster sauce.\"}, {\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Some hoisin sauce brands contain peanuts.\"}]}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 13.3
+  },
+  {
+   "ids": [
+    "t150",
+    "t151",
+    "t152",
+    "t153",
+    "t154",
+    "t155",
+    "t156",
+    "t157",
+    "t158",
+    "t159"
+   ],
+   "open": {
+    "t150": [
+     "peanuts",
+     "soy",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "t151": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t152": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t153": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t154": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t155": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t156": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t157": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t158": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t159": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ]
+   },
+   "calls": {
+    "t150": {},
+    "t151": {},
+    "t152": {},
+    "t153": {},
+    "t154": {},
+    "t155": {},
+    "t156": {},
+    "t157": {
+     "sesame": "may",
+     "sulphites": "may"
+    },
+    "t158": {},
+    "t159": {}
+   },
+   "why": {
+    "t150": {},
+    "t151": {},
+    "t152": {},
+    "t153": {},
+    "t154": {},
+    "t155": {},
+    "t156": {},
+    "t157": {
+     "sesame": "Some Chettinad masala blends include toasted sesame seeds.",
+     "sulphites": "Tamarind, a dried fruit, may be sulphited."
+    },
+    "t158": {},
+    "t159": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0015214999999999998,
+     "duration_ms": 10327,
+     "wall_s": 10.81,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 1959,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2259,
+      "output_tokens_details": {
+       "thinking_tokens": 2010
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 1959,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2259,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1959,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 1959
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": [{\"allergen\": \"sesame\", \"level\": \"may\", \"why\": \"Some Chettinad masala blends include toasted sesame seeds.\"}, {\"allergen\": \"sulphites\", \"level\": \"may\", \"why\": \"Tamarind, a dried fruit, may be sulphited.\"}]}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 10.81
+  },
+  {
+   "ids": [
+    "t160",
+    "t161",
+    "t162",
+    "t163",
+    "t164",
+    "t165",
+    "t166",
+    "t167",
+    "t168",
+    "t169"
+   ],
+   "open": {
+    "t160": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t161": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t162": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t163": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t164": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t165": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t166": [
+     "eggs",
+     "peanuts",
+     "soy",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin"
+    ],
+    "t167": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t168": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t169": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t160": {},
+    "t161": {},
+    "t162": {},
+    "t163": {},
+    "t164": {},
+    "t165": {
+     "sulphites": "may"
+    },
+    "t166": {
+     "nuts": "may"
+    },
+    "t167": {},
+    "t168": {},
+    "t169": {}
+   },
+   "why": {
+    "t160": {},
+    "t161": {},
+    "t162": {},
+    "t163": {},
+    "t164": {},
+    "t165": {
+     "sulphites": "Some recipes add wine or vinegar to the stew."
+    },
+    "t166": {
+     "nuts": "Coconut milk is used; some labels treat coconut as a tree nut."
+    },
+    "t167": {},
+    "t168": {},
+    "t169": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0016133999999999999,
+     "duration_ms": 12277,
+     "wall_s": 12.85,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2061,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2402,
+      "output_tokens_details": {
+       "thinking_tokens": 2153
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2061,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2402,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2061,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2061
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": [{\"allergen\": \"sulphites\", \"level\": \"may\", \"why\": \"Some recipes add wine or vinegar to the stew.\"}]}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"may\", \"why\": \"Coconut milk is used; some labels treat coconut as a tree nut.\"}]}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 12.85
+  },
+  {
+   "ids": [
+    "t170",
+    "t171",
+    "t172",
+    "t173",
+    "t174",
+    "t175",
+    "t176",
+    "t177",
+    "t178",
+    "t179"
+   ],
+   "open": {
+    "t170": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin"
+    ],
+    "t171": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t172": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t173": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t174": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t175": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t176": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t177": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t178": [
+     "crustaceans",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t179": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t170": {},
+    "t171": {
+     "crustaceans": "may"
+    },
+    "t172": {
+     "fish": "may"
+    },
+    "t173": {},
+    "t174": {},
+    "t175": {},
+    "t176": {},
+    "t177": {
+     "peanuts": "may",
+     "fish": "may"
+    },
+    "t178": {
+     "mustard": "may"
+    },
+    "t179": {
+     "molluscs": "may"
+    }
+   },
+   "why": {
+    "t170": {},
+    "t171": {
+     "crustaceans": "Classic Nantua version is served with crayfish sauce."
+    },
+    "t172": {
+     "fish": "Worcestershire sauce in meatloaf or gravy often contains anchovies."
+    },
+    "t173": {},
+    "t174": {},
+    "t175": {},
+    "t176": {},
+    "t177": {
+     "peanuts": "Frying oil is sometimes peanut oil.",
+     "fish": "Worcestershire sometimes added to cream gravy contains anchovies."
+    },
+    "t178": {
+     "mustard": "Ya cai preserved mustard tuber is a standard topping, a mustard-family leaf/stem product."
+    },
+    "t179": {
+     "molluscs": "Cantonese versions often use oyster sauce in the sauce or drizzle."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.002312,
+     "duration_ms": 16986,
+     "wall_s": 17.38,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 1914,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 3858,
+      "output_tokens_details": {
+       "thinking_tokens": 3411
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 1914,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 3858,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1914,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 1914
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": [{\"allergen\": \"crustaceans\", \"level\": \"may\", \"why\": \"Classic Nantua version is served with crayfish sauce.\"}]}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Worcestershire sauce in meatloaf or gravy often contains anchovies.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Frying oil is sometimes peanut oil.\"}, {\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Worcestershire sometimes added to cream gravy contains anchovies.\"}]}, {\"id\": \"d9\", \"flags\": [{\"allergen\": \"mustard\", \"level\": \"may\", \"why\": \"Ya cai preserved mustard tuber is a standard topping, a mustard-family leaf/stem product.\"}]}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Cantonese versions often use oyster sauce in the sauce or drizzle.\"}]}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 17.38
+  },
+  {
+   "ids": [
+    "t180",
+    "t181",
+    "t182",
+    "t183",
+    "t184",
+    "t185",
+    "t186",
+    "t187",
+    "t188",
+    "t189"
+   ],
+   "open": {
+    "t180": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "t181": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t182": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t183": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "t184": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t185": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t186": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t187": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t188": [
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t189": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t180": {},
+    "t181": {
+     "fish": "may"
+    },
+    "t182": {
+     "peanuts": "may",
+     "sesame": "may"
+    },
+    "t183": {},
+    "t184": {},
+    "t185": {},
+    "t186": {
+     "eggs": "may"
+    },
+    "t187": {},
+    "t188": {
+     "molluscs": "may"
+    },
+    "t189": {
+     "molluscs": "may",
+     "peanuts": "may"
+    }
+   },
+   "why": {
+    "t180": {},
+    "t181": {
+     "fish": "Worcestershire sauce in gravy often contains anchovies."
+    },
+    "t182": {
+     "peanuts": "Masala stuffing often includes ground peanuts (groundnut).",
+     "sesame": "Some undhiyu masala versions use sesame seeds."
+    },
+    "t183": {},
+    "t184": {},
+    "t185": {},
+    "t186": {
+     "eggs": "Egg is often used to bind steamed meat patties."
+    },
+    "t187": {},
+    "t188": {
+     "molluscs": "Cantonese stir-fry sauces often include oyster sauce."
+    },
+    "t189": {
+     "molluscs": "Char siu marinade often contains oyster sauce.",
+     "peanuts": "Hoisin sauce in char siu may contain peanut."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0020244,
+     "duration_ms": 14475,
+     "wall_s": 14.94,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2231,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 3156,
+      "output_tokens_details": {
+       "thinking_tokens": 2694
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2231,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 3156,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2231,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2231
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": [{\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Worcestershire sauce in gravy often contains anchovies.\"}]}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Masala stuffing often includes ground peanuts (groundnut).\"}, {\"allergen\": \"sesame\", \"level\": \"may\", \"why\": \"Some undhiyu masala versions use sesame seeds.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Egg is often used to bind steamed meat patties.\"}]}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Cantonese stir-fry sauces often include oyster sauce.\"}]}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Char siu marinade often contains oyster sauce.\"}, {\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Hoisin sauce in char siu may contain peanut.\"}]}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 14.95
+  },
+  {
+   "ids": [
+    "t190",
+    "t191",
+    "t192",
+    "t193",
+    "t194",
+    "t195",
+    "t196",
+    "t197",
+    "t198",
+    "t199"
+   ],
+   "open": {
+    "t190": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t191": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t192": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t193": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t194": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t195": [
+     "eggs",
+     "peanuts",
+     "milk",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t196": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t197": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t198": [
+     "crustaceans",
+     "milk",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t199": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ]
+   },
+   "calls": {
+    "t190": {},
+    "t191": {
+     "fish": "may"
+    },
+    "t192": {},
+    "t193": {
+     "nuts": "may"
+    },
+    "t194": {
+     "celery": "may"
+    },
+    "t195": {},
+    "t196": {},
+    "t197": {
+     "eggs": "may"
+    },
+    "t198": {},
+    "t199": {}
+   },
+   "why": {
+    "t190": {},
+    "t191": {
+     "fish": "Some Thousand Island recipes include Worcestershire, which contains anchovies."
+    },
+    "t192": {},
+    "t193": {
+     "nuts": "Massaman paste and garnishes often include cashews or almonds."
+    },
+    "t194": {
+     "celery": "Stock base often contains celery as an aromatic vegetable."
+    },
+    "t195": {},
+    "t196": {},
+    "t197": {
+     "eggs": "Chicken marinade often uses egg white for velveting."
+    },
+    "t198": {},
+    "t199": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0019976,
+     "duration_ms": 13736,
+     "wall_s": 14.24,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2122,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 3146,
+      "output_tokens_details": {
+       "thinking_tokens": 2810
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2122,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 3146,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2122,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2122
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": [{\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Some Thousand Island recipes include Worcestershire, which contains anchovies.\"}]}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"may\", \"why\": \"Massaman paste and garnishes often include cashews or almonds.\"}]}, {\"id\": \"d5\", \"flags\": [{\"allergen\": \"celery\", \"level\": \"may\", \"why\": \"Stock base often contains celery as an aromatic vegetable.\"}]}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Chicken marinade often uses egg white for velveting.\"}]}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 14.24
+  },
+  {
+   "ids": [
+    "t200",
+    "t201",
+    "t202",
+    "t203",
+    "t204",
+    "t205",
+    "t206",
+    "t207",
+    "t208",
+    "t209"
+   ],
+   "open": {
+    "t200": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t201": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t202": [
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t203": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t204": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t205": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t206": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t207": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t208": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t209": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t200": {},
+    "t201": {},
+    "t202": {
+     "molluscs": "may"
+    },
+    "t203": {},
+    "t204": {},
+    "t205": {},
+    "t206": {},
+    "t207": {},
+    "t208": {},
+    "t209": {}
+   },
+   "why": {
+    "t200": {},
+    "t201": {},
+    "t202": {
+     "molluscs": "Cantonese pan sauces often use oyster sauce as seasoning."
+    },
+    "t203": {},
+    "t204": {},
+    "t205": {},
+    "t206": {},
+    "t207": {},
+    "t208": {},
+    "t209": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0015055,
+     "duration_ms": 9964,
+     "wall_s": 10.52,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2029,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2199,
+      "output_tokens_details": {
+       "thinking_tokens": 1856
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2029,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2199,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2029,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2029
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Cantonese pan sauces often use oyster sauce as seasoning.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"contains\", \"why\": \"Spiced walnut-paneer paste stuffs the eggplants.\"}, {\"allergen\": \"mustard\", \"level\": \"contains\", \"why\": \"Fried in mustard oil and tempered with mustard seeds.\"}]}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"contains\", \"why\": \"Walnut pesto and cracked walnuts are core components.\"}]}]}",
+     "dropped_flags": 3
+    }
+   ],
+   "wall_s": 10.52
+  },
+  {
+   "ids": [
+    "t210",
+    "t211",
+    "t212",
+    "t213",
+    "t214",
+    "t215",
+    "t216",
+    "t217",
+    "t218",
+    "t219"
+   ],
+   "open": {
+    "t210": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t211": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t212": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t213": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t214": [
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t215": [
+     "crustaceans",
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t216": [
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t217": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t218": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t219": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t210": {},
+    "t211": {},
+    "t212": {
+     "fish": "may"
+    },
+    "t213": {},
+    "t214": {},
+    "t215": {},
+    "t216": {},
+    "t217": {},
+    "t218": {},
+    "t219": {
+     "molluscs": "contains"
+    }
+   },
+   "why": {
+    "t210": {},
+    "t211": {},
+    "t212": {
+     "fish": "Meat sauce is often seasoned with Worcestershire, which can contain anchovy."
+    },
+    "t213": {},
+    "t214": {},
+    "t215": {},
+    "t216": {},
+    "t217": {},
+    "t218": {},
+    "t219": {
+     "molluscs": "Mixed shellfish in haemul typically includes squid, clams, or mussels."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0015683999999999997,
+     "duration_ms": 9815,
+     "wall_s": 10.34,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2331,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2204,
+      "output_tokens_details": {
+       "thinking_tokens": 1941
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2331,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2204,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2331,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2331
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Meat sauce is often seasoned with Worcestershire, which can contain anchovy.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"contains\", \"why\": \"Mixed shellfish in haemul typically includes squid, clams, or mussels.\"}]}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 10.34
+  },
+  {
+   "ids": [
+    "t220",
+    "t221",
+    "t222",
+    "t223",
+    "t224",
+    "t225",
+    "t226",
+    "t227",
+    "t228",
+    "t229"
+   ],
+   "open": {
+    "t220": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t221": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t222": [
+     "crustaceans",
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t223": [
+     "crustaceans",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t224": [
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t225": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t226": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t227": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t228": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t229": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t220": {},
+    "t221": {},
+    "t222": {},
+    "t223": {},
+    "t224": {},
+    "t225": {},
+    "t226": {
+     "molluscs": "may",
+     "eggs": "may"
+    },
+    "t227": {},
+    "t228": {},
+    "t229": {}
+   },
+   "why": {
+    "t220": {},
+    "t221": {},
+    "t222": {},
+    "t223": {},
+    "t224": {},
+    "t225": {},
+    "t226": {
+     "molluscs": "Oyster sauce is often added to black bean beef stir-fries.",
+     "eggs": "Egg-white velveting of flank beef is common in wok cooking."
+    },
+    "t227": {},
+    "t228": {},
+    "t229": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.001648,
+     "duration_ms": 9944,
+     "wall_s": 10.62,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2314,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2370,
+      "output_tokens_details": {
+       "thinking_tokens": 2031
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2314,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2370,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2314,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2314
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": [{\"allergen\": \"nuts\", \"level\": \"contains\", \"why\": \"Walnut-onion filling is part of the standard kibbeh.\"}]}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"contains\", \"why\": \"Crushed roasted peanuts are named in the dish.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Oyster sauce is often added to black bean beef stir-fries.\"}, {\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Egg-white velveting of flank beef is common in wok cooking.\"}]}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 2
+    }
+   ],
+   "wall_s": 10.62
+  },
+  {
+   "ids": [
+    "t230",
+    "t231",
+    "t232",
+    "t233",
+    "t234",
+    "t235",
+    "t236",
+    "t237",
+    "t238",
+    "t239"
+   ],
+   "open": {
+    "t230": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t231": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t232": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t233": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t234": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t235": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t236": [
+     "eggs",
+     "fish",
+     "peanuts",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t237": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t238": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t239": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t230": {
+     "sulphites": "may"
+    },
+    "t231": {},
+    "t232": {},
+    "t233": {},
+    "t234": {},
+    "t235": {},
+    "t236": {
+     "eggs": "may"
+    },
+    "t237": {},
+    "t238": {
+     "peanuts": "may"
+    },
+    "t239": {}
+   },
+   "why": {
+    "t230": {
+     "sulphites": "Mirin and sake, wine-based seasonings, often add sulphites."
+    },
+    "t231": {},
+    "t232": {},
+    "t233": {},
+    "t234": {},
+    "t235": {},
+    "t236": {
+     "eggs": "Pepita crust often uses egg wash to bind the coating."
+    },
+    "t237": {},
+    "t238": {
+     "peanuts": "Andhra gongura curries often include roasted or ground peanuts."
+    },
+    "t239": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0018919,
+     "duration_ms": 13125,
+     "wall_s": 13.7,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2081,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2951,
+      "output_tokens_details": {
+       "thinking_tokens": 2654
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2081,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2951,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2081,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2081
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": [{\"allergen\": \"sulphites\", \"level\": \"may\", \"why\": \"Mirin and sake, wine-based seasonings, often add sulphites.\"}]}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Pepita crust often uses egg wash to bind the coating.\"}]}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Andhra gongura curries often include roasted or ground peanuts.\"}]}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 13.7
+  },
+  {
+   "ids": [
+    "t240",
+    "t241",
+    "t242",
+    "t243",
+    "t244",
+    "t245",
+    "t246",
+    "t247",
+    "t248",
+    "t249"
+   ],
+   "open": {
+    "t240": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t241": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t242": [
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t243": [
+     "crustaceans",
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t244": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t245": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t246": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t247": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t248": [
+     "eggs",
+     "peanuts",
+     "soy",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t249": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t240": {
+     "peanuts": "contains",
+     "sesame": "contains"
+    },
+    "t241": {},
+    "t242": {
+     "eggs": "may"
+    },
+    "t243": {},
+    "t244": {},
+    "t245": {},
+    "t246": {},
+    "t247": {},
+    "t248": {},
+    "t249": {}
+   },
+   "why": {
+    "t240": {
+     "peanuts": "Bagara baingan gravy traditionally uses ground peanuts.",
+     "sesame": "Sesame seeds are a core ingredient of the gravy."
+    },
+    "t241": {},
+    "t242": {
+     "eggs": "Often finished with a raw egg cracked into the bowl."
+    },
+    "t243": {},
+    "t244": {},
+    "t245": {},
+    "t246": {},
+    "t247": {},
+    "t248": {},
+    "t249": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0017703,
+     "duration_ms": 11194,
+     "wall_s": 11.69,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2118,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2693,
+      "output_tokens_details": {
+       "thinking_tokens": 2399
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2118,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2693,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2118,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2118
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"contains\", \"why\": \"Bagara baingan gravy traditionally uses ground peanuts.\"}, {\"allergen\": \"sesame\", \"level\": \"contains\", \"why\": \"Sesame seeds are a core ingredient of the gravy.\"}]}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Often finished with a raw egg cracked into the bowl.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 11.69
+  },
+  {
+   "ids": [
+    "t250",
+    "t251",
+    "t252",
+    "t253",
+    "t254",
+    "t255",
+    "t256",
+    "t257",
+    "t258",
+    "t259"
+   ],
+   "open": {
+    "t250": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "lupin"
+    ],
+    "t251": [
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t252": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "milk",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t253": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t254": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin"
+    ],
+    "t255": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t256": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t257": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t258": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "t259": [
+     "crustaceans",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t250": {},
+    "t251": {},
+    "t252": {},
+    "t253": {},
+    "t254": {},
+    "t255": {},
+    "t256": {},
+    "t257": {},
+    "t258": {},
+    "t259": {
+     "crustaceans": "contains"
+    }
+   },
+   "why": {
+    "t250": {},
+    "t251": {},
+    "t252": {},
+    "t253": {},
+    "t254": {},
+    "t255": {},
+    "t256": {},
+    "t257": {},
+    "t258": {},
+    "t259": {
+     "crustaceans": "Raw crab is the main ingredient, marinated in soy sauce."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0015850999999999999,
+     "duration_ms": 9205,
+     "wall_s": 9.7,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2382,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2217,
+      "output_tokens_details": {
+       "thinking_tokens": 2008
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2382,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2217,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2382,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2382
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"crustaceans\", \"level\": \"contains\", \"why\": \"Raw crab is the main ingredient, marinated in soy sauce.\"}]}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 9.7
+  },
+  {
+   "ids": [
+    "t260",
+    "t261",
+    "t262",
+    "t263",
+    "t264",
+    "t265",
+    "t266",
+    "t267",
+    "t268",
+    "t269"
+   ],
+   "open": {
+    "t260": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin"
+    ],
+    "t261": [
+     "eggs",
+     "peanuts",
+     "soy",
+     "milk",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "t262": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t263": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t264": [
+     "peanuts",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t265": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t266": [
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t267": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t268": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t269": [
+     "peanuts",
+     "soy",
+     "milk",
+     "mustard",
+     "sesame",
+     "lupin"
+    ]
+   },
+   "calls": {
+    "t260": {},
+    "t261": {},
+    "t262": {
+     "eggs": "may"
+    },
+    "t263": {},
+    "t264": {},
+    "t265": {},
+    "t266": {},
+    "t267": {},
+    "t268": {},
+    "t269": {}
+   },
+   "why": {
+    "t260": {},
+    "t261": {},
+    "t262": {
+     "eggs": "Some versions batter the poblano chiles in egg, as for chiles rellenos."
+    },
+    "t263": {},
+    "t264": {},
+    "t265": {},
+    "t266": {},
+    "t267": {},
+    "t268": {},
+    "t269": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0014016,
+     "duration_ms": 8745,
+     "wall_s": 9.21,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 1972,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2014,
+      "output_tokens_details": {
+       "thinking_tokens": 1804
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 1972,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2014,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1972,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 1972
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Some versions batter the poblano chiles in egg, as for chiles rellenos.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": []}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 9.21
+  },
+  {
+   "ids": [
+    "t270",
+    "t271",
+    "t272",
+    "t273",
+    "t274",
+    "t275",
+    "t276",
+    "t277",
+    "t278",
+    "t279"
+   ],
+   "open": {
+    "t270": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t271": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t272": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin"
+    ],
+    "t273": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin"
+    ],
+    "t274": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t275": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t276": [
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t277": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t278": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "celery",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t279": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t270": {},
+    "t271": {},
+    "t272": {
+     "peanuts": "may"
+    },
+    "t273": {},
+    "t274": {},
+    "t275": {
+     "fish": "may"
+    },
+    "t276": {
+     "peanuts": "may"
+    },
+    "t277": {},
+    "t278": {
+     "peanuts": "contains",
+     "sesame": "contains",
+     "sulphites": "may"
+    },
+    "t279": {}
+   },
+   "why": {
+    "t270": {},
+    "t271": {},
+    "t272": {
+     "peanuts": "Often garnished with crushed roasted peanuts or peanut-based sauce."
+    },
+    "t273": {},
+    "t274": {},
+    "t275": {
+     "fish": "Thousand Island dressing often includes Worcestershire sauce, which contains anchovies."
+    },
+    "t276": {
+     "peanuts": "Bún riêu is often garnished with crushed roasted peanuts."
+    },
+    "t277": {},
+    "t278": {
+     "peanuts": "Hyderabadi salan gravy traditionally uses ground peanuts.",
+     "sesame": "Salan traditionally includes toasted sesame seeds in the gravy paste.",
+     "sulphites": "Tamarind or vinegar used in the tangy gravy may add sulphites."
+    },
+    "t279": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0019065999999999998,
+     "duration_ms": 13336,
+     "wall_s": 13.81,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2167,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2946,
+      "output_tokens_details": {
+       "thinking_tokens": 2487
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2167,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2946,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2167,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2167
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Often garnished with crushed roasted peanuts or peanut-based sauce.\"}]}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": [{\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Thousand Island dressing often includes Worcestershire sauce, which contains anchovies.\"}]}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Bún riêu is often garnished with crushed roasted peanuts.\"}]}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": [{\"allergen\": \"peanuts\", \"level\": \"contains\", \"why\": \"Hyderabadi salan gravy traditionally uses ground peanuts.\"}, {\"allergen\": \"sesame\", \"level\": \"contains\", \"why\": \"Salan traditionally includes toasted sesame seeds in the gravy paste.\"}, {\"allergen\": \"sulphites\", \"level\": \"may\", \"why\": \"Tamarind or vinegar used in the tangy gravy may add sulphites.\"}]}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 13.81
+  },
+  {
+   "ids": [
+    "t280",
+    "t281",
+    "t282",
+    "t283",
+    "t284",
+    "t285",
+    "t286",
+    "t287",
+    "t288",
+    "t289"
+   ],
+   "open": {
+    "t280": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t281": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t282": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t283": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t284": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "soy",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t285": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t286": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t287": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t288": [
+     "crustaceans",
+     "fish",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t289": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t280": {},
+    "t281": {},
+    "t282": {},
+    "t283": {},
+    "t284": {},
+    "t285": {
+     "mustard": "may"
+    },
+    "t286": {},
+    "t287": {
+     "fish": "may",
+     "sesame": "may"
+    },
+    "t288": {},
+    "t289": {
+     "eggs": "may"
+    }
+   },
+   "why": {
+    "t280": {},
+    "t281": {},
+    "t282": {},
+    "t283": {},
+    "t284": {},
+    "t285": {
+     "mustard": "French cream sauces often include Dijon mustard for flavor."
+    },
+    "t286": {},
+    "t287": {
+     "fish": "Worcestershire sauce in Reuben dressings often contains anchovies.",
+     "sesame": "Rye bread for Reubens is often topped with sesame seeds."
+    },
+    "t288": {},
+    "t289": {
+     "eggs": "Beef is often velveted with egg white marinade before cooking."
+    }
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0018519,
+     "duration_ms": 12386,
+     "wall_s": 12.91,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2206,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2821,
+      "output_tokens_details": {
+       "thinking_tokens": 2483
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2206,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2821,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2206,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2206
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": [{\"allergen\": \"mustard\", \"level\": \"may\", \"why\": \"French cream sauces often include Dijon mustard for flavor.\"}]}, {\"id\": \"d7\", \"flags\": []}, {\"id\": \"d8\", \"flags\": [{\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Worcestershire sauce in Reuben dressings often contains anchovies.\"}, {\"allergen\": \"sesame\", \"level\": \"may\", \"why\": \"Rye bread for Reubens is often topped with sesame seeds.\"}]}, {\"id\": \"d9\", \"flags\": []}, {\"id\": \"d10\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Beef is often velveted with egg white marinade before cooking.\"}]}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 12.91
+  },
+  {
+   "ids": [
+    "t290",
+    "t291",
+    "t292",
+    "t293",
+    "t294",
+    "t295",
+    "t296",
+    "t297",
+    "t298",
+    "t299"
+   ],
+   "open": {
+    "t290": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t291": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "sulphites",
+     "lupin",
+     "molluscs"
+    ],
+    "t292": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t293": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t294": [
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t295": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "nuts",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t296": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "celery",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t297": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t298": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t299": [
+     "crustaceans",
+     "eggs",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t290": {},
+    "t291": {},
+    "t292": {},
+    "t293": {},
+    "t294": {},
+    "t295": {
+     "fish": "may",
+     "sesame": "may"
+    },
+    "t296": {
+     "sesame": "contains",
+     "peanuts": "may",
+     "celery": "may"
+    },
+    "t297": {},
+    "t298": {
+     "celery": "may"
+    },
+    "t299": {}
+   },
+   "why": {
+    "t290": {},
+    "t291": {},
+    "t292": {},
+    "t293": {},
+    "t294": {},
+    "t295": {
+     "fish": "Worcestershire sauce often contains anchovies, used in patty seasoning",
+     "sesame": "Buns or rye breads are often topped with sesame seeds"
+    },
+    "t296": {
+     "sesame": "Sesame seeds are a core ingredient in traditional mole negro",
+     "peanuts": "Peanuts are common among the nuts and seeds in mole negro",
+     "celery": "Chicken stock used for simmering often includes celery"
+    },
+    "t297": {},
+    "t298": {
+     "celery": "Chicken or beef stock used in the sauce often includes celery"
+    },
+    "t299": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0019041,
+     "duration_ms": 12976,
+     "wall_s": 13.57,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 2112,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 2963,
+      "output_tokens_details": {
+       "thinking_tokens": 2537
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 2112,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 2963,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 2112,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 2112
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": []}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}, {\"id\": \"d4\", \"flags\": []}, {\"id\": \"d5\", \"flags\": []}, {\"id\": \"d6\", \"flags\": [{\"allergen\": \"fish\", \"level\": \"may\", \"why\": \"Worcestershire sauce often contains anchovies, used in patty seasoning\"}, {\"allergen\": \"sesame\", \"level\": \"may\", \"why\": \"Buns or rye breads are often topped with sesame seeds\"}]}, {\"id\": \"d7\", \"flags\": [{\"allergen\": \"sesame\", \"level\": \"contains\", \"why\": \"Sesame seeds are a core ingredient in traditional mole negro\"}, {\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Peanuts are common among the nuts and seeds in mole negro\"}, {\"allergen\": \"celery\", \"level\": \"may\", \"why\": \"Chicken stock used for simmering often includes celery\"}]}, {\"id\": \"d8\", \"flags\": []}, {\"id\": \"d9\", \"flags\": [{\"allergen\": \"celery\", \"level\": \"may\", \"why\": \"Chicken or beef stock used in the sauce often includes celery\"}]}, {\"id\": \"d10\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 13.57
+  },
+  {
+   "ids": [
+    "t300",
+    "t301",
+    "t302"
+   ],
+   "open": {
+    "t300": [
+     "crustaceans",
+     "eggs",
+     "peanuts",
+     "milk",
+     "nuts",
+     "celery",
+     "mustard",
+     "lupin",
+     "molluscs"
+    ],
+    "t301": [
+     "crustaceans",
+     "fish",
+     "peanuts",
+     "soy",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ],
+    "t302": [
+     "crustaceans",
+     "eggs",
+     "fish",
+     "peanuts",
+     "milk",
+     "nuts",
+     "mustard",
+     "sesame",
+     "lupin",
+     "molluscs"
+    ]
+   },
+   "calls": {
+    "t300": {
+     "eggs": "may",
+     "peanuts": "may",
+     "molluscs": "may"
+    },
+    "t301": {},
+    "t302": {}
+   },
+   "why": {
+    "t300": {
+     "eggs": "Fish balls often bound with egg white in home-style recipes.",
+     "peanuts": "Hot oil drizzle is often peanut oil in Cantonese cooking.",
+     "molluscs": "Oyster sauce is sometimes used to season black bean dishes."
+    },
+    "t301": {},
+    "t302": {}
+   },
+   "fallback": false,
+   "attempts": [
+    {
+     "attempt": 1,
+     "model": "haiku",
+     "cost_usd": 0.0009637000000000001,
+     "duration_ms": 6868,
+     "wall_s": 7.42,
+     "usage": {
+      "input_tokens": 2,
+      "cache_creation_input_tokens": 1240,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 1431,
+      "output_tokens_details": {
+       "thinking_tokens": 1237
+      },
+      "server_tool_use": {
+       "web_search_requests": 0,
+       "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+       "ephemeral_1h_input_tokens": 1240,
+       "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "global",
+      "iterations": [
+       {
+        "input_tokens": 2,
+        "output_tokens": 1431,
+        "cache_read_input_tokens": 0,
+        "cache_creation_input_tokens": 1240,
+        "cache_creation": {
+         "ephemeral_5m_input_tokens": 0,
+         "ephemeral_1h_input_tokens": 1240
+        },
+        "type": "message"
+       }
+      ],
+      "speed": "standard",
+      "fallback_credit": null
+     },
+     "raw": "{\"dishes\": [{\"id\": \"d1\", \"flags\": [{\"allergen\": \"eggs\", \"level\": \"may\", \"why\": \"Fish balls often bound with egg white in home-style recipes.\"}, {\"allergen\": \"peanuts\", \"level\": \"may\", \"why\": \"Hot oil drizzle is often peanut oil in Cantonese cooking.\"}, {\"allergen\": \"molluscs\", \"level\": \"may\", \"why\": \"Oyster sauce is sometimes used to season black bean dishes.\"}]}, {\"id\": \"d2\", \"flags\": []}, {\"id\": \"d3\", \"flags\": []}]}",
+     "dropped_flags": 0
+    }
+   ],
+   "wall_s": 7.42
+  }
+ ]
+}

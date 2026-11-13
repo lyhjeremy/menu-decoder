@@ -271,9 +271,11 @@ def score() -> None:
                     fs.append(metrics(rr, "L3", targets_only=True)["false_safe_micro"])
                 block["haiku_hidden_false_safe_by_run"] = fs
         res["sets"][name] = block
-        all_misses += misses(rows, "L3", name)
+        all_misses += [m | {"dish": m["dish"].replace("\u2014", "--")} for m in misses(rows, "L3", name)]
+        # The generator's dish text has em dashes; the saved copy writes them as "--" (house style).
         (OUT / f"scored_{name}.json").write_text(json.dumps(
-            [{k: r[k] for k in ("id", "text", "truth", "L1", "L2", "L3", "lex_terms", "second") if k in r} |
+            [{k: (r[k].replace("\u2014", "--") if k == "text" else r[k])
+              for k in ("id", "text", "truth", "L1", "L2", "L3", "lex_terms", "second") if k in r} |
              ({"hidden": r["hidden"], "trap": r["trap"], "basis": r["basis"]} if name == "adversarial" else {})
              for r in rows], ensure_ascii=False, indent=1))
     res["remaining_false_safe"] = all_misses

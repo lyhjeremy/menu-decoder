@@ -7,6 +7,7 @@ I'd order" pick, with dish-name TTS. See MENU_DECODER_SPEC.md §4.
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -21,6 +22,7 @@ from cache import FileCache, SemanticCache
 from decoder import build_recommend_prompt, build_tagging_prompt
 from guardrails import GuardrailError, Refusal, generate_validated
 from safelist import ALLERGEN_BADGE, filter_safe_dishes, is_safe_for_brief
+from allergen_guard import guard_menu
 from brief_parse import parse_brief, warning_text
 from schemas import DietBrief, Dish, DishTags, DishTagsBatch, Menu
 
@@ -139,6 +141,9 @@ def process_menu_and_brief(menu: Menu | None, diets_text: str, allergens_text: s
 
     dishes = menu.all_dishes()
     tags_list = tag_dishes(menu)
+    # Guard layers 2 and 3 (src/allergen_guard.py): the lexicon always, the Haiku second
+    # opinion on the diner's still-open allergens unless MENU_SECOND_OPINION=0.
+    tags_list, _ = guard_menu(dishes, tags_list, allergens, second=os.environ.get("MENU_SECOND_OPINION", "1") != "0")
     tags_by_id = {t.dish_id: t for t in tags_list}
 
     rows = []
