@@ -69,9 +69,11 @@ class SecondOpinionReply(BaseModel):
 
 
 def _render(batch: list[dict]) -> str:
+    """Dishes are shown as d1..dN, whatever their real ids: on the first run Haiku
+    copied the example id "d1" for every dish when the real ids were slugs."""
     out = []
-    for d in batch:
-        out.append(f"### {d['id']}\n{d['text']}\nNot indicated so far: {', '.join(d['open'])}")
+    for k, d in enumerate(batch, 1):
+        out.append(f"### d{k}\n{d['text']}\nNot indicated so far: {', '.join(d['open'])}")
     return "\n\n".join(out)
 
 
@@ -97,18 +99,23 @@ def _strip_fences(text: str) -> str:
     return t.strip()
 
 
-def validate_reply(text: str, batch: list[dict]) -> SecondOpinionReply:
-    """Parse and validate a reply; also reject ids or allergens outside the request."""
+def validate_reply(text: str, batch: list[dict]) -> tuple[SecondOpinionReply, int]:
+    """Parse and validate a reply against the request (ids d1..dN). Flags for an
+    allergen that was not open are dropped and counted: they cannot change anything,
+    since the earlier layers already warn about it. Returns (reply with real ids, dropped)."""
     reply = SecondOpinionReply.model_validate(json.loads(_strip_fences(text)))
-    wanted = {d["id"]: set(d["open"]) for d in batch}
+    by_pos = {f"d{k}": d for k, d in enumerate(batch, 1)}
     got = {d.id for d in reply.dishes}
-    if got != set(wanted):
-        raise ValueError(f"dish ids differ: missing {sorted(set(wanted) - got)}, extra {sorted(got - set(wanted))}")
+    if got != set(by_pos):
+        raise ValueError(f"dish ids differ: missing {sorted(set(by_pos) - got)}, extra {sorted(got - set(by_pos))}")
+    dropped = 0
     for d in reply.dishes:
-        bad = [f.allergen for f in d.flags if f.allergen not in wanted[d.id]]
-        if bad:
-            raise ValueError(f"{d.id}: flags allergens that were not open: {bad}")
-    return reply
+        src = by_pos[d.id]
+        keep = [f for f in d.flags if f.allergen in src["open"]]
+        dropped += len(d.flags) - len(keep)
+        d.flags = keep
+        d.id = src["id"]
+    return reply, dropped
 
 
 def second_opinion(batch: list[dict], model: str = "haiku", call=_claude) -> dict:
@@ -123,7 +130,7 @@ def second_opinion(batch: list[dict], model: str = "haiku", call=_claude) -> dic
                "duration_ms": env.get("duration_ms"), "wall_s": round(time.perf_counter() - t0, 2),
                "usage": env.get("usage"), "raw": env.get("result", "")}
         try:
-            reply = validate_reply(env.get("result", ""), batch)
+            reply, rec["dropped_flags"] = validate_reply(env.get("result", ""), batch)
         except (json.JSONDecodeError, ValidationError, ValueError) as e:
             rec["error"] = str(e)[:400]
             attempts.append(rec)

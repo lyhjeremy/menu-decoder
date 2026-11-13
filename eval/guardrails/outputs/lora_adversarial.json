@@ -1,0 +1,367 @@
+{
+ "model": "mlx-community/Qwen2.5-1.5B-Instruct-4bit",
+ "adapter": "training/adapters",
+ "machine": "Apple M4",
+ "rows": [
+  {
+   "id": "caesar",
+   "prompt": "Dish: Caesar Salad.",
+   "raw": "{\"cuisine\":\"American-diner\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"may\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 3.002
+  },
+  {
+   "id": "bloody-mary-prawns",
+   "prompt": "Dish: Bloody Mary Prawn Cocktail. Chilled prawns in a spiced tomato and vodka sauce, served in a glass with a celery-salt rim.",
+   "raw": "{\"cuisine\":\"American-diner\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"contains\"},{\"allergen\":\"eggs\",\"level\":\"may\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"contains\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"may\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.814
+  },
+  {
+   "id": "coq-au-vin",
+   "prompt": "Dish: Coq au Vin.",
+   "raw": "{\"cuisine\":\"French\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.758
+  },
+  {
+   "id": "bordelaise",
+   "prompt": "Dish: Entrecote a la Bordelaise.",
+   "raw": "{\"cuisine\":\"French\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"contains\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"may\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.82
+  },
+  {
+   "id": "risotto-milanese",
+   "prompt": "Dish: Risotto alla Milanese.",
+   "raw": "{\"cuisine\":\"Italian\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 3.289
+  },
+  {
+   "id": "moules",
+   "prompt": "Dish: Moules Marinieres.",
+   "raw": "{\"cuisine\":\"French\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"contains\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"may\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"contains\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.963
+  },
+  {
+   "id": "vongole",
+   "prompt": "Dish: Spaghetti alle Vongole.",
+   "raw": "{\"cuisine\":\"Italian\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"may\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"contains\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.936
+  },
+  {
+   "id": "pulpo",
+   "prompt": "Dish: Pulpo a la Gallega.",
+   "raw": "{\"cuisine\":\"Spanish\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"contains\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 3.16
+  },
+  {
+   "id": "calamares",
+   "prompt": "Dish: Calamares a la Romana.",
+   "raw": "{\"cuisine\":\"Spanish\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.958
+  },
+  {
+   "id": "gambas",
+   "prompt": "Dish: Gambas al Ajillo.",
+   "raw": "{\"cuisine\":\"Spanish\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.935
+  },
+  {
+   "id": "ebi-chili",
+   "prompt": "Dish: エビチリ (Ebi Chili).",
+   "raw": "{\"cuisine\":\"Japanese\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"contains\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":1,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.928
+  },
+  {
+   "id": "tom-kha",
+   "prompt": "Dish: Tom Kha Gai.",
+   "raw": "{\"cuisine\":\"Thai\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"may\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"contains\"},{\"allergen\":\"peanuts\",\"level\":\"may\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":1,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.924
+  },
+  {
+   "id": "som-tam",
+   "prompt": "Dish: Som Tam.",
+   "raw": "{\"cuisine\":\"Thai\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"contains\"},{\"allergen\":\"eggs\",\"level\":\"may\"},{\"allergen\":\"fish\",\"level\":\"contains\"},{\"allergen\":\"peanuts\",\"level\":\"may\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":2,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.681
+  },
+  {
+   "id": "pad-see-ew",
+   "prompt": "Dish: Pad See Ew.",
+   "raw": "{\"cuisine\":\"Chinese-Cantonese\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"may\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":1,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.814
+  },
+  {
+   "id": "pho",
+   "prompt": "Dish: Pho Bo.",
+   "raw": "{\"cuisine\":\"Vietnamese\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"contains\"},{\"allergen\":\"peanuts\",\"level\":\"may\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":1,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.759
+  },
+  {
+   "id": "bibimbap",
+   "prompt": "Dish: Bibimbap.",
+   "raw": "{\"cuisine\":\"Korean\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"may\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":1,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.71
+  },
+  {
+   "id": "bulgogi",
+   "prompt": "Dish: Bulgogi.",
+   "raw": "{\"cuisine\":\"Korean\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":1,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.787
+  },
+  {
+   "id": "kimchi-jjigae",
+   "prompt": "Dish: Kimchi Jjigae.",
+   "raw": "{\"cuisine\":\"Korean\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"may\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"may\"}],\"spice\":2,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.687
+  },
+  {
+   "id": "hummus",
+   "prompt": "Dish: Hummus.",
+   "raw": "{\"cuisine\":\"Middle-Eastern\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"may\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.782
+  },
+  {
+   "id": "baklava",
+   "prompt": "Dish: Baklava.",
+   "raw": "{\"cuisine\":\"Middle-Eastern\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.831
+  },
+  {
+   "id": "mole-poblano",
+   "prompt": "Dish: Mole Poblano.",
+   "raw": "{\"cuisine\":\"Mexican\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":1,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 3.061
+  },
+  {
+   "id": "chiles-nogada",
+   "prompt": "Dish: Chiles en Nogada.",
+   "raw": "{\"cuisine\":\"Mexican\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":1,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 3.178
+  },
+  {
+   "id": "korma",
+   "prompt": "Dish: Chicken Korma.",
+   "raw": "{\"cuisine\":\"Indian\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"may\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"may\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"not_indicated\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":1,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.871
+  },
+  {
+   "id": "shorshe-ilish",
+   "prompt": "Dish: Shorshe Ilish.",
+   "raw": "{\"cuisine\":\"Indian\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"contains\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"not_indicated\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":2,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.92
+  },
+  {
+   "id": "waldorf",
+   "prompt": "Dish: Waldorf Salad.",
+   "raw": "{\"cuisine\":\"American-diner\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"may\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.835
+  },
+  {
+   "id": "tartare",
+   "prompt": "Dish: Steak Tartare.",
+   "raw": "{\"cuisine\":\"American-diner\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"may\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.751
+  },
+  {
+   "id": "vitello-tonnato",
+   "prompt": "Dish: Vitello Tonnato.",
+   "raw": "{\"cuisine\":\"Italian\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.801
+  },
+  {
+   "id": "benedict",
+   "prompt": "Dish: Eggs Benedict.",
+   "raw": "{\"cuisine\":\"American-diner\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"may\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.824
+  },
+  {
+   "id": "meuniere",
+   "prompt": "Dish: Sole Meuniere.",
+   "raw": "{\"cuisine\":\"French\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"contains\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"may\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.773
+  },
+  {
+   "id": "bouillabaisse",
+   "prompt": "Dish: Bouillabaisse.",
+   "raw": "{\"cuisine\":\"French\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"contains\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"contains\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.761
+  },
+  {
+   "id": "tiramisu",
+   "prompt": "Dish: Tiramisu.",
+   "raw": "{\"cuisine\":\"Italian\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.778
+  },
+  {
+   "id": "creme-brulee",
+   "prompt": "Dish: Creme Brulee.",
+   "raw": "{\"cuisine\":\"French\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.798
+  },
+  {
+   "id": "nata",
+   "prompt": "Dish: Pasteis de Nata.",
+   "raw": "{\"cuisine\":\"British\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.728
+  },
+  {
+   "id": "tremocos",
+   "prompt": "Dish: Tremocos.",
+   "raw": "{\"cuisine\":\"Mexican\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":1,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.797
+  },
+  {
+   "id": "altramuces",
+   "prompt": "Dish: Altramuces en Salmuera.",
+   "raw": "{\"cuisine\":\"Spanish\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"may\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.898
+  },
+  {
+   "id": "gumbo",
+   "prompt": "Dish: Seafood Gumbo.",
+   "raw": "{\"cuisine\":\"American-diner\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"contains\"},{\"allergen\":\"eggs\",\"level\":\"may\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"may\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.747
+  },
+  {
+   "id": "jambalaya",
+   "prompt": "Dish: Jambalaya.",
+   "raw": "{\"cuisine\":\"Spanish\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"may\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"may\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.908
+  },
+  {
+   "id": "bolognese",
+   "prompt": "Dish: Ragu alla Bolognese.",
+   "raw": "{\"cuisine\":\"Italian\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.825
+  },
+  {
+   "id": "minestrone",
+   "prompt": "Dish: Minestrone.",
+   "raw": "{\"cuisine\":\"Italian\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"may\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.849
+  },
+  {
+   "id": "osso-buco",
+   "prompt": "Dish: Osso Buco.",
+   "raw": "{\"cuisine\":\"Italian\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"may\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.79
+  },
+  {
+   "id": "saumon-beurre-blanc",
+   "prompt": "Dish: Saumon au Beurre Blanc.",
+   "raw": "{\"cuisine\":\"French\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"contains\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.859
+  },
+  {
+   "id": "marsala",
+   "prompt": "Dish: Chicken Marsala.",
+   "raw": "{\"cuisine\":\"Italian\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"may\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.836
+  },
+  {
+   "id": "gazpacho",
+   "prompt": "Dish: Gazpacho Andaluz.",
+   "raw": "{\"cuisine\":\"Spanish\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.99
+  },
+  {
+   "id": "poireaux",
+   "prompt": "Dish: Poireaux Vinaigrette.",
+   "raw": "{\"cuisine\":\"French\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"may\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.899
+  },
+  {
+   "id": "lapin-moutarde",
+   "prompt": "Dish: Lapin a la Moutarde.",
+   "raw": "{\"cuisine\":\"French\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"contains\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.843
+  },
+  {
+   "id": "chicago-dog",
+   "prompt": "Dish: Chicago-style Hot Dog.",
+   "raw": "{\"cuisine\":\"American-diner\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"may\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"may\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.84
+  },
+  {
+   "id": "tonkatsu",
+   "prompt": "Dish: Tonkatsu.",
+   "raw": "{\"cuisine\":\"Japanese\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.969
+  },
+  {
+   "id": "tempura",
+   "prompt": "Dish: Tempura Moriawase.",
+   "raw": "{\"cuisine\":\"Japanese\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.792
+  },
+  {
+   "id": "miso-soup",
+   "prompt": "Dish: Miso Soup.",
+   "raw": "{\"cuisine\":\"Japanese\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"contains\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"not_indicated\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.823
+  },
+  {
+   "id": "okonomiyaki",
+   "prompt": "Dish: Okonomiyaki.",
+   "raw": "{\"cuisine\":\"Japanese\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"may\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.73
+  },
+  {
+   "id": "kung-pao",
+   "prompt": "Dish: Kung Pao Chicken.",
+   "raw": "{\"cuisine\":\"Chinese-Sichuan\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"contains\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"contains\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":2,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.82
+  },
+  {
+   "id": "mapo",
+   "prompt": "Dish: 麻婆豆腐.",
+   "raw": "{\"cuisine\":\"Chinese-Sichuan\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"contains\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"contains\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":2,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.859
+  },
+  {
+   "id": "gai-lan",
+   "prompt": "Dish: 蚝油芥兰.",
+   "raw": "{\"cuisine\":\"Chinese-Cantonese\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"contains\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.814
+  },
+  {
+   "id": "char-siu-bao",
+   "prompt": "Dish: 叉燒包 (Char Siu Bao).",
+   "raw": "{\"cuisine\":\"Chinese-Cantonese\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"may\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"contains\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"may\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.807
+  },
+  {
+   "id": "doro-wat",
+   "prompt": "Dish: Doro Wat.",
+   "raw": "{\"cuisine\":\"Ethiopian\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"not_indicated\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":2,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.835
+  },
+  {
+   "id": "spanakopita",
+   "prompt": "Dish: Spanakopita.",
+   "raw": "{\"cuisine\":\"Greek\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.815
+  },
+  {
+   "id": "moussaka",
+   "prompt": "Dish: Moussaka.",
+   "raw": "{\"cuisine\":\"Greek\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"contains\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"contains\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.736
+  },
+  {
+   "id": "paella-marisco",
+   "prompt": "Dish: Paella de Marisco.",
+   "raw": "{\"cuisine\":\"Spanish\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"contains\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"contains\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"not_indicated\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"may\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":0,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.758
+  },
+  {
+   "id": "ceviche",
+   "prompt": "Dish: Ceviche.",
+   "raw": "{\"cuisine\":\"Mexican\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"contains\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"not_indicated\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":1,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.746
+  },
+  {
+   "id": "tres-leches",
+   "prompt": "Dish: Pastel de Tres Leches.",
+   "raw": "{\"cuisine\":\"Mexican\",\"allergen_calls\":[{\"allergen\":\"gluten\",\"level\":\"may\"},{\"allergen\":\"crustaceans\",\"level\":\"not_indicated\"},{\"allergen\":\"eggs\",\"level\":\"not_indicated\"},{\"allergen\":\"fish\",\"level\":\"not_indicated\"},{\"allergen\":\"peanuts\",\"level\":\"not_indicated\"},{\"allergen\":\"soy\",\"level\":\"may\"},{\"allergen\":\"milk\",\"level\":\"contains\"},{\"allergen\":\"nuts\",\"level\":\"not_indicated\"},{\"allergen\":\"celery\",\"level\":\"not_indicated\"},{\"allergen\":\"mustard\",\"level\":\"not_indicated\"},{\"allergen\":\"sesame\",\"level\":\"not_indicated\"},{\"allergen\":\"sulphites\",\"level\":\"may\"},{\"allergen\":\"lupin\",\"level\":\"not_indicated\"},{\"allergen\":\"molluscs\",\"level\":\"not_indicated\"}],\"spice\":1,\"vegetarian\":\"no\",\"vegan\":\"no\"}",
+   "latency_s": 2.819
+  }
+ ]
+}

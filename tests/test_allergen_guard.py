@@ -59,12 +59,19 @@ BATCH = [{"id": "d1", "text": "Dish: Hummus.", "open": ["sesame", "milk"]},
          {"id": "d2", "text": "Dish: Ceviche.", "open": ["fish"]}]
 
 
-def test_validate_reply_rejects_missing_dish_and_foreign_allergen():
+BATCH_SLUGS = [{"id": "hummus", "text": "Dish: Hummus.", "open": ["sesame", "milk"]},
+               {"id": "ceviche", "text": "Dish: Ceviche.", "open": ["fish"]}]
+
+
+def test_validate_reply_rejects_missing_dish_and_drops_foreign_allergen():
     with pytest.raises(ValueError):
-        validate_reply(json.dumps({"dishes": [{"id": "d1", "flags": []}]}), BATCH)
-    with pytest.raises(ValueError):
-        validate_reply(json.dumps({"dishes": [{"id": "d1", "flags": [{"allergen": "fish", "level": "may"}]},
-                                              {"id": "d2", "flags": []}]}), BATCH)
+        validate_reply(json.dumps({"dishes": [{"id": "d1", "flags": []}]}), BATCH_SLUGS)
+    reply, dropped = validate_reply(json.dumps({"dishes": [
+        {"id": "d1", "flags": [{"allergen": "fish", "level": "may"}, {"allergen": "sesame", "level": "contains"}]},
+        {"id": "d2", "flags": []}]}), BATCH_SLUGS)
+    assert dropped == 1
+    assert [d.id for d in reply.dishes] == ["hummus", "ceviche"]
+    assert [f.allergen for f in reply.dishes[0].flags] == ["sesame"]
 
 
 def test_second_opinion_retries_then_succeeds():
