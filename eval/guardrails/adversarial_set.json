@@ -1,0 +1,1633 @@
+{
+ "name": "Menu Decoder adversarial allergen set",
+ "version": 1,
+ "frozen": "2026-11-13",
+ "n": 60,
+ "provenance": "Dishes and labels drafted by Claude (Opus, the coding agent that built this eval) on 2026-11-13 from standard recipes, one recipe note per dish in 'basis'. Model-drafted, not checked by a person. labeling_sheet.csv is the sheet for a human check.",
+ "design": "Every prompt hides at least one allergen: the name or description does not say it, except one dish (bloody-mary-prawns) whose celery is named only inside the compound seasoning 'celery salt'. 'hidden' lists the allergens the eval targets for that dish; all are labeled 'contains'. Other allergens are labeled 'contains' when the standard recipe includes them, 'may' when common but optional, else 'not_indicated'. Accents are stripped from Latin-script names; CJK names are kept in script.",
+ "dishes": [
+  {
+   "id": "caesar",
+   "prompt": "Dish: Caesar Salad.",
+   "cuisine": "American-diner",
+   "trap": "sauce",
+   "hidden": [
+    "fish",
+    "eggs"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "may",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Dressing of egg yolk, anchovy or Worcestershire sauce (anchovy), Parmesan; bread croutons."
+  },
+  {
+   "id": "bloody-mary-prawns",
+   "prompt": "Dish: Bloody Mary Prawn Cocktail. Chilled prawns in a spiced tomato and vodka sauce, served in a glass with a celery-salt rim.",
+   "cuisine": "American-diner",
+   "trap": "seasoning",
+   "hidden": [
+    "celery",
+    "fish"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "contains",
+    "eggs": "may",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "contains",
+    "mustard": "may",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Celery salt rim is named; Bloody Mary mix uses Worcestershire sauce, which contains anchovy."
+  },
+  {
+   "id": "coq-au-vin",
+   "prompt": "Dish: Coq au Vin.",
+   "cuisine": "French",
+   "trap": "wine reduction",
+   "hidden": [
+    "sulphites"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "may",
+    "nuts": "not_indicated",
+    "celery": "may",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "contains",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Chicken braised in red wine (sulphites); flour to thicken and butter are common."
+  },
+  {
+   "id": "bordelaise",
+   "prompt": "Dish: Entrecote a la Bordelaise.",
+   "cuisine": "French",
+   "trap": "wine reduction",
+   "hidden": [
+    "sulphites",
+    "milk"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "may",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "contains",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Bordelaise sauce is a red wine and shallot reduction mounted with butter."
+  },
+  {
+   "id": "risotto-milanese",
+   "prompt": "Dish: Risotto alla Milanese.",
+   "cuisine": "Italian",
+   "trap": "wine reduction",
+   "hidden": [
+    "sulphites",
+    "milk"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "may",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "contains",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Rice toasted then deglazed with white wine; finished with butter and Parmigiano; stock may contain celery."
+  },
+  {
+   "id": "moules",
+   "prompt": "Dish: Moules Marinieres.",
+   "cuisine": "French",
+   "trap": "translated name",
+   "hidden": [
+    "molluscs",
+    "sulphites"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "may",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "contains",
+    "lupin": "not_indicated",
+    "molluscs": "contains"
+   },
+   "basis": "Moules are mussels, steamed in white wine with butter and shallots."
+  },
+  {
+   "id": "vongole",
+   "prompt": "Dish: Spaghetti alle Vongole.",
+   "cuisine": "Italian",
+   "trap": "translated name",
+   "hidden": [
+    "molluscs",
+    "sulphites"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "may",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "contains",
+    "lupin": "not_indicated",
+    "molluscs": "contains"
+   },
+   "basis": "Vongole are clams; the sauce is clams with white wine, garlic and oil; durum wheat pasta."
+  },
+  {
+   "id": "pulpo",
+   "prompt": "Dish: Pulpo a la Gallega.",
+   "cuisine": "Spanish",
+   "trap": "translated name",
+   "hidden": [
+    "molluscs"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "contains"
+   },
+   "basis": "Pulpo is octopus, boiled and served on potatoes with paprika and olive oil."
+  },
+  {
+   "id": "calamares",
+   "prompt": "Dish: Calamares a la Romana.",
+   "cuisine": "Spanish",
+   "trap": "translated name",
+   "hidden": [
+    "molluscs",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "may",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "may",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "contains"
+   },
+   "basis": "Calamares are squid rings, battered in wheat flour (sometimes with egg or milk) and fried."
+  },
+  {
+   "id": "gambas",
+   "prompt": "Dish: Gambas al Ajillo.",
+   "cuisine": "Spanish",
+   "trap": "translated name",
+   "hidden": [
+    "crustaceans"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "contains",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "may",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Gambas are prawns cooked in garlic oil; a splash of sherry is common; served with bread."
+  },
+  {
+   "id": "ebi-chili",
+   "prompt": "Dish: エビチリ (Ebi Chili).",
+   "cuisine": "Japanese",
+   "trap": "translated name",
+   "hidden": [
+    "crustaceans"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "contains",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "may",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "may",
+    "sulphites": "may",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Ebi is shrimp; the sauce is ketchup, doubanjiang (fermented broad bean paste, sometimes with soy and wheat) and sake."
+  },
+  {
+   "id": "tom-kha",
+   "prompt": "Dish: Tom Kha Gai.",
+   "cuisine": "Thai",
+   "trap": "sauce",
+   "hidden": [
+    "fish"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "may",
+    "eggs": "not_indicated",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Chicken in coconut milk and galangal broth seasoned with fish sauce."
+  },
+  {
+   "id": "som-tam",
+   "prompt": "Dish: Som Tam.",
+   "cuisine": "Thai",
+   "trap": "name only",
+   "hidden": [
+    "fish",
+    "peanuts",
+    "crustaceans"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "contains",
+    "eggs": "not_indicated",
+    "fish": "contains",
+    "peanuts": "contains",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Green papaya salad pounded with fish sauce and dried shrimp, topped with roasted peanuts."
+  },
+  {
+   "id": "pad-see-ew",
+   "prompt": "Dish: Pad See Ew.",
+   "cuisine": "Thai",
+   "trap": "sauce",
+   "hidden": [
+    "soy",
+    "eggs",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "may",
+    "peanuts": "not_indicated",
+    "soy": "contains",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "may"
+   },
+   "basis": "Wide rice noodles fried with egg in dark and light soy sauce (brewed with wheat); oyster sauce is common."
+  },
+  {
+   "id": "pho",
+   "prompt": "Dish: Pho Bo.",
+   "cuisine": "Vietnamese",
+   "trap": "sauce",
+   "hidden": [
+    "fish"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "may",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Beef noodle soup; the broth is seasoned with fish sauce."
+  },
+  {
+   "id": "bibimbap",
+   "prompt": "Dish: Bibimbap.",
+   "cuisine": "Korean",
+   "trap": "garnish",
+   "hidden": [
+    "sesame",
+    "soy",
+    "eggs"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "contains",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "contains",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Rice bowl with sesame oil, soy-seasoned vegetables, gochujang (soybean based, often with wheat) and a fried egg."
+  },
+  {
+   "id": "bulgogi",
+   "prompt": "Dish: Bulgogi.",
+   "cuisine": "Korean",
+   "trap": "marinade",
+   "hidden": [
+    "soy",
+    "sesame"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "contains",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "contains",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Beef marinated in soy sauce, sesame oil and sugar, finished with sesame seeds."
+  },
+  {
+   "id": "kimchi-jjigae",
+   "prompt": "Dish: Kimchi Jjigae.",
+   "cuisine": "Korean",
+   "trap": "fermented base",
+   "hidden": [
+    "fish",
+    "soy"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "may",
+    "eggs": "not_indicated",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "contains",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "may",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Kimchi is made with fish sauce or salted seafood (often salted shrimp); the stew usually has tofu."
+  },
+  {
+   "id": "hummus",
+   "prompt": "Dish: Hummus.",
+   "cuisine": "Middle-Eastern",
+   "trap": "hidden paste",
+   "hidden": [
+    "sesame"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "contains",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Chickpeas blended with tahini (sesame paste)."
+  },
+  {
+   "id": "baklava",
+   "prompt": "Dish: Baklava.",
+   "cuisine": "Greek",
+   "trap": "name only",
+   "hidden": [
+    "nuts",
+    "gluten",
+    "milk"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "contains",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Filo pastry (wheat) layered with walnuts or pistachios and clarified butter."
+  },
+  {
+   "id": "mole-poblano",
+   "prompt": "Dish: Mole Poblano.",
+   "cuisine": "Mexican",
+   "trap": "sauce",
+   "hidden": [
+    "sesame",
+    "nuts",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "may",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "contains",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "contains",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Sauce of chiles, almonds, sesame seeds and chocolate, thickened with bread or tortilla; peanuts in some recipes."
+  },
+  {
+   "id": "chiles-nogada",
+   "prompt": "Dish: Chiles en Nogada.",
+   "cuisine": "Mexican",
+   "trap": "translated name",
+   "hidden": [
+    "nuts",
+    "milk"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "contains",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "may",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Nogada is a walnut cream sauce (walnuts, cream or cheese); some recipes add sherry."
+  },
+  {
+   "id": "korma",
+   "prompt": "Dish: Chicken Korma.",
+   "cuisine": "Indian",
+   "trap": "sauce",
+   "hidden": [
+    "nuts",
+    "milk"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "contains",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Sauce of yogurt or cream with ground cashews or almonds, cooked in ghee."
+  },
+  {
+   "id": "shorshe-ilish",
+   "prompt": "Dish: Shorshe Ilish.",
+   "cuisine": "Indian",
+   "trap": "translated name",
+   "hidden": [
+    "fish",
+    "mustard"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "contains",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Shorshe is mustard and ilish is hilsa fish: hilsa cooked in mustard seed paste and mustard oil."
+  },
+  {
+   "id": "waldorf",
+   "prompt": "Dish: Waldorf Salad.",
+   "cuisine": "American-diner",
+   "trap": "name only",
+   "hidden": [
+    "celery",
+    "nuts",
+    "eggs"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "contains",
+    "celery": "contains",
+    "mustard": "may",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Apples, celery and walnuts in mayonnaise (egg yolk)."
+  },
+  {
+   "id": "tartare",
+   "prompt": "Dish: Steak Tartare.",
+   "cuisine": "French",
+   "trap": "sauce",
+   "hidden": [
+    "eggs",
+    "mustard"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "may",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "contains",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Raw beef with a raw egg yolk and Dijon mustard; Worcestershire sauce is common; served with toast."
+  },
+  {
+   "id": "vitello-tonnato",
+   "prompt": "Dish: Vitello Tonnato.",
+   "cuisine": "Italian",
+   "trap": "translated name",
+   "hidden": [
+    "fish",
+    "eggs"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "may",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "may",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Tonnato is a tuna sauce: tuna, anchovy, capers and mayonnaise (egg yolk); the veal is often braised in wine."
+  },
+  {
+   "id": "benedict",
+   "prompt": "Dish: Eggs Benedict.",
+   "cuisine": "American-diner",
+   "trap": "sauce",
+   "hidden": [
+    "milk",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "may",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Hollandaise is egg yolk and butter; served on an English muffin (wheat)."
+  },
+  {
+   "id": "meuniere",
+   "prompt": "Dish: Sole Meuniere.",
+   "cuisine": "French",
+   "trap": "technique",
+   "hidden": [
+    "gluten",
+    "milk"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "A la meuniere means dredged in flour and cooked in butter."
+  },
+  {
+   "id": "bouillabaisse",
+   "prompt": "Dish: Bouillabaisse.",
+   "cuisine": "French",
+   "trap": "name only",
+   "hidden": [
+    "fish",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "may",
+    "eggs": "may",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "may",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "may",
+    "lupin": "not_indicated",
+    "molluscs": "may"
+   },
+   "basis": "Provencal fish stew; served with bread croutons and rouille (often egg yolk); shellfish and white wine are common."
+  },
+  {
+   "id": "tiramisu",
+   "prompt": "Dish: Tiramisu.",
+   "cuisine": "Italian",
+   "trap": "name only",
+   "hidden": [
+    "eggs",
+    "milk",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "may",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Mascarpone and egg custard layered with savoiardi (wheat sponge fingers); Marsala in some recipes."
+  },
+  {
+   "id": "creme-brulee",
+   "prompt": "Dish: Creme Brulee.",
+   "cuisine": "French",
+   "trap": "translated name",
+   "hidden": [
+    "eggs",
+    "milk"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Custard of cream and egg yolks under burnt sugar."
+  },
+  {
+   "id": "nata",
+   "prompt": "Dish: Pasteis de Nata.",
+   "cuisine": "Spanish",
+   "trap": "translated name",
+   "hidden": [
+    "eggs",
+    "gluten",
+    "milk"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Portuguese custard tarts: egg yolk custard with milk or cream in wheat puff pastry. (Tagged Spanish, the nearest cuisine in the tagger's list.)"
+  },
+  {
+   "id": "tremocos",
+   "prompt": "Dish: Tremocos.",
+   "cuisine": "Spanish",
+   "trap": "translated name",
+   "hidden": [
+    "lupin"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "contains",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Tremocos are brined lupin beans, a Portuguese bar snack. (Tagged Spanish, the nearest cuisine in the tagger's list.)"
+  },
+  {
+   "id": "altramuces",
+   "prompt": "Dish: Altramuces en Salmuera.",
+   "cuisine": "Spanish",
+   "trap": "translated name",
+   "hidden": [
+    "lupin"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "contains",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Altramuces are lupin beans; served brined as a tapa."
+  },
+  {
+   "id": "gumbo",
+   "prompt": "Dish: Seafood Gumbo.",
+   "cuisine": "American-diner",
+   "trap": "base vegetables",
+   "hidden": [
+    "celery",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "contains",
+    "eggs": "not_indicated",
+    "fish": "may",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "contains",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "may"
+   },
+   "basis": "Cajun stew built on a wheat flour roux and the holy trinity of onion, celery and bell pepper; shrimp is standard in seafood gumbo."
+  },
+  {
+   "id": "jambalaya",
+   "prompt": "Dish: Jambalaya.",
+   "cuisine": "American-diner",
+   "trap": "base vegetables",
+   "hidden": [
+    "celery"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "may",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "contains",
+    "mustard": "may",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Rice cooked with the holy trinity (onion, celery, bell pepper), sausage and often shrimp."
+  },
+  {
+   "id": "bolognese",
+   "prompt": "Dish: Ragu alla Bolognese.",
+   "cuisine": "Italian",
+   "trap": "base vegetables",
+   "hidden": [
+    "celery",
+    "sulphites",
+    "milk"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "contains",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "contains",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "The 1982 Accademia Italiana della Cucina recipe uses soffritto of onion, carrot and celery, white wine and milk."
+  },
+  {
+   "id": "minestrone",
+   "prompt": "Dish: Minestrone.",
+   "cuisine": "Italian",
+   "trap": "base vegetables",
+   "hidden": [
+    "celery"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "may",
+    "nuts": "not_indicated",
+    "celery": "contains",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Vegetable soup on a soffritto that includes celery; often pasta and a Parmesan rind."
+  },
+  {
+   "id": "osso-buco",
+   "prompt": "Dish: Osso Buco.",
+   "cuisine": "Italian",
+   "trap": "wine reduction",
+   "hidden": [
+    "celery",
+    "sulphites"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "may",
+    "nuts": "not_indicated",
+    "celery": "contains",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "contains",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Veal shanks dredged in flour, braised on a soffritto with celery and white wine."
+  },
+  {
+   "id": "saumon-beurre-blanc",
+   "prompt": "Dish: Saumon au Beurre Blanc.",
+   "cuisine": "French",
+   "trap": "translated name",
+   "hidden": [
+    "fish",
+    "milk",
+    "sulphites"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "contains",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Saumon is salmon; beurre blanc is a reduction of white wine and vinegar mounted with butter."
+  },
+  {
+   "id": "marsala",
+   "prompt": "Dish: Chicken Marsala.",
+   "cuisine": "Italian",
+   "trap": "wine reduction",
+   "hidden": [
+    "sulphites",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "may",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "contains",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Cutlets dredged in flour, in a Marsala wine reduction, often finished with butter."
+  },
+  {
+   "id": "gazpacho",
+   "prompt": "Dish: Gazpacho Andaluz.",
+   "cuisine": "Spanish",
+   "trap": "vinegar",
+   "hidden": [
+    "sulphites",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "contains",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Cold soup of tomato, pepper and cucumber with bread and sherry vinegar."
+  },
+  {
+   "id": "poireaux",
+   "prompt": "Dish: Poireaux Vinaigrette.",
+   "cuisine": "French",
+   "trap": "dressing",
+   "hidden": [
+    "mustard",
+    "sulphites"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "may",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "contains",
+    "sesame": "not_indicated",
+    "sulphites": "contains",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Leeks in a vinaigrette of Dijon mustard and wine vinegar; often topped with chopped egg."
+  },
+  {
+   "id": "lapin-moutarde",
+   "prompt": "Dish: Lapin a la Moutarde.",
+   "cuisine": "French",
+   "trap": "translated name",
+   "hidden": [
+    "mustard",
+    "milk"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "contains",
+    "sesame": "not_indicated",
+    "sulphites": "may",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Moutarde is mustard; rabbit in a Dijon mustard and cream sauce, often with white wine."
+  },
+  {
+   "id": "chicago-dog",
+   "prompt": "Dish: Chicago-style Hot Dog.",
+   "cuisine": "American-diner",
+   "trap": "seasoning",
+   "hidden": [
+    "celery",
+    "mustard",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "contains",
+    "mustard": "contains",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Poppy seed bun, yellow mustard and a dash of celery salt are part of the standard build."
+  },
+  {
+   "id": "tonkatsu",
+   "prompt": "Dish: Tonkatsu.",
+   "cuisine": "Japanese",
+   "trap": "coating",
+   "hidden": [
+    "gluten",
+    "eggs"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "may",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Pork cutlet in flour, egg and panko breadcrumbs; tonkatsu sauce."
+  },
+  {
+   "id": "tempura",
+   "prompt": "Dish: Tempura Moriawase.",
+   "cuisine": "Japanese",
+   "trap": "dipping sauce",
+   "hidden": [
+    "gluten",
+    "eggs",
+    "fish",
+    "soy"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "may",
+    "eggs": "contains",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "contains",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Batter of wheat flour and egg; tentsuyu dip of dashi (bonito), soy sauce and mirin; shrimp is a usual piece."
+  },
+  {
+   "id": "miso-soup",
+   "prompt": "Dish: Miso Soup.",
+   "cuisine": "Japanese",
+   "trap": "stock",
+   "hidden": [
+    "soy",
+    "fish"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "contains",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Miso is fermented soybean paste; dashi is made from bonito flakes."
+  },
+  {
+   "id": "okonomiyaki",
+   "prompt": "Dish: Okonomiyaki.",
+   "cuisine": "Japanese",
+   "trap": "garnish",
+   "hidden": [
+    "gluten",
+    "eggs",
+    "fish"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "may",
+    "eggs": "contains",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "may",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "may",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Wheat flour and egg batter; topped with bonito flakes and mayonnaise."
+  },
+  {
+   "id": "kung-pao",
+   "prompt": "Dish: Kung Pao Chicken.",
+   "cuisine": "Chinese-Sichuan",
+   "trap": "name only",
+   "hidden": [
+    "peanuts",
+    "soy"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "contains",
+    "soy": "contains",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "may",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Stir-fried chicken with peanuts in a soy sauce and Shaoxing wine sauce."
+  },
+  {
+   "id": "mapo",
+   "prompt": "Dish: 麻婆豆腐.",
+   "cuisine": "Chinese-Sichuan",
+   "trap": "translated name",
+   "hidden": [
+    "soy"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "contains",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Mapo tofu: tofu in doubanjiang (fermented broad bean paste) with fermented black soybeans."
+  },
+  {
+   "id": "gai-lan",
+   "prompt": "Dish: 蚝油芥兰.",
+   "cuisine": "Chinese-Cantonese",
+   "trap": "translated name",
+   "hidden": [
+    "molluscs"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "contains",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "contains"
+   },
+   "basis": "Haoyou is oyster sauce: Chinese broccoli dressed with oyster sauce."
+  },
+  {
+   "id": "char-siu-bao",
+   "prompt": "Dish: 叉燒包 (Char Siu Bao).",
+   "cuisine": "Chinese-Cantonese",
+   "trap": "name only",
+   "hidden": [
+    "gluten",
+    "soy"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "not_indicated",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "contains",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "may",
+    "sulphites": "may",
+    "lupin": "not_indicated",
+    "molluscs": "may"
+   },
+   "basis": "Wheat flour bun filled with barbecued pork in a soy and hoisin sauce."
+  },
+  {
+   "id": "doro-wat",
+   "prompt": "Dish: Doro Wat.",
+   "cuisine": "Ethiopian",
+   "trap": "name only",
+   "hidden": [
+    "eggs",
+    "milk"
+   ],
+   "labels": {
+    "gluten": "may",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Chicken stew cooked in niter kibbeh (spiced butter), served with hard-boiled eggs; injera may be part wheat."
+  },
+  {
+   "id": "spanakopita",
+   "prompt": "Dish: Spanakopita.",
+   "cuisine": "Greek",
+   "trap": "name only",
+   "hidden": [
+    "milk",
+    "eggs",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Filo pie of spinach, feta and egg."
+  },
+  {
+   "id": "moussaka",
+   "prompt": "Dish: Moussaka.",
+   "cuisine": "Greek",
+   "trap": "sauce",
+   "hidden": [
+    "milk",
+    "eggs",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "may",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Bechamel of flour, butter, milk and egg yolk on top; the meat sauce often has wine."
+  },
+  {
+   "id": "paella-marisco",
+   "prompt": "Dish: Paella de Marisco.",
+   "cuisine": "Spanish",
+   "trap": "translated name",
+   "hidden": [
+    "crustaceans",
+    "molluscs"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "contains",
+    "eggs": "not_indicated",
+    "fish": "may",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "may",
+    "lupin": "not_indicated",
+    "molluscs": "contains"
+   },
+   "basis": "Marisco is seafood: prawns, langoustines, mussels and squid."
+  },
+  {
+   "id": "ceviche",
+   "prompt": "Dish: Ceviche.",
+   "cuisine": "Mexican",
+   "trap": "name only",
+   "hidden": [
+    "fish"
+   ],
+   "labels": {
+    "gluten": "not_indicated",
+    "crustaceans": "may",
+    "eggs": "not_indicated",
+    "fish": "contains",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "not_indicated",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "may"
+   },
+   "basis": "Raw fish cured in lime juice."
+  },
+  {
+   "id": "tres-leches",
+   "prompt": "Dish: Pastel de Tres Leches.",
+   "cuisine": "Mexican",
+   "trap": "translated name",
+   "hidden": [
+    "milk",
+    "eggs",
+    "gluten"
+   ],
+   "labels": {
+    "gluten": "contains",
+    "crustaceans": "not_indicated",
+    "eggs": "contains",
+    "fish": "not_indicated",
+    "peanuts": "not_indicated",
+    "soy": "not_indicated",
+    "milk": "contains",
+    "nuts": "not_indicated",
+    "celery": "not_indicated",
+    "mustard": "not_indicated",
+    "sesame": "not_indicated",
+    "sulphites": "not_indicated",
+    "lupin": "not_indicated",
+    "molluscs": "not_indicated"
+   },
+   "basis": "Leches are milks: wheat sponge cake with eggs soaked in three kinds of milk."
+  }
+ ]
+}
